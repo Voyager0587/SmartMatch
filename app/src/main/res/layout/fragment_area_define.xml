@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewMode"
+            type="com.example.smartmatch.ui.construction.areadefine.AreaDefineViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/blue_light"
+        tools:context=".ui.construction.areadefine.AreaDefineFragment">
+
+            <RelativeLayout
+                android:id="@+id/net_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                >
+                <ToggleButton
+                    android:id="@+id/choose_net"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="@drawable/round_20"
+                    android:drawableEnd="@drawable/toggle_arrow"
+                    android:paddingEnd="50dp"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/grey"
+                    android:layout_marginHorizontal="30dp"
+                    android:textAlignment="textStart"
+                    android:paddingStart="40dp"
+                    android:textOff="@string/choose_net"
+                    android:textOn="@string/choose_net"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/net_recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_below="@id/choose_net"
+                    android:layout_marginHorizontal="70dp"
+                    android:visibility="gone"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/area_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/net_layout"
+                android:layout_marginTop="0dp"
+                >
+                <ToggleButton
+                    android:id="@+id/choose_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="@drawable/round_20"
+                    android:drawableEnd="@drawable/toggle_arrow"
+                    android:paddingEnd="50dp"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/grey"
+                    android:layout_marginHorizontal="30dp"
+                    android:textAlignment="textStart"
+                    android:paddingStart="40dp"
+                    android:textOff="@string/choose_area"
+                    android:textOn="@string/choose_area"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/area_recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_below="@id/choose_area"
+                    android:layout_marginHorizontal="70dp"
+                    android:visibility="gone"
+                    />
+
+            </RelativeLayout>
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:layout_margin="40dp"
+            android:backgroundTint="@color/blue_dark_plus"
+            app:rippleColor="@color/blue_dark"
+            android:text="下一步"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            app:cornerRadius="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            />
+    </RelativeLayout>
+</layout>

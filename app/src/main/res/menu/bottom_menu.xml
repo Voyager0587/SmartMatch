@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/feature_entry"
+    android:icon="@drawable/feature_entry_icon"
+    android:title="@string/feature_entry_text"
+    />
+    <item android:id="@+id/construction"
+        android:title="@string/construction_text"
+        android:icon="@drawable/construction_icon"
+        />
+    <item android:id="@+id/person"
+          android:title="@string/person"
+          android:icon="@drawable/person_icon"
+          />
+
+</menu>

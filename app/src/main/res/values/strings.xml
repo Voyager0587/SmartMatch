@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">SmartMatch</string>
+    <string name="feature_entry_text">功能入口</string>
+    <string name="construction_text">施工</string>
+    <string name="person">我的</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Construction页面 -->
+    <string name="c_t">获取C、T数据</string>
+    <string name="area">Area定义</string>
+    <string name="scene_definition">场景定义</string>
+    <string name="light_control">照明控制</string>
+    <string name="cascade_control">级联控制</string>
+
+    <!-- Area定义页面 -->
+    <string name="choose_net">选择Net</string>
+    <string name="choose_area">选择区域Area</string>
+
+
+</resources>
