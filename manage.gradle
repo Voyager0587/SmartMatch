@@ -49,7 +49,9 @@ ext {
             "videokernel"   : 'cn.yc:VideoKernel:3.0.6',
             "videocache"    : 'cn.yc:VideoCache:3.0.5',
             "colorPicker"   : 'com.github.skydoves:colorpickerview:2.2.4',
-            "datetimepicker": 'com.github.loper7:DateTimePicker:0.6.2'
+            "datetimepicker": 'com.github.loper7:DateTimePicker:0.6.2',
+            "litepal": 'org.litepal.guolindev:core:3.2.3'
+
     ]
 
 

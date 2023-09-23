@@ -1,6 +1,8 @@
 package com.example.smartmatch.ui.construction.areadefine
 
 import androidx.lifecycle.ViewModel
+import com.example.smartmatch.logic.Repository
+import com.example.smartmatch.ui.construction.ConstructionListener
 
 /**
  * @className: AreaDefineViewModel
@@ -10,5 +12,12 @@ import androidx.lifecycle.ViewModel
  * @version 1.0
  **/
 class AreaDefineViewModel:ViewModel() {
+    private val repository = Repository
+    internal var constructionListener: ConstructionListener?=null
 
+
+    fun getMMNetData(){
+    val result=repository.getMMNetData()
+    constructionListener?.getMMNetData(result)
+    }
 }

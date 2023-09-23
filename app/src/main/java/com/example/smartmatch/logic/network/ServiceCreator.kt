@@ -1,4 +1,4 @@
-package com.example.smartmatch.base.logic.network
+package com.example.smartmatch.logic.network
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  **/
 object ServiceCreator {
     //TODO: Baseurl is null
-    private const val BASE_URL = "http://43.136.23.171:8090/"
+    private const val BASE_URL = "https://mock.apifox.cn/m1/2970761-0-default/"
 
     private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)

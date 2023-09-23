@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.smartmatch"
-        minSdk 21
+        minSdk 23
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -46,6 +46,11 @@ dependencies {
     implementation rootProject.ext.depsLibs["retrofit"]
     implementation rootProject.ext.depsLibs["dialogX"]
     implementation rootProject.ext.depsLibs["lifecycle"]
+    implementation rootProject.ext.depsLibs["lifecycle-ext"]
+    implementation rootProject.ext.depsLibs["lifecycle-livedata"]
+    implementation rootProject.ext.depsLibs["litepal"]
+    implementation rootProject.ext.depsLibs["coroutines-android"]
+    implementation rootProject.ext.depsLibs["coroutines-core"]
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+
+    <dbname value="data" />
+    <version value="2" />
+
+
+    <list>
+        <mapping class="com.example.smartmatch.logic.db.model.MMNetResponse"/>
+        <mapping class="com.example.smartmatch.logic.db.model.Area"/>
+        <mapping class="com.example.smartmatch.logic.db.model.AreaC"/>
+        <mapping class="com.example.smartmatch.logic.db.model.AreaLight"/>
+        <mapping class="com.example.smartmatch.logic.db.model.Areas"/>
+        <mapping class="com.example.smartmatch.logic.db.model.AreasData"/>
+        <mapping class="com.example.smartmatch.logic.db.model.C"/>
+        <mapping class="com.example.smartmatch.logic.db.model.CData"/>
+        <mapping class="com.example.smartmatch.logic.db.model.Data"/>
+        <mapping class="com.example.smartmatch.logic.db.model.LightData"/>
+        <mapping class="com.example.smartmatch.logic.db.model.MmnetData"/>
+        <mapping class="com.example.smartmatch.logic.db.model.ScenariosData"/>
+    </list>
+
+
+
+</litepal>

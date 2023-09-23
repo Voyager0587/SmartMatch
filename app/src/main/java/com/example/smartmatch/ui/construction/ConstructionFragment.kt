@@ -1,6 +1,5 @@
 package com.example.smartmatch.ui.construction
 
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.smartmatch.base.activity.BaseFragment
 import com.example.smartmatch.databinding.FragmentConstructionBinding

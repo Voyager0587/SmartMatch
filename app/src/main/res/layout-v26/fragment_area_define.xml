@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="viewModel"
+            name="viewMode"
             type="com.example.smartmatch.ui.construction.areadefine.AreaDefineViewModel" />
     </data>
 
@@ -29,6 +29,7 @@
         android:layout_alignParentTop="true"
         android:layout_weight="1"
         >
+
         <ToggleButton
             android:id="@+id/choose_net"
             android:layout_width="match_parent"
@@ -53,11 +54,11 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/net_recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@id/choose_net"
             android:layout_marginHorizontal="70dp"
-            android:layout_marginTop="-5dp"
- />
+            android:visibility="visible"
+            />
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/area_layout"
@@ -93,10 +94,11 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/area_recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_below="@id/choose_area"
             android:layout_marginHorizontal="70dp"
+            android:visibility="visible"
             />
 
     </RelativeLayout>
@@ -105,8 +107,8 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bt_next"
-            android:layout_width="150dp"
-            android:layout_height="80dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="40dp"

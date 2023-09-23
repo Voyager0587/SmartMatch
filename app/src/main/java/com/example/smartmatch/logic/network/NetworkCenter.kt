@@ -1,7 +1,8 @@
-package com.example.smartmatch.base.logic.network
+package com.example.smartmatch.logic.network
 
 import android.location.LocationRequest
 import android.util.Log
+import com.example.smartmatch.logic.network.api.ConstructionService
 
 import retrofit2.Call
 import retrofit2.Callback
@@ -12,20 +13,26 @@ import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
 /**
- * @author:SunShibo
- * @date:2023-03-04 23:01
- * @feature:
+ * @className NetworkCenter
+ * @description NetworkCenter
+ * @author Voyager
+ * @date 2023/9/22 21:15
  */
+
 object NetworkCenter {
 
    // private val authServer = ServiceCreator.create<AuthService>()
-
+    private val constructionServer = ServiceCreator.create<ConstructionService>()
 
     /**
-     * Auth
+     * Construction
      */
-//    suspend fun sendVerifiedCode(request: Map<String, String>)
-//        = authServer.sendVerifiedCode(request).await()
+
+    /**
+     * 获取MMNet全部数据
+     */
+    suspend fun getMMNetData()
+        = constructionServer.getMMNetAllData().await()
 
 
     private suspend fun <T> Call<T>.await(): T {

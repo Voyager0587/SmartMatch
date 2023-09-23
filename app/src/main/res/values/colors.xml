@@ -13,7 +13,15 @@
     <color name="blue_dark_plus_plus">#008EFF</color>
     <color name="blue_light">#E1EAFF</color>
 
-
+    <color name="main_color">#7F85F9</color>
+    <color name="main_color_primary_variant">#8c92fb</color>
+    <color name="main_color_primary_secondary">#5e64bf</color>
+    <color name="second_color">#F9B23D</color>
+    <color name="second_color_variant">#fbdfaf</color>
+    <color name="text_color">#171935</color>
+    <color name="icon_color">#A2A9B8</color>
+    <color name="fill_bg_color">#EAEDF2</color>
+    <color name="background_color">#fafafa</color>
 
 
 </resources>
