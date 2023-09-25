@@ -1,6 +1,6 @@
 package com.example.smartmatch.logic.network.api
 
-import com.example.smartmatch.logic.db.model.MMNetResponse
+import com.example.smartmatch.logic.model.MMNetResponse
 import retrofit2.Call
 import retrofit2.http.GET
 

@@ -14,7 +14,7 @@ import com.example.smartmatch.ui.construction.areadefine.AreaDefineFragment
 import com.example.smartmatch.ui.feature.FeatureFragment
 import com.example.smartmatch.ui.person.PersonFragment
 import kotlinx.coroutines.launch
-import org.litepal.tablemanager.Connector
+
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     private lateinit var featureFragment: FeatureFragment
@@ -31,7 +31,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         binding.viewModel = mViewModel
         initFragment()
         setCurrentFragment(constructionFragment)
-        Connector.getDatabase()
+
         with(mViewModel) {
             lifecycleScope.launch{
                 mViewModel._jumpToArea.collect{

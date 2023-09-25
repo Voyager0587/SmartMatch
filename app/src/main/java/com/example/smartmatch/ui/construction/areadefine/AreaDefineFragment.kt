@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import com.example.smartmatch.base.activity.BaseFragment
 import com.example.smartmatch.databinding.FragmentAreaDefineBinding
-import com.example.smartmatch.logic.db.model.MMNetResponse
-import com.example.smartmatch.logic.db.model.MmnetData
+import com.example.smartmatch.logic.model.MMNetResponse
+import com.example.smartmatch.logic.model.MmnetData
 import com.example.smartmatch.ui.construction.ConstructionListener
-import org.litepal.extension.saveAll
+
 
 
 class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(),ConstructionListener {
@@ -21,11 +21,11 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(),Constructio
     override fun FragmentAreaDefineBinding.initBindingView() {
         binding.viewModel=mViewModel
         mViewModel.constructionListener=this@AreaDefineFragment
-        chooseNet.setOnClickListener {
+        chooseNet?.setOnClickListener {
             mViewModel.getMMNetData()
         }
 
-        chooseArea.setOnClickListener {
+        chooseArea?.setOnClickListener {
 
         }
 
@@ -50,8 +50,6 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(),Constructio
             
         }
 
-
-        mmnetDataList.saveAll()
 
     }
 }
