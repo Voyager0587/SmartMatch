@@ -6,7 +6,7 @@ plugins {
 android {
     namespace 'com.example.smartmatch'
     compileSdk 32
-
+    configurations { implementation.exclude group: 'org.jetbrains', module: 'annotations' }
     defaultConfig {
         applicationId "com.example.smartmatch"
         minSdk 23
@@ -48,9 +48,11 @@ dependencies {
     implementation rootProject.ext.depsLibs["lifecycle"]
     implementation rootProject.ext.depsLibs["lifecycle-ext"]
     implementation rootProject.ext.depsLibs["lifecycle-livedata"]
-    implementation rootProject.ext.depsLibs["litepal"]
     implementation rootProject.ext.depsLibs["coroutines-android"]
     implementation rootProject.ext.depsLibs["coroutines-core"]
+    implementation rootProject.ext.depsLibs["room-compiler"]
+    implementation rootProject.ext.depsLibs["room"]
+
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

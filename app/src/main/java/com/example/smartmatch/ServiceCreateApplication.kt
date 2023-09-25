@@ -12,7 +12,7 @@ import com.example.smartmatch.ui.dialogTitleInfo
 import com.kongzue.dialogx.DialogX
 import com.kongzue.dialogx.dialogs.MessageDialog
 import com.kongzue.dialogx.style.MaterialStyle
-import org.litepal.LitePal
+
 
 /**
  * @className: ServiceCreateApplication
@@ -31,7 +31,7 @@ class ServiceCreateApplication:Application() {
         super.onCreate()
         context = applicationContext
         initDialog()
-        LitePal.initialize(this)
+
     }
     private fun initDialog() {
         DialogX.init(this)

@@ -1,7 +1,7 @@
 package com.example.smartmatch.ui.construction
 
 import androidx.lifecycle.LiveData
-import com.example.smartmatch.logic.db.model.MMNetResponse
+import com.example.smartmatch.logic.model.MMNetResponse
 
 /**
  * @className: ConstructionListener
