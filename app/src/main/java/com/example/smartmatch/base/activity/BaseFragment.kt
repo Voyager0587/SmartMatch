@@ -16,7 +16,6 @@ import com.example.smartmatch.base.kxt.getViewBinding
 
 abstract class BaseFragment<VB : ViewDataBinding> : Fragment(), BaseBinding<VB> {
     protected lateinit var binding: VB
-        private set
 
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +41,8 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment(), BaseBinding<VB> 
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
         binding = getViewBinding(inflater, container)
         return binding.root
     }
