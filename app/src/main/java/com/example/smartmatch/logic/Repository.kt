@@ -1,7 +1,9 @@
 package com.example.smartmatch.logic
 
 
+import android.content.Context
 import androidx.lifecycle.liveData
+import com.example.smartmatch.logic.dao.MMNetDao
 import com.example.smartmatch.logic.network.NetworkCenter
 import kotlinx.coroutines.Dispatchers
 import kotlin.coroutines.CoroutineContext
@@ -9,11 +11,16 @@ import kotlin.coroutines.CoroutineContext
 /**
  * @className: Repository
  * @author: Voyager
- * @description: TODO
+ * @description: Repository
  * @date:  2023/9/22 21:31
  * @version 1.0
  **/
 object Repository {
+
+    lateinit var dao:MMNetDao
+
+
+
 
     fun getMMNetData() = fire(Dispatchers.IO){
         val response = NetworkCenter.getMMNetData()

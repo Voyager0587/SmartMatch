@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="viewMode"
+            name="viewModel"
             type="com.example.smartmatch.ui.construction.areadefine.AreaDefineViewModel" />
     </data>
 
@@ -13,120 +13,136 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/blue_light"
-        tools:context=".ui.construction.areadefine.AreaDefineFragment">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_above="@id/bt_next"
-    android:orientation="vertical"
-    android:weightSum="2"
-    >
-    <RelativeLayout
-        android:id="@+id/net_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_weight="1"
+        tools:context=".ui.construction.areadefine.AreaDefineFragment"
         >
-
-        <ToggleButton
-            android:id="@+id/choose_net"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/round_20"
-            android:drawableEnd="@drawable/toggle_arrow"
-            android:paddingEnd="50dp"
-            android:textSize="26sp"
-            android:padding="15dp"
-            android:autoSizeTextType="uniform"
-            android:autoSizeMaxTextSize="26sp"
-            android:autoSizeMinTextSize="18sp"
-            android:autoSizeStepGranularity="1sp"
-            android:textColor="@color/grey"
-            android:layout_marginHorizontal="30dp"
-            android:textAlignment="textStart"
-            android:paddingStart="40dp"
-            android:textOff="@string/choose_net"
-            android:textOn="@string/choose_net"
-            />
+            android:layout_height="match_parent"
+            >
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/round_20"
+                android:layout_marginHorizontal="50dp"
+                >
+                <EditText
+                    android:id="@+id/search_control"
+                    android:hint="@string/choose_net"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/blue_light"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="100dp"
+                    android:layout_marginEnd="80dp"
+                    android:textSize="26sp"
+                    android:textColor="@color/black"
+                    android:layout_marginVertical="20dp"
+                    android:drawablePadding="10sp"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeMaxTextSize="26sp"
+                    android:autoSizeMinTextSize="18sp"
+                    android:autoSizeStepGranularity="1sp"
+                    android:autofillHints=""
+                    android:layout_toStartOf="@id/arrow_button_c"
+                    android:inputType="text" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/arrow_button_c"
+                    android:background="@drawable/toggle_arrow"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="40dp"
+                    android:layout_centerVertical="true"
+                    />
+            </RelativeLayout>
+            <LinearLayout
+                android:id="@+id/container_c"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="120dp"
+                android:layout_marginEnd="80dp"
+                android:orientation="vertical"
+                >
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/net_recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/choose_net"
-            android:layout_marginHorizontal="70dp"
-            android:visibility="visible"
-            />
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/area_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/net_layout"
-        android:layout_marginTop="5dp"
-        android:layout_above="@id/bt_next"
-        android:layout_weight="1"
-        >
-        <ToggleButton
-            android:id="@+id/choose_area"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/round_20"
-            android:drawableEnd="@drawable/toggle_arrow"
-            android:paddingEnd="50dp"
-            android:textSize="26sp"
-            android:padding="15dp"
+            </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/round_20"
+                    android:layout_marginHorizontal="50dp"
+                    >
 
-            android:autoSizeTextType="uniform"
-            android:autoSizeMaxTextSize="26sp"
-            android:autoSizeMinTextSize="18sp"
-            android:autoSizeStepGranularity="1sp"
-            android:textColor="@color/grey"
-            android:layout_marginHorizontal="30dp"
-            android:textAlignment="textStart"
-            android:paddingStart="40dp"
-            android:textOff="@string/choose_area"
-            android:textOn="@string/choose_area"
-            />
+                    <EditText
+                        android:id="@+id/search_area"
+                        android:hint="@string/choose_area"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/blue_light"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="100dp"
+                        android:layout_marginEnd="80dp"
+                        android:textSize="26sp"
+                        android:textColor="@color/black"
+                        android:layout_marginVertical="20dp"
+                        android:drawablePadding="10sp"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMaxTextSize="26sp"
+                        android:autoSizeMinTextSize="18sp"
+                        android:autoSizeStepGranularity="1sp"
+                        android:autofillHints=""
+                        android:layout_toStartOf="@id/arrow_button_area"
+                        android:inputType="text" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/arrow_button_area"
+                        android:background="@drawable/toggle_arrow"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="40dp"
+                        android:layout_centerVertical="true"
+                        />
+                </RelativeLayout>
+                <LinearLayout
+                    android:id="@+id/container_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="120dp"
+                    android:layout_marginEnd="80dp"
+                    android:orientation="vertical"
+                    >
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/area_recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_below="@id/choose_area"
-            android:layout_marginHorizontal="70dp"
-            android:visibility="visible"
-            />
-
-    </RelativeLayout>
-
-</LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/bt_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginBottom="40dp"
-            android:backgroundTint="@color/blue_dark_plus"
-            android:text="下一步"
-            android:paddingVertical="10dp"
-            android:paddingHorizontal="18dp"
-            android:autoSizeTextType="uniform"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             android:autoSizeMaxTextSize="26sp"
             android:autoSizeMinTextSize="18sp"
             android:autoSizeStepGranularity="1sp"
-            android:shadowColor="@color/blue_light"
-            android:textColor="@color/white"
+            android:autoSizeTextType="uniform"
+            android:padding="15dp"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="10dp"
+            android:text="@string/next"
             android:textSize="26sp"
-            app:cornerRadius="10dp"
-            app:rippleColor="@color/blue_dark" />
+            app:backgroundTint="@color/blue_dark" />
     </RelativeLayout>
+
+
+
 </layout>
