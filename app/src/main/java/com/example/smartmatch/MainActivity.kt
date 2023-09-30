@@ -2,15 +2,19 @@ package com.example.smartmatch
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.example.base.util.StatusUtil
 import com.example.smartmatch.base.activity.BaseActivity
 import com.example.smartmatch.base.kxt.toast
 import com.example.smartmatch.databinding.ActivityMainBinding
 import com.example.smartmatch.ui.MainViewModel
 import com.example.smartmatch.ui.construction.ConstructionFragment
 import com.example.smartmatch.ui.construction.areadefine.AreaDefineFragment
+import com.example.smartmatch.ui.construction.scenedefine.SceneDefineFragment
 import com.example.smartmatch.ui.feature.FeatureFragment
 import com.example.smartmatch.ui.person.PersonFragment
 import kotlinx.coroutines.launch
@@ -27,23 +31,21 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         )[MainViewModel::class.java]
     }
 
+    @RequiresApi(Build.VERSION_CODES.P)
     override fun ActivityMainBinding.initBindingView() {
         binding.viewModel = mViewModel
         initFragment()
         setCurrentFragment(constructionFragment)
-
-        with(mViewModel) {
-            lifecycleScope.launch{
-                mViewModel._jumpToArea.collect{
-                    when(it)
-                    {
-                        1-> jumpToFragment(AreaDefineFragment(),"areaDefineFragment")
-                        else -> toast("jumpToError")
-                    }
+        StatusUtil.initActivityBar(this@MainActivity, false)
+        lifecycleScope.launch {
+            mViewModel._jumpToFragment.collect {
+                when (it) {
+                    1 -> jumpToFragment(AreaDefineFragment(), "areaDefineFragment")
+                    2 -> jumpToFragment(SceneDefineFragment(), "sceneDefineFragment")
+                    else -> toast("jumpToError")
                 }
-
-
             }
+
 
         }
 

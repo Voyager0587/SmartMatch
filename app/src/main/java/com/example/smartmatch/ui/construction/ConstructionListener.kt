@@ -2,6 +2,7 @@ package com.example.smartmatch.ui.construction
 
 import androidx.lifecycle.LiveData
 import com.example.smartmatch.logic.model.MMNetResponse
+import com.example.smartmatch.logic.model.MmnetData
 
 /**
  * @className: ConstructionListener
@@ -13,13 +14,25 @@ import com.example.smartmatch.logic.model.MMNetResponse
 interface ConstructionListener {
 
     /**
-     * 获取当前MMNet的全部数据
+     * 获取当前MMNet的全部数据的回调处理方法
      */
-    fun getMMNetData(result: LiveData<Result<MMNetResponse>>) {}
+    fun processMMNetData(result: LiveData<Result<MMNetResponse>>) {}
+
+    fun initListener() {}
 
     /**
      * 获取当前MMNet的Area
      */
     fun getMMNetArea() {}
+
+    /**
+     * 初始化View的列表
+     */
+    fun initViewList(mmnet_data: List<MmnetData>){}
+
+    /**
+     * 添加新View
+     */
+    fun addNewView(name:String){}
 
 }

@@ -21,6 +21,12 @@ class AreaDefineViewModel:ViewModel() {
 
     fun getMMNetData(){
         mmnetData=repository.getMMNetData()
-    constructionListener?.getMMNetData(mmnetData!!)
+    constructionListener?.processMMNetData(mmnetData!!)
     }
+
+    fun createNewArea(id:Int, name:String):Boolean{
+        repository.createNewArea(id,name)
+        return true
+    }
+
 }

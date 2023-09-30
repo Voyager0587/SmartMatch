@@ -1,9 +1,7 @@
 package com.example.smartmatch.logic
 
 
-import android.content.Context
 import androidx.lifecycle.liveData
-import com.example.smartmatch.logic.dao.MMNetDao
 import com.example.smartmatch.logic.network.NetworkCenter
 import kotlinx.coroutines.Dispatchers
 import kotlin.coroutines.CoroutineContext
@@ -17,17 +15,21 @@ import kotlin.coroutines.CoroutineContext
  **/
 object Repository {
 
-    lateinit var dao:MMNetDao
 
-
-
-
-    fun getMMNetData() = fire(Dispatchers.IO){
+    fun getMMNetData() = fire(Dispatchers.IO) {
         val response = NetworkCenter.getMMNetData()
         run {
             Result.success(response)
         }
     }
+
+    fun createNewArea(id: Int, name: String) = fire(Dispatchers.IO) {
+        val response = NetworkCenter.createNewArea(id, name)
+        run {
+            Result.success(response)
+        }
+    }
+
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData<Result<T>>(context) {
             val result = try {

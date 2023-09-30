@@ -41,8 +41,6 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment(), BaseBinding<VB> 
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
         binding = getViewBinding(inflater, container)
         return binding.root
     }
