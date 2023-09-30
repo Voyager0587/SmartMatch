@@ -18,8 +18,8 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 
 /**
- * @author:SunShibo
- * @date:2022-10-07 16:07
+ * @author:Voyager
+ * @date:2023 9 20
  * @feature:Adjust the system view status
  * @description：调整系统视图状态
  */
@@ -49,6 +49,7 @@ object StatusUtil {
             requireActivity().window.attributes = params
         }
     }
+
     /**
      * 用于初始化Activity的状态栏样式,设置透明状态栏,隐藏状态栏内容。
      */
@@ -97,8 +98,8 @@ object StatusUtil {
     /**
      * 检测网络状态,提示网络异常。
      */
-    fun checkNetWork(context: Context){
-        when(NetWorkReceiver.getNetWorkState(context)){
+    fun checkNetWork(context: Context) {
+        when (NetWorkReceiver.getNetWorkState(context)) {
             -1 -> context.toast("网络状态异常, 请检查网络连接")
         }
     }

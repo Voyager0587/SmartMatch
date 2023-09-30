@@ -7,6 +7,7 @@ import com.example.smartmatch.logic.network.api.ConstructionService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.await
 import retrofit2.http.Body
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
@@ -34,6 +35,8 @@ object NetworkCenter {
     suspend fun getMMNetData()
         = constructionServer.getMMNetAllData().await()
 
+    fun createNewArea(id:Int,name:String)
+        = constructionServer.createNewArea(id,name)
 
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine { continuation ->

@@ -26,6 +26,9 @@ class ConstructionFragment : BaseFragment<FragmentConstructionBinding>() {
             mViewModel.jumpToAreaDefine(1)
         }
 
+        sceneDefine.setOnClickListener {
+            mViewModel.jumpToSceneDefine(2)
+        }
     }
 
 }

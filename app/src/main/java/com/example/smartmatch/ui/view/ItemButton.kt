@@ -7,35 +7,36 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import com.example.smartmatch.R
+import com.example.smartmatch.base.kxt.toast
 
 /**
  * @className: ItemButton
  * @author: Voyager
- * @description: TODO
+ * @description: 自定义View
  * @date:  2023/9/26 22:52
  * @version 1.0
  **/
 class ItemButton(context: Context, attrs: AttributeSet?) : LinearLayout(context, attrs){
     lateinit var name:TextView
+    lateinit var info:String
     interface OnClickListener {
         fun onTitleClick()
     }
     private var clickListener: OnClickListener? = null
 
     fun text(info:String){
+        this.info = info
         name.text=info
     }
     init {
         var view=LayoutInflater.from(context).inflate(R.layout.item_layout, this)
         name=view.findViewById(R.id.name)
         name.setOnClickListener {
-            Toast.makeText(context, "You clicked Edit button", Toast.LENGTH_SHORT).show()
-            // 触发点击事件回调
+           context.toast("点击item")
             clickListener?.onTitleClick()
         }
     }
 
-    // 设置点击事件监听器
     fun setOnClickListener(listener: OnClickListener) {
         this.clickListener = listener
     }

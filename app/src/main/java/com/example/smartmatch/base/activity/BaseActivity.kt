@@ -25,7 +25,7 @@ import com.example.smartmatch.base.kxt.toast
  * BaseActivity没有实现BaseBinding接口中的initBindingView()方法，是因为BaseActivity是一个抽象类，它只是声明了自己实现了BaseBinding接口，并且定义了一个binding属性来获取视图绑定。
  * 但是具体的initBindingView()方法的实现逻辑需要在继承BaseActivity的子类中完成。
  * 这样做的目的是为了让每个继承BaseActivity的子类都可以根据自己的需求来实现initBindingView()方法，以完成自定义的视图绑定逻辑。
-*/
+ */
 
 abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity(), BaseBinding<VB> {
     private val requestPermissions =
@@ -37,8 +37,6 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity(), BaseBin
             }
 
         }
-
-
 
 
     private lateinit var netWorkReceiver: NetWorkReceiver
@@ -58,7 +56,7 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity(), BaseBin
         //初始化视图绑定,在继承此Activity中重写
         binding.initBindingView()
         //检查并请求所需权限
-        initPermission()
+        //initPermission()
         //设置状态栏透明
         initStatusBsr()
         //初始化网络广播接收器

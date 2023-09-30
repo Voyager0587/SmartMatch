@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  * @version 1.0
  **/
 object ServiceCreator {
-    //TODO: Baseurl is null
+
     private const val BASE_URL = "https://mock.apifox.cn/m1/2970761-0-default/"
 
     private val retrofit = Retrofit.Builder()

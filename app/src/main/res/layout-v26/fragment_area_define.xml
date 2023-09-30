@@ -18,59 +18,59 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@id/bt_next"
             >
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/round_20"
-                android:layout_marginHorizontal="50dp"
-                >
-                <EditText
-                    android:id="@+id/search_control"
-                    android:hint="@string/choose_net"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/blue_light"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="100dp"
-                    android:layout_marginEnd="80dp"
-                    android:textSize="26sp"
-                    android:textColor="@color/black"
-                    android:layout_marginVertical="20dp"
-                    android:drawablePadding="10sp"
-                    android:autoSizeTextType="uniform"
-                    android:autoSizeMaxTextSize="26sp"
-                    android:autoSizeMinTextSize="18sp"
-                    android:autoSizeStepGranularity="1sp"
-                    android:autofillHints=""
-                    android:layout_toStartOf="@id/arrow_button_c"
-                    android:inputType="text" />
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/arrow_button_c"
-                    android:background="@drawable/toggle_arrow"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentEnd="true"
+                    android:orientation="horizontal"
+                    android:background="@drawable/round_20"
+                    android:layout_marginHorizontal="50dp"
+                    >
+                    <EditText
+                        android:id="@+id/search_control"
+                        android:hint="@string/choose_net"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/blue_light"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="100dp"
+                        android:layout_marginEnd="80dp"
+                        android:textSize="26sp"
+                        android:textColor="@color/black"
+                        android:layout_marginVertical="15dp"
+                        android:drawablePadding="10sp"
+                        android:autofillHints=""
+                        android:layout_toStartOf="@id/arrow_button_c"
+                        android:inputType="text" />
+                    <ToggleButton
+                        android:id="@+id/arrow_button_c"
+                        android:background="@drawable/toggle_arrow"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="40dp"
+                        android:layout_centerVertical="true"
+                        android:textOff=" "
+                        android:textOn=" "
+                        />
+                </RelativeLayout>
+                <LinearLayout
+                    android:id="@+id/container_c"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
                     android:layout_marginEnd="40dp"
-                    android:layout_centerVertical="true"
-                    />
-            </RelativeLayout>
-            <LinearLayout
-                android:id="@+id/container_c"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="120dp"
-                android:layout_marginEnd="80dp"
-                android:orientation="vertical"
-                >
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    >
 
-            </LinearLayout>
+                </LinearLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -90,16 +90,12 @@
                         android:layout_marginEnd="80dp"
                         android:textSize="26sp"
                         android:textColor="@color/black"
-                        android:layout_marginVertical="20dp"
+                        android:layout_marginVertical="15dp"
                         android:drawablePadding="10sp"
-                        android:autoSizeTextType="uniform"
-                        android:autoSizeMaxTextSize="26sp"
-                        android:autoSizeMinTextSize="18sp"
-                        android:autoSizeStepGranularity="1sp"
                         android:autofillHints=""
                         android:layout_toStartOf="@id/arrow_button_area"
                         android:inputType="text" />
-                    <com.google.android.material.button.MaterialButton
+                    <ToggleButton
                         android:id="@+id/arrow_button_area"
                         android:background="@drawable/toggle_arrow"
                         android:layout_width="40dp"
@@ -107,15 +103,18 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="40dp"
                         android:layout_centerVertical="true"
+                        android:textOff=" "
+                        android:textOn=" "
                         />
                 </RelativeLayout>
                 <LinearLayout
                     android:id="@+id/container_area"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="120dp"
-                    android:layout_marginEnd="80dp"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginEnd="40dp"
                     android:orientation="vertical"
+                    android:visibility="gone"
                     >
 
                 </LinearLayout>
@@ -123,6 +122,7 @@
         </ScrollView>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -131,10 +131,6 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
-            android:autoSizeMaxTextSize="26sp"
-            android:autoSizeMinTextSize="18sp"
-            android:autoSizeStepGranularity="1sp"
-            android:autoSizeTextType="uniform"
             android:padding="15dp"
             android:paddingHorizontal="5dp"
             android:paddingVertical="10dp"

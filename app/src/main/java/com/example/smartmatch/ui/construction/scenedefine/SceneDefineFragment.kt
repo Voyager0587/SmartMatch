@@ -1,49 +1,48 @@
-package com.example.smartmatch.ui.construction.areadefine
+package com.example.smartmatch.ui.construction.scenedefine
 
 import android.content.Context
-import android.os.Build
 import android.view.View
 import android.widget.CompoundButton
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
-import com.example.base.util.StatusUtil
 import com.example.smartmatch.base.activity.BaseFragment
 import com.example.smartmatch.base.kxt.toast
-import com.example.smartmatch.databinding.FragmentAreaDefineBinding
+import com.example.smartmatch.databinding.FragmentSceneDefineBinding
 import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.MmnetData
 import com.example.smartmatch.ui.construction.ConstructionListener
 import com.example.smartmatch.ui.view.ItemButton
 import com.kongzue.dialogx.dialogs.InputDialog
 
+/**
+ * @className SceneDefineFragment
+ * @description 场景定义第一个界面
+ * @author Voyager
+ * @date 2023/9/30 14:03
+ */
+class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), ConstructionListener {
 
-class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), ConstructionListener {
-    /**
-     * area的view数组的最后元素的index，便于删除view
-     */
     private var lastIndex = 0
-
-    private val mViewModel: AreaDefineViewModel by lazy {
+    private val mViewModel: SceneDefineViewModel by lazy {
         ViewModelProvider(
             requireActivity(),
             ViewModelProvider.NewInstanceFactory()
-        )[AreaDefineViewModel::class.java]
+        )[SceneDefineViewModel::class.java]
     }
 
-    @RequiresApi(Build.VERSION_CODES.P)
-    override fun FragmentAreaDefineBinding.initBindingView() {
+    override fun FragmentSceneDefineBinding.initBindingView() {
         binding.viewModel = mViewModel
-        mViewModel.constructionListener = this@AreaDefineFragment
+        mViewModel.constructionListener = this@SceneDefineFragment
         mViewModel.getMMNetData()
         initListener()
-        StatusUtil.initFragmentBar(this@AreaDefineFragment, false)
     }
 
     override fun initListener() {
         setVisibilityListener(binding.arrowButtonC, binding.containerC)
         setVisibilityListener(binding.arrowButtonArea, binding.containerArea)
+        setVisibilityListener(binding.arrowButtonScene, binding.containerScene)
+
     }
 
     private fun setVisibilityListener(button: CompoundButton, container: View) {
@@ -51,6 +50,7 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
             container.visibility = if (button.isChecked) View.VISIBLE else View.GONE
         }
     }
+
 
     override fun initViewList(mmnet_data: List<MmnetData>) {
         val context = requireContext()
@@ -69,24 +69,39 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
                 for (j in mmnet_data[i].areas.areas_data.indices) {
                     val areaName = mmnet_data[i].areas.areas_data[j].area.name
                     val area = createItemButton(context, areaName) {
-                        Toast.makeText(context, "Clicked on: $areaName", Toast.LENGTH_SHORT).show()
+                        lastIndex = 0
+                        binding.searchControl.setText(name)
+                        binding.containerScene.removeAllViews()
+
+                        for (k in mmnet_data[i].areas.areas_data.indices) {
+                            val sceneName =
+                                mmnet_data[i].areas.areas_data[j].area.scenarios_data[k].name
+                            val scene = createItemButton(context, sceneName) {
+                                Toast.makeText(
+                                    context,
+                                    "Clicked on: $sceneName",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                            binding.containerScene.addView(scene)
+                            lastIndex++
+                        }
+
+                        val newScene = createItemButton(context, "新建场景") {
+                            InputDialog("新建场景", "请输入场景名称", "确定", "取消", "正在输入的文字")
+                                .setCancelable(true)
+                                .setOkButton { baseDialog, v, inputStr ->
+                                    requireActivity().toast("输入的内容：$inputStr")
+                                    addNewView(inputStr)
+                                    false
+                                }
+                                .show()
+                        }
+                        binding.containerScene.addView(newScene)
                     }
                     binding.containerArea.addView(area)
                     lastIndex++
                 }
-
-                val newArea = createItemButton(context, "新建区域") {
-                    InputDialog("新建区域", "请输入区域名称", "确定", "取消", "正在输入的文字")
-                        .setCancelable(true)
-                        .setOkButton { baseDialog, v, inputStr ->
-                            requireActivity().toast("输入的内容：$inputStr")
-                            addNewView(inputStr)
-                            mViewModel.createNewArea(100, inputStr)
-                            false
-                        }
-                        .show()
-                }
-                binding.containerArea.addView(newArea)
             }
             binding.containerC.addView(net)
         }
@@ -104,27 +119,20 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
     }
 
     override fun addNewView(name: String) {
-        val area = ItemButton(requireContext(), null)
-        area.text(name)
-        area.setOnClickListener {
-            Toast.makeText(requireContext(), "Clicked on", Toast.LENGTH_SHORT)
-                .show()
+        val scene = createItemButton(requireContext(), name) {
+            requireContext().toast("点击场景：$name")
         }
-        binding.containerArea.addView(area, lastIndex)
+        binding.containerScene.addView(scene, lastIndex)
         lastIndex++
     }
 
     override fun processMMNetData(result: LiveData<Result<MMNetResponse>>) {
         result.observe(this) { re ->
-            val response = re.getOrNull()
-            if (response != null) {
-                val data = response.data
-                val mmnetDataList = data.mmnet_data
+            re?.getOrNull()?.let { response ->
+                val mmnetDataList = response.data.mmnet_data
                 initViewList(mmnetDataList)
             }
-
         }
     }
-
 
 }
