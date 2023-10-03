@@ -28,7 +28,7 @@ interface ConstructionListener {
     /**
      * 初始化View的列表
      */
-    fun initViewList(mmnet_data: List<MmnetData>){}
+    fun initRecyclerList(mmnet_data: List<MmnetData>){}
 
     /**
      * 添加新View

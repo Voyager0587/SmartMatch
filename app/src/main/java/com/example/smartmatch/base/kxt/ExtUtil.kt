@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.viewbinding.ViewBinding
+import com.example.smartmatch.ServiceCreateApplication
 import java.lang.reflect.ParameterizedType
 
 /**
@@ -12,9 +13,8 @@ import java.lang.reflect.ParameterizedType
  * @date:2022-08-22 23:12
  * @feature: some ext func
  */
-
 fun Context.toast(content: String) =
-    Toast.makeText(this, content, Toast.LENGTH_SHORT).show()
+    Toast.makeText(ServiceCreateApplication.context, content, Toast.LENGTH_SHORT).show()
 
 fun Context.toast(res: Int) =
     Toast.makeText(this, getString(res), Toast.LENGTH_SHORT).show()
@@ -36,7 +36,7 @@ fun Context.initSp(): SharedPreferences =
 
 /**
  *
- * *我们必须使用反射机制从ActivityMainBinding*中的inflate方法加载我们的布局*，并使用相应的inflate方法。
+ * 我们必须使用反射机制从ActivityMainBinding*中的inflate方法加载我们的布局*，并使用相应的inflate方法。
  *
  * We must use the reflection mechanism to load our layout
  * from the inflate method in ActivityMainBinding

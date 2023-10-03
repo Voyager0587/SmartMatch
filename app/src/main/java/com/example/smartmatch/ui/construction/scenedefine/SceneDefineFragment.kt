@@ -52,7 +52,7 @@ class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), Construc
     }
 
 
-    override fun initViewList(mmnet_data: List<MmnetData>) {
+    override fun initRecyclerList(mmnet_data: List<MmnetData>) {
         val context = requireContext()
 
         binding.containerArea.removeAllViews()
@@ -130,7 +130,7 @@ class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), Construc
         result.observe(this) { re ->
             re?.getOrNull()?.let { response ->
                 val mmnetDataList = response.data.mmnet_data
-                initViewList(mmnetDataList)
+                initRecyclerList(mmnetDataList)
             }
         }
     }

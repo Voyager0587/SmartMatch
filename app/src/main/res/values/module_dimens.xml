@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--  控件距离周围的距离 -->
+    <dimen name="app_horizontal_margin_distance">50dp</dimen>
+    <dimen name="app_vertical_diamonds_distance">80dp</dimen>
+    <dimen name="app_margin_start_distance">30dp</dimen>
+    <dimen name="app_margin_end_distance">40dp</dimen>
+    <dimen name="app_margin_top_distance">30dp</dimen>
+    <dimen name="app_next_btn_margin_distance">20dp</dimen>
+
+    <!--  控件的长和宽 -->
+    <dimen name="app_add_btn_height">60dp</dimen>
+
+    <!--  控价内置的一些属性 -->
+    <dimen name="app_add_btn_text_padding">15dp</dimen>
+
+
+    <!--  字体大小 -->
+
+    <dimen name="app_text_size_normal">26sp</dimen>
+    <dimen name="app_text_size_max">30sp</dimen>
+    <dimen name="app_text_size_min">18sp</dimen>
+
+
+</resources>
