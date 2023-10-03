@@ -16,14 +16,14 @@ import kotlin.coroutines.CoroutineContext
 object Repository {
 
 
-    fun getMMNetData() = fire(Dispatchers.IO) {
+     fun getMMNetData() = fire(Dispatchers.IO) {
         val response = NetworkCenter.getMMNetData()
         run {
             Result.success(response)
         }
     }
 
-    fun createNewArea(id: Int, name: String) = fire(Dispatchers.IO) {
+     fun createNewArea(id: Int, name: String) = fire(Dispatchers.IO) {
         val response = NetworkCenter.createNewArea(id, name)
         run {
             Result.success(response)

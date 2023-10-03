@@ -6,10 +6,10 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import com.example.base.util.StatusUtil
 import com.example.smartmatch.base.activity.BaseActivity
 import com.example.smartmatch.base.kxt.toast
+import com.example.smartmatch.base.util.safeLaunch
 import com.example.smartmatch.databinding.ActivityMainBinding
 import com.example.smartmatch.ui.MainViewModel
 import com.example.smartmatch.ui.construction.ConstructionFragment
@@ -17,9 +17,13 @@ import com.example.smartmatch.ui.construction.areadefine.AreaDefineFragment
 import com.example.smartmatch.ui.construction.scenedefine.SceneDefineFragment
 import com.example.smartmatch.ui.feature.FeatureFragment
 import com.example.smartmatch.ui.person.PersonFragment
-import kotlinx.coroutines.launch
 
-
+/**
+ * @className MainActivity
+ * @description 主Activity
+ * @author Voyager
+ * @date 2023/9/30 20:21
+ */
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     private lateinit var featureFragment: FeatureFragment
     private lateinit var constructionFragment: ConstructionFragment
@@ -37,16 +41,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         initFragment()
         setCurrentFragment(constructionFragment)
         StatusUtil.initActivityBar(this@MainActivity, false)
-        lifecycleScope.launch {
-            mViewModel._jumpToFragment.collect {
+        safeLaunch {
+            mViewModel.jumpToFragment.collect {
                 when (it) {
                     1 -> jumpToFragment(AreaDefineFragment(), "areaDefineFragment")
                     2 -> jumpToFragment(SceneDefineFragment(), "sceneDefineFragment")
                     else -> toast("jumpToError")
                 }
             }
-
-
         }
 
     }

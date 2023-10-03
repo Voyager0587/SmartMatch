@@ -10,7 +10,7 @@ android {
     configurations { implementation.exclude group: 'org.jetbrains', module: 'annotations' }
     defaultConfig {
         applicationId "com.example.smartmatch"
-        minSdk 23
+        minSdk 26
         targetSdk 32
         versionCode 1
         versionName "1.0"

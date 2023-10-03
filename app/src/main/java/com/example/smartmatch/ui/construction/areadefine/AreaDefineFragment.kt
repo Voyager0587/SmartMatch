@@ -18,6 +18,12 @@ import com.example.smartmatch.ui.construction.ConstructionListener
 import com.example.smartmatch.ui.view.ItemButton
 import com.kongzue.dialogx.dialogs.InputDialog
 
+/**
+ * @className AreaDefineFragment
+ * @description 场景定义
+ * @author Voyager
+ * @date 2023/10/2 19:09
+ */
 
 class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), ConstructionListener {
     /**
@@ -27,7 +33,7 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
 
     private val mViewModel: AreaDefineViewModel by lazy {
         ViewModelProvider(
-            requireActivity(),
+            this,
             ViewModelProvider.NewInstanceFactory()
         )[AreaDefineViewModel::class.java]
     }
@@ -42,6 +48,7 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
     }
 
     override fun initListener() {
+        super.initListener()
         setVisibilityListener(binding.arrowButtonC, binding.containerC)
         setVisibilityListener(binding.arrowButtonArea, binding.containerArea)
     }
@@ -52,7 +59,8 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
         }
     }
 
-    override fun initViewList(mmnet_data: List<MmnetData>) {
+    override fun initRecyclerList(mmnet_data: List<MmnetData>) {
+        super.initRecyclerList(mmnet_data)
         val context = requireContext()
 
         binding.containerArea.removeAllViews()
@@ -104,6 +112,7 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
     }
 
     override fun addNewView(name: String) {
+        super.addNewView(name)
         val area = ItemButton(requireContext(), null)
         area.text(name)
         area.setOnClickListener {
@@ -115,12 +124,13 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
     }
 
     override fun processMMNetData(result: LiveData<Result<MMNetResponse>>) {
+        super.processMMNetData(result)
         result.observe(this) { re ->
             val response = re.getOrNull()
             if (response != null) {
                 val data = response.data
                 val mmnetDataList = data.mmnet_data
-                initViewList(mmnetDataList)
+                initRecyclerList(mmnetDataList)
             }
 
         }

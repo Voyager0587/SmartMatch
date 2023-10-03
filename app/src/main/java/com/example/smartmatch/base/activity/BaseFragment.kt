@@ -53,6 +53,7 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment(), BaseBinding<VB> 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.initBindingView()
+
     }
 
     override fun onResume() {

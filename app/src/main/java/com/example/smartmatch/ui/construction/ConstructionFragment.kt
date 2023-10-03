@@ -22,8 +22,10 @@ class ConstructionFragment : BaseFragment<FragmentConstructionBinding>() {
     }
     override fun FragmentConstructionBinding.initBindingView() {
         binding.viewModel=mViewModel
+
         areaDefineLayout.setOnClickListener {
-            mViewModel.jumpToAreaDefine(1)
+                mViewModel.jumpToAreaDefine(1)
+
         }
 
         sceneDefine.setOnClickListener {

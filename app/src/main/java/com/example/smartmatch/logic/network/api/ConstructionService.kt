@@ -16,7 +16,6 @@ import retrofit2.http.POST
  **/
 interface ConstructionService {
 
-
     @GET("")
     fun getMMNetControllers() {
     }

@@ -3,6 +3,7 @@ package com.example.smartmatch.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 
 /**
@@ -13,7 +14,8 @@ import kotlinx.coroutines.launch
  * @version 1.0
  **/
 class MainViewModel : ViewModel() {
-    val _jumpToFragment = MutableSharedFlow<Int>()
+    private val _jumpToFragment = MutableSharedFlow<Int>()
+    val jumpToFragment = _jumpToFragment.asSharedFlow()
 
     fun jumpToAreaDefine(random: Int = 0) {
         viewModelScope.launch {
