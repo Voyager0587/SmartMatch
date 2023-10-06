@@ -14,23 +14,28 @@ import com.example.smartmatch.ui.MainViewModel
 
 class ConstructionFragment : BaseFragment<FragmentConstructionBinding>() {
 
-    private val mViewModel:MainViewModel by lazy {
+    private val mViewModel: MainViewModel by lazy {
         ViewModelProvider(
             requireActivity(),
             ViewModelProvider.NewInstanceFactory()
         )[MainViewModel::class.java]
     }
+
     override fun FragmentConstructionBinding.initBindingView() {
-        binding.viewModel=mViewModel
+        binding.viewModel = mViewModel
 
         areaDefineLayout.setOnClickListener {
-                mViewModel.jumpToAreaDefine(1)
-
+            mViewModel.jumpToAreaDefine(1)
         }
 
         sceneDefine.setOnClickListener {
             mViewModel.jumpToSceneDefine(2)
         }
+
+        lightControl.setOnClickListener {
+            mViewModel.jumpToLightControl(3)
+        }
+
     }
 
 }

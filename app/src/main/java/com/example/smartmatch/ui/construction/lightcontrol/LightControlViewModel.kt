@@ -17,6 +17,8 @@ class LightControlViewModel:ViewModel() {
     private val repository = Repository
     internal var constructionListener: ConstructionListener?=null
     var mmnetData: LiveData<Result<MMNetResponse>>? = null
+    private set
+
 
     fun getMMNetData(){
         mmnetData=repository.getMMNetData()

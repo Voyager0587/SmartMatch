@@ -3,11 +3,9 @@ package com.example.smartmatch.base.activity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.widget.Toast
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-
 import com.example.smartmatch.R
 import com.example.smartmatch.base.kxt.getViewBinding
 import java.util.*

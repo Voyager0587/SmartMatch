@@ -14,6 +14,7 @@ import com.example.smartmatch.databinding.ActivityMainBinding
 import com.example.smartmatch.ui.MainViewModel
 import com.example.smartmatch.ui.construction.ConstructionFragment
 import com.example.smartmatch.ui.construction.areadefine.AreaDefineFragment
+import com.example.smartmatch.ui.construction.lightcontrol.LightControlFragment
 import com.example.smartmatch.ui.construction.scenedefine.SceneDefineFragment
 import com.example.smartmatch.ui.feature.FeatureFragment
 import com.example.smartmatch.ui.person.PersonFragment
@@ -46,6 +47,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 when (it) {
                     1 -> jumpToFragment(AreaDefineFragment(), "areaDefineFragment")
                     2 -> jumpToFragment(SceneDefineFragment(), "sceneDefineFragment")
+                    3 -> jumpToFragment(LightControlFragment(), "lightControlFragment")
                     else -> toast("jumpToError")
                 }
             }
@@ -72,6 +74,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             setReorderingAllowed(true)
             addToBackStack(name)
             commit()
+            // * fragment切换用add,hide,show方法进行，再加一个“上一步”的按钮
         }
     }
 
