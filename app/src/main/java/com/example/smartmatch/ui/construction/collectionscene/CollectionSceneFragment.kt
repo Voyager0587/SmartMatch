@@ -15,6 +15,7 @@ class CollectionSceneFragment : BaseFragment<FragmentCascadeControlBinding>() {
 
     private lateinit var adapter: SceneAdapter
 //  ! private var MutableList:MutableList<ScenariosData>?=null TODO 这里是不是bean类还没有确定
+
     private val mViewModel: CollectionSceneViewModel by lazy {
         ViewModelProvider(
             this,

@@ -1,7 +1,4 @@
 package com.example.smartmatch.logic.model
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 
 /**
  * @className: MMNetResponse
@@ -62,18 +59,26 @@ data class AreaC(
 
 data class AreaLight(
     val c_id: Int,
-    val light_id: Int
+    val light_id: Int,
+    val original_id: Int
 )
 
 data class ScenariosData(
+    val child_scenario: List<ChildScenario>,
     val id: Int,
     val light_data: List<LightData>,
     val light_num: Int,
     val name: String
 )
 
+data class ChildScenario(
+    val definitional_percentage: Double,
+    val id: Int,
+    val name: String
+)
+
 data class LightData(
+    val definitional_percentage: Double,
     val light_id: Int,
-    val light_wattage: Int,
-    val percentage: Double
+    val light_wattage: Int
 )

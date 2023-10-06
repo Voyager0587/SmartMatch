@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.smartmatch.ui.construction.lightcontrol.LightControlViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:background="@color/blue_light"
+        android:baselineAligned="false">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            tools:context=".ui.construction.lightcontrol.LightControlScenarioFragment">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/app_text_size_normal"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/app_margin_top_distance"
+                android:autoSizeMaxTextSize="@dimen/app_text_size_max"
+                android:autoSizeMinTextSize="@dimen/app_text_size_min"
+                android:autoSizeStepGranularity="1sp"
+                android:text="@string/light_control_scenario_title"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_scenario"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/app_margin_top_distance"
+                android:layout_below="@+id/tv_title"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            tools:context=".ui.construction.lightcontrol.LightControlScenarioFragment">
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/app_margin_top_distance"
+                android:autoSizeMaxTextSize="@dimen/app_text_size_max"
+                android:autoSizeMinTextSize="@dimen/app_text_size_min"
+                android:autoSizeStepGranularity="1sp"
+                android:text="Pause/Active"
+                android:textSize="@dimen/app_text_size_normal"
+                android:layout_above="@id/text2"
+                android:layout_marginEnd="130dp"
+                android:layout_toStartOf="@id/sw_pause_active"
+
+                />
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/sw_pause_active"
+                android:layout_width="80dp"
+                android:layout_height="48dp"
+                android:layout_alignBottom="@id/text1"
+                android:layout_marginEnd="@dimen/app_margin_end_distance"
+                android:layout_alignParentEnd="true"
+                />
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/text3"
+                android:layout_marginTop="@dimen/app_margin_top_distance"
+                android:autoSizeMaxTextSize="@dimen/app_text_size_max"
+                android:autoSizeMinTextSize="@dimen/app_text_size_min"
+                android:autoSizeStepGranularity="1sp"
+                android:text="开关"
+                android:textSize="@dimen/app_text_size_normal"
+                android:layout_alignStart="@id/text1"
+                />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/sw_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_alignEnd="@+id/sw_pause_active"
+                android:layout_alignBottom="@id/text2"
+
+                android:minHeight="48dp" />
+            <TextView
+                android:id="@+id/text3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="@dimen/app_margin_top_distance"
+                android:autoSizeMaxTextSize="@dimen/app_text_size_max"
+                android:autoSizeMinTextSize="@dimen/app_text_size_min"
+                android:autoSizeStepGranularity="1sp"
+                android:text="亮度调节"
+                android:textSize="@dimen/app_text_size_normal"
+                android:layout_alignStart="@id/text1"
+                android:layout_marginBottom="@dimen/app_margin_bottom_distance"
+                />
+            <androidx.appcompat.widget.AppCompatSeekBar
+                android:layout_width="170dp"
+                android:layout_height="48dp"
+                android:layout_alignBottom="@id/text3"
+                android:layout_alignEnd="@+id/sw_pause_active"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+
+</layout>

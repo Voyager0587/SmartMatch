@@ -21,5 +21,9 @@
     <string name="collection_scene_example_text">文科楼二楼</string>
     <string name="app_light_control_choose_item">选择目标</string>
 
+    <string name="light_control_scenario_title">场景Scenario</string>
+    <string name="scenario_example_text">小林的桌面</string>
+    <string name="area_example_text">文科楼205</string>
+
 
 </resources>

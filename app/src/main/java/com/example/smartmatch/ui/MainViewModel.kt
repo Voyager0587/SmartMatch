@@ -28,4 +28,10 @@ class MainViewModel : ViewModel() {
             _jumpToFragment.emit(random)
         }
     }
+
+    fun jumpToLightControl(random: Int = 0) {
+        viewModelScope.launch {
+            _jumpToFragment.emit(random)
+        }
+    }
 }

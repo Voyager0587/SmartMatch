@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import com.example.smartmatch.R
 import com.example.smartmatch.base.kxt.toast
 
@@ -29,7 +28,7 @@ class ItemButton(context: Context, attrs: AttributeSet?) : LinearLayout(context,
         name.text=info
     }
     init {
-        var view=LayoutInflater.from(context).inflate(R.layout.item_layout, this)
+        val view=LayoutInflater.from(context).inflate(R.layout.item_layout, this)
         name=view.findViewById(R.id.name)
         name.setOnClickListener {
            context.toast("点击item")

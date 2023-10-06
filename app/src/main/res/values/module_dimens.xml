@@ -7,6 +7,8 @@
     <dimen name="app_margin_start_distance">30dp</dimen>
     <dimen name="app_margin_end_distance">40dp</dimen>
     <dimen name="app_margin_top_distance">30dp</dimen>
+    <dimen name="app_margin_bottom_distance">20dp</dimen>
+
     <dimen name="app_next_btn_margin_distance">20dp</dimen>
 
     <!--  控件的长和宽 -->
