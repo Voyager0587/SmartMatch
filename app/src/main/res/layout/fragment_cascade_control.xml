@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/cascadeControl_title"
-            android:textSize="26sp"
+            android:textSize="@dimen/app_text_size_normal"
             android:layout_centerHorizontal="true"
             />
     <androidx.recyclerview.widget.RecyclerView
@@ -34,7 +34,7 @@
         android:background="@drawable/app_add_scene_iv_btn"
         android:layout_below="@id/cascade_recyclerView"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="@dimen/app_margin_bottom_distance"
         android:layout_marginTop="@dimen/app_margin_top_distance"
         android:layout_marginEnd="@dimen/app_margin_end_distance"
         />

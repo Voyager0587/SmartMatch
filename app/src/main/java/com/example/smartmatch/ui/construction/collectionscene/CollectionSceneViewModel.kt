@@ -1,6 +1,10 @@
 package com.example.smartmatch.ui.construction.collectionscene
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import com.example.smartmatch.logic.Repository
+import com.example.smartmatch.logic.model.MMNetResponse
+import com.example.smartmatch.ui.construction.ConstructionListener
 
 /**
  * @className: CascadeControlViewModel
@@ -10,5 +14,13 @@ import androidx.lifecycle.ViewModel
  * @version 1.0
  **/
 class CollectionSceneViewModel :ViewModel() {
+    private val repository = Repository
+    internal var constructionListener: ConstructionListener?=null
 
+    var mmnetData: LiveData<Result<MMNetResponse>>? = null
+
+    fun getMMNetData(){
+        mmnetData=repository.getMMNetData()
+        constructionListener?.processMMNetData(mmnetData!!)
+    }
 }

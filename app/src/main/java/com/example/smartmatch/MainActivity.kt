@@ -69,8 +69,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
 
     private fun jumpToFragment(fragment: Fragment, name: String) {
+        //通过back回退，之前处于hide状态的Fragment会再次显现
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.container_main, fragment)
+            add(R.id.container_main, fragment)
+            hide(constructionFragment)    //TODO 改成mCurrentFragment
             setReorderingAllowed(true)
             addToBackStack(name)
             commit()
