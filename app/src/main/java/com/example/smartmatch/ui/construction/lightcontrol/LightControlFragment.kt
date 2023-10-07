@@ -2,7 +2,6 @@ package com.example.smartmatch.ui.construction.lightcontrol
 
 import android.content.Context
 import android.os.Build
-import android.os.Bundle
 import android.view.View
 import android.widget.CompoundButton
 import android.widget.Toast
@@ -27,7 +26,6 @@ import com.example.smartmatch.ui.view.ItemButton
 
 class LightControlFragment : BaseFragment<FragmentLightControlBinding>(), ConstructionListener {
 
-    public final var AREA_ID: String = "area_id"
     private var area_id = -1
     private var area_index = -1
     private var mmnet_index = -1
@@ -66,12 +64,10 @@ class LightControlFragment : BaseFragment<FragmentLightControlBinding>(), Constr
         binding.btNext.setOnClickListener {
             if (area_id != -1) {
                 val fragment = LightControlScenarioFragment(mmnet_index, area_index, this)
-                fragment.arguments = Bundle().apply {
-                    putInt(AREA_ID, area_id)
-                }
 
                 requireActivity().supportFragmentManager.beginTransaction().apply {
-                    replace(R.id.container_main, fragment)
+                    add(R.id.container_main, fragment)
+                    hide(this@LightControlFragment)
                     setReorderingAllowed(true)
                     addToBackStack("name")
                     commit()

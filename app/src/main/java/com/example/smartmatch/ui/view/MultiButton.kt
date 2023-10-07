@@ -13,7 +13,7 @@ import com.example.smartmatch.base.kxt.toast
 /**
  * @className: MultiButton
  * @author: Voyager
- * @description: 多选按钮自定义View
+ * @description: 多选按钮自定义View（赶时间所以写的不怎么样(其实就是不怎么会哈哈哈)，谁有时间改改）
  * @date:  2023/10/3 20:30
  * @version 1.0
  **/
@@ -55,7 +55,7 @@ class MultiButton(context: Context, attrs: AttributeSet?) : LinearLayout(context
         context.toast("点击item")
         judge = !judge
         val backgroundResource =
-            if (judge) R.drawable.round_20 else R.drawable.ic_launcher_background
+            if (judge) R.drawable.round_20_selected else R.drawable.round_20
         layout.setBackgroundResource(backgroundResource)
     }
 

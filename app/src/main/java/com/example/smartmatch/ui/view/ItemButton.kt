@@ -11,7 +11,7 @@ import com.example.smartmatch.base.kxt.toast
 /**
  * @className: ItemButton
  * @author: Voyager
- * @description: 自定义View
+ * @description: 自定义View（实力欠缺，有能力的看看纯自定义个试试？）
  * @date:  2023/9/26 22:52
  * @version 1.0
  **/
