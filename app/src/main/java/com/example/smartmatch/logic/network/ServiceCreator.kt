@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  **/
 object ServiceCreator {
 
-    private const val BASE_URL = "https://mock.apifox.cn/m1/2970761-0-default/"
+    private const val BASE_URL = "http://175.178.88.228:8080/"
 
     private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)

@@ -16,15 +16,18 @@
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/app_margin_top_distance"
             android:text="@string/cascadeControl_title"
             android:textSize="@dimen/app_text_size_normal"
+            android:textStyle="bold"
             android:layout_centerHorizontal="true"
             />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cascade_recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/title"
+        android:layout_marginBottom="100dp"
         android:layout_marginTop="@dimen/app_margin_top_distance"
         />
     <androidx.appcompat.widget.AppCompatImageButton
@@ -32,13 +35,12 @@
         android:layout_width="@dimen/app_add_btn_height"
         android:layout_height="@dimen/app_add_btn_height"
         android:background="@drawable/app_add_scene_iv_btn"
-        android:layout_below="@id/cascade_recyclerView"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="@dimen/app_margin_bottom_distance"
         android:layout_marginTop="@dimen/app_margin_top_distance"
         android:layout_marginEnd="@dimen/app_margin_end_distance"
         />
-
 
     </RelativeLayout>
 </layout>

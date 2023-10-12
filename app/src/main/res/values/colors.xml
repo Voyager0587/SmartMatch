@@ -9,7 +9,7 @@
     <color name="grey">#676B75</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue_dark">#7aa1ff</color>
-    <color name="blue_dark_plus">#0D90F8</color>
+    <color name="blue_dark_plus">#4e83fd</color>
     <color name="blue_dark_plus_plus">#008EFF</color>
     <color name="blue_light">#E1EAFF</color>
     <color name="green">#83df07</color>
@@ -24,6 +24,10 @@
     <color name="icon_color">#A2A9B8</color>
     <color name="fill_bg_color">#EAEDF2</color>
     <color name="background_color">#fafafa</color>
+
+
+    <color name="text_color_normal">#757575</color>
+
 
 
 </resources>

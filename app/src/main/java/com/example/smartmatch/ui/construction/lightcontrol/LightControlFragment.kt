@@ -99,6 +99,7 @@ class LightControlFragment : BaseFragment<FragmentLightControlBinding>(), Constr
                     val areaName = mmnet_data[i].areas.areas_data[j].area.name
                     val area = createItemButton(context, areaName) {
                         Toast.makeText(context, "Clicked on: $areaName", Toast.LENGTH_SHORT).show()
+                        binding.searchArea.setText(areaName)
                         area_id = mmnet_data[i].areas.areas_data[j].area.id
                         area_index = j
                         mmnet_index = i

@@ -13,6 +13,7 @@
 
     <!--  控件的长和宽 -->
     <dimen name="app_add_btn_height">60dp</dimen>
+    <dimen name="app_edge_width">4dp</dimen>
 
     <!--  控价内置的一些属性 -->
     <dimen name="app_add_btn_text_padding">15dp</dimen>
