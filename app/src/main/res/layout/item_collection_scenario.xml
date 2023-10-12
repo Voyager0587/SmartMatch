@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/app_margin_top_distance">
+
+        <TextView
+            android:id="@+id/tv_rank"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/app_margin_start_distance"
+            android:background="@drawable/round_5"
+            android:gravity="center"
+            android:paddingVertical="@dimen/app_add_btn_text_padding"
+            android:text="NO.1"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/app_text_size_normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.0581" />
+
+        <TextView
+            android:id="@+id/tv_mmnet_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/app_margin_start_distance"
+            android:background="@drawable/round_5"
+            android:gravity="center"
+            android:paddingVertical="@dimen/app_add_btn_text_padding"
+            android:text="文科楼2B"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/app_text_size_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tv_rank"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.2000" />
+
+        <TextView
+            android:id="@+id/tv_area_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/app_margin_start_distance"
+            android:background="@drawable/round_5"
+            android:gravity="center"
+            android:paddingVertical="@dimen/app_add_btn_text_padding"
+            android:text="225房间"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/app_text_size_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tv_mmnet_name"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.2000" />
+
+        <TextView
+            android:id="@+id/tv_scene_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/app_margin_start_distance"
+            android:background="@drawable/round_5"
+            android:gravity="center"
+            android:paddingVertical="@dimen/app_add_btn_text_padding"
+            android:text="小李的桌面"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/app_text_size_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tv_area_name"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.2000" />
+
+        <TextView
+            android:id="@+id/tv_light_percent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/app_margin_start_distance"
+            android:background="@drawable/round_5"
+            android:gravity="center"
+            android:paddingVertical="@dimen/app_add_btn_text_padding"
+            android:text="100%"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/app_text_size_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tv_scene_name"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.2000" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_edge_width"
+            android:layout_marginHorizontal="@dimen/app_margin_start_distance"
+            android:layout_marginTop="20dp"
+            android:background="@color/blue_dark"
+            app:layout_constraintTop_toBottomOf="@+id/tv_light_percent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -105,6 +105,7 @@
                 android:layout_marginBottom="@dimen/app_margin_bottom_distance"
                 />
             <androidx.appcompat.widget.AppCompatSeekBar
+                android:id="@+id/seek_bar_adjust_brightness"
                 android:layout_width="170dp"
                 android:layout_height="48dp"
                 android:layout_alignBottom="@id/text3"

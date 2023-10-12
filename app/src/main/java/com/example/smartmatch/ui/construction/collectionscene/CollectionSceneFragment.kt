@@ -3,7 +3,8 @@ package com.example.smartmatch.ui.construction.collectionscene
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import com.example.smartmatch.base.activity.BaseFragment
-import com.example.smartmatch.databinding.FragmentCascadeControlBinding
+import com.example.smartmatch.base.util.safeLaunch
+import com.example.smartmatch.databinding.FragmentCollectionSceneBinding
 import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.MmnetData
 import com.example.smartmatch.ui.construction.ConstructionListener
@@ -15,11 +16,10 @@ import com.example.smartmatch.ui.construction.adapter.SceneAdapter
  * @author Voyager
  * @date 2023/10/2 19:06
  */
-class CollectionSceneFragment : BaseFragment<FragmentCascadeControlBinding>(),ConstructionListener {
+class CollectionSceneFragment : BaseFragment<FragmentCollectionSceneBinding>(),ConstructionListener {
 
     private lateinit var adapter: SceneAdapter
-//  ! private var MutableList:MutableList<ScenariosData>?=null
-    //  TODO 这里是不是bean类还没有确定
+//  ! private var MutableList:MutableList<ScenariosData>?=null  这边显示的的事area
 
     private val mViewModel: CollectionSceneViewModel by lazy {
         ViewModelProvider(
@@ -28,7 +28,7 @@ class CollectionSceneFragment : BaseFragment<FragmentCascadeControlBinding>(),Co
         )[CollectionSceneViewModel::class.java]
     }
 
-    override fun FragmentCascadeControlBinding.initBindingView() {
+    override fun FragmentCollectionSceneBinding.initBindingView() {
         binding.viewModel = mViewModel
         mViewModel.constructionListener=this@CollectionSceneFragment
         mViewModel.getMMNetData()
@@ -43,6 +43,9 @@ class CollectionSceneFragment : BaseFragment<FragmentCascadeControlBinding>(),Co
             if (response != null) {
                 val data = response.data
                 val mmnetDataList = data.mmnet_data
+                viewLifecycleOwner.safeLaunch {
+
+                }
                 //要选哪个场景要看后面的Fragment的选择的场景
             }
 
@@ -53,9 +56,13 @@ class CollectionSceneFragment : BaseFragment<FragmentCascadeControlBinding>(),Co
         super.initListener()
         binding.imageBtnAddScene.setOnClickListener {
             // ☆ 跳转到下一个界面
+
         }
     }
 
+//    fun getCollectionData(mmnet_data: List<MmnetData>):List<>{
+//
+//    }
 
     override fun initRecyclerList(mmnet_data: List<MmnetData>) {
         super.initRecyclerList(mmnet_data)
