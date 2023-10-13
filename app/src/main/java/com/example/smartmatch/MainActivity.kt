@@ -2,29 +2,20 @@ package com.example.smartmatch
 
 import android.content.Context
 import android.content.Intent
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.base.util.StatusUtil
+import androidx.lifecycle.lifecycleScope
 import com.example.smartmatch.base.activity.BaseActivity
 import com.example.smartmatch.base.kxt.toast
-import com.example.smartmatch.base.util.safeLaunch
 import com.example.smartmatch.databinding.ActivityMainBinding
-import com.example.smartmatch.ui.MainViewModel
+import com.example.smartmatch.ui.viewModel1.MainViewModel
 import com.example.smartmatch.ui.construction.ConstructionFragment
 import com.example.smartmatch.ui.construction.areadefine.AreaDefineFragment
-import com.example.smartmatch.ui.construction.lightcontrol.LightControlFragment
-import com.example.smartmatch.ui.construction.scenedefine.SceneDefineFragment
 import com.example.smartmatch.ui.feature.FeatureFragment
 import com.example.smartmatch.ui.person.PersonFragment
+import kotlinx.coroutines.launch
+import org.litepal.tablemanager.Connector
 
-/**
- * @className MainActivity
- * @description 主Activity
- * @author Voyager
- * @date 2023/9/30 20:21
- */
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     private lateinit var featureFragment: FeatureFragment
     private lateinit var constructionFragment: ConstructionFragment
@@ -36,21 +27,24 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         )[MainViewModel::class.java]
     }
 
-    @RequiresApi(Build.VERSION_CODES.P)
     override fun ActivityMainBinding.initBindingView() {
         binding.viewModel = mViewModel
         initFragment()
         setCurrentFragment(constructionFragment)
-        StatusUtil.initActivityBar(this@MainActivity, false)
-        safeLaunch {
-            mViewModel.jumpToFragment.collect {
-                when (it) {
-                    1 -> jumpToFragment(AreaDefineFragment(), "areaDefineFragment")
-                    2 -> jumpToFragment(SceneDefineFragment(), "sceneDefineFragment")
-                    3 -> jumpToFragment(LightControlFragment(), "lightControlFragment")
-                    else -> toast("jumpToError")
+        Connector.getDatabase()
+        with(mViewModel) {
+            lifecycleScope.launch{
+                mViewModel._jumpToArea.collect{
+                    when(it)
+                    {
+                        1-> jumpToFragment(AreaDefineFragment(),"areaDefineFragment")
+                        else -> toast("jumpToError")
+                    }
                 }
+
+
             }
+
         }
 
     }
@@ -67,16 +61,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             setReorderingAllowed(true)
             commit()
         }
-
     private fun jumpToFragment(fragment: Fragment, name: String) {
-        //通过back回退，之前处于hide状态的Fragment会再次显现
         supportFragmentManager.beginTransaction().apply {
-            add(R.id.container_main, fragment)
-            hide(constructionFragment)    //TODO 改成mCurrentFragment
+            replace(R.id.container_main, fragment)
             setReorderingAllowed(true)
             addToBackStack(name)
             commit()
-            // * fragment切换用add,hide,show方法进行，再加一个“上一步”的按钮
         }
     }
 
