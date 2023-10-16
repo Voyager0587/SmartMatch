@@ -19,8 +19,8 @@ import com.example.smartmatch.ui.construction.adapter.SceneAdapter
 class CollectionSceneFragment : BaseFragment<FragmentCollectionSceneBinding>(),ConstructionListener {
 
     private lateinit var adapter: SceneAdapter
-    //你好
-//  ! private var MutableList:MutableList<ScenariosData>?=null  这边显示的的事area
+
+//  * private var MutableList:MutableList<ScenariosData>?=null  这边显示的的事area
 
     private val mViewModel: CollectionSceneViewModel by lazy {
         ViewModelProvider(

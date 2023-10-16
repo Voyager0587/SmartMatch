@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.base.util.StatusUtil
 import com.example.smartmatch.R
 import com.example.smartmatch.base.activity.BaseFragment
+import com.example.smartmatch.base.util.safeLaunch
 import com.example.smartmatch.databinding.FragmentLightControlBinding
 import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.MmnetData
@@ -40,8 +41,10 @@ class LightControlFragment : BaseFragment<FragmentLightControlBinding>(), Constr
     override fun FragmentLightControlBinding.initBindingView() {
         binding.viewModel = mViewModel
         mViewModel.constructionListener = this@LightControlFragment
-        if (mViewModel.mmnetData == null)
-            mViewModel.getMMNetData()
+        viewLifecycleOwner.safeLaunch {
+            if (mViewModel.mmnetData == null)
+                mViewModel.getMMNetData()
+        }
         initListener()
         StatusUtil.initFragmentBar(this@LightControlFragment, false)
 

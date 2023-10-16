@@ -32,13 +32,13 @@
                 android:autoSizeStepGranularity="1sp"
                 android:text="@string/light_control_scenario_title"
                 />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_scenario"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/app_margin_top_distance"
                 android:layout_below="@+id/tv_title"
-                />
+                android:layout_marginTop="10dp" />
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
@@ -88,13 +88,12 @@
                 android:layout_height="48dp"
                 android:layout_alignEnd="@+id/sw_pause_active"
                 android:layout_alignBottom="@id/text2"
-
                 android:minHeight="48dp" />
             <TextView
                 android:id="@+id/text3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
+                android:layout_above="@id/btn_send_msg"
                 android:layout_marginTop="@dimen/app_margin_top_distance"
                 android:autoSizeMaxTextSize="@dimen/app_text_size_max"
                 android:autoSizeMinTextSize="@dimen/app_text_size_min"
@@ -110,7 +109,21 @@
                 android:layout_height="48dp"
                 android:layout_alignBottom="@id/text3"
                 android:layout_alignEnd="@+id/sw_pause_active"
+                android:progress="100"
                 />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_send_msg"
+                style="@style/btn_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="@dimen/app_next_btn_margin_distance"
+                android:layout_marginTop="@dimen/app_next_btn_margin_distance"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="@dimen/app_next_btn_margin_distance"
+                android:text="发送指令" />
         </RelativeLayout>
     </LinearLayout>
 

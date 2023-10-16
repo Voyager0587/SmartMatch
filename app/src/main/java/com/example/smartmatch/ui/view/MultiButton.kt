@@ -13,14 +13,16 @@ import com.example.smartmatch.base.kxt.toast
 /**
  * @className: MultiButton
  * @author: Voyager
- * @description: 多选按钮自定义View（赶时间所以写的不怎么样(其实就是不怎么会哈哈哈)，谁有时间改改）
+ * @description: 多选按钮自定义View（赶时间所以写的不怎么样(其实就是不怎么会哈哈哈)）
  * @date:  2023/10/3 20:30
  * @version 1.0
  **/
 @SuppressLint("MissingInflatedId")
 class MultiButton(context: Context, attrs: AttributeSet?) : LinearLayout(context, attrs) {
     var name: TextView
+    var percent:TextView
     var layout: RelativeLayout
+    var scene_id:Int=-1
     lateinit var info: String
         private set
     var judge = false
@@ -36,10 +38,25 @@ class MultiButton(context: Context, attrs: AttributeSet?) : LinearLayout(context
         name.text = info
     }
 
+    /**
+     *
+     * @param info
+     * @param _percent
+     * @param _scene_id
+     */
+    fun text(info: String,_percent: Double,_scene_id:Int) {
+        text(info)
+        percent.text = _percent.toString()
+        scene_id=_scene_id
+    }
+    fun percent(_percent: Double){
+        percent.text = _percent.toString()
+    }
     init {
         val view = LayoutInflater.from(context).inflate(R.layout.item_multi_layout, this)
         name = view.findViewById(R.id.tv_name)
         layout = view.findViewById(R.id.rl_item)
+        percent=view.findViewById(R.id.tv_percent)
         layout.setOnClickListener {
             toggleBackground()
             clickListener?.onTitleClick()

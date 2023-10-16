@@ -1,11 +1,16 @@
 package com.example.smartmatch.logic.network.api
 
 import com.example.smartmatch.logic.model.MMNetResponse
+import com.example.smartmatch.logic.model.helper.AreaCreationHelper
+import com.example.smartmatch.logic.network.model.ResponseMessage
+import com.example.smartmatch.logic.network.model.ScenarioResponse
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 /**
  * @className: ConstructionService
@@ -16,22 +21,23 @@ import retrofit2.http.POST
  **/
 interface ConstructionService {
 
-    @GET("")
-    fun getMMNetControllers() {
-    }
-
-    @GET("mmnet/data")
+    @GET("/mmnet/data")
     fun getMMNetAllData(): Call<MMNetResponse>
 
-    @GET("")
-    fun getMMNetArea() {
-    }
 
-    @POST("mmnet/scenario/{id}")
+    @POST("/mmnet/scenario/{id}")
     fun createNewScenario(@Field("id") id: Int, @Header("name") name: String)
 
-    @POST("mmnet/area/{id}")
-    fun createNewArea(@Field("id") id: Int, @Header("name") name: String)
 
+    @POST("/mmnet/area/{id}")
+    fun createNewArea(@Path("id") id: Int,@Body area: AreaCreationHelper):Call<ResponseMessage>
+
+    /**
+     * @description 对mmnet中打开scenario操作的指令
+     * @param scenario 要控制的场景的id和percentage的List
+     * @return null
+     */
+    @POST("/instructions/scenario/on")
+    fun instructScenario(@Body scenario: ScenarioResponse):Call<ResponseMessage>
 
 }
