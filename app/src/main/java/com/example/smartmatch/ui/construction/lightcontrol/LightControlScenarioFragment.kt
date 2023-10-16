@@ -124,4 +124,7 @@ class LightControlScenarioFragment(
         )?.area?.scenarios_data ?: emptyList()
     }
 
+
+
+
 }

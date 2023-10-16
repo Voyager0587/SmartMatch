@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.smartmatch.ui.viewModel1.MainViewModel" />
+            type="com.example.smartmatch.ui.MainViewModel" />
     </data>
 
     <LinearLayout
@@ -32,11 +32,11 @@
                 android:layout_gravity="center_vertical"
                 android:gravity="center_vertical"
                 android:textColor="@color/blue_dark_plus"
-                android:textSize="26sp"
+                android:textSize="@dimen/app_text_size_normal"
                 android:padding="5dp"
                 android:autoSizeTextType="uniform"
-                android:autoSizeMaxTextSize="30sp"
-                android:autoSizeMinTextSize="18sp"
+                android:autoSizeMaxTextSize="@dimen/app_text_size_max"
+                android:autoSizeMinTextSize="@dimen/app_text_size_min"
                 android:autoSizeStepGranularity="1sp"
                 android:autoSizePresetSizes="@array/sizes"
                 android:textStyle="bold"
@@ -48,10 +48,10 @@
                 android:maxLines="1"
                 android:padding="5dp"
                 android:layout_gravity="center_vertical"
-                android:textSize="26sp"
+                android:textSize="@dimen/app_text_size_normal"
                 android:autoSizeTextType="uniform"
-                android:autoSizeMaxTextSize="30sp"
-                android:autoSizeMinTextSize="18sp"
+                android:autoSizeMaxTextSize="@dimen/app_text_size_max"
+                android:autoSizeMinTextSize="@dimen/app_text_size_min"
                 android:autoSizeStepGranularity="1sp"
                 android:textStyle="bold"
                 android:autoSizePresetSizes="@array/sizes"
@@ -79,11 +79,11 @@
                 android:textColor="@color/blue_dark_plus"
                 android:padding="5dp"
                 android:autoSizeTextType="uniform"
-                android:autoSizeMaxTextSize="30sp"
-                android:autoSizeMinTextSize="18sp"
+                android:autoSizeMaxTextSize="@dimen/app_text_size_max"
+                android:autoSizeMinTextSize="@dimen/app_text_size_min"
                 android:autoSizeStepGranularity="1sp"
                 android:textStyle="bold"
-                android:textSize="26sp"
+                android:textSize="@dimen/app_text_size_normal"
                 android:autoSizePresetSizes="@array/sizes"
                 />
             <TextView
@@ -93,17 +93,18 @@
                 android:padding="5dp"
                 android:layout_gravity="center_vertical"
                 android:autoSizeTextType="uniform"
-                android:autoSizeMaxTextSize="30sp"
-                android:autoSizeMinTextSize="18sp"
+                android:autoSizeMaxTextSize="@dimen/app_text_size_max"
+                android:autoSizeMinTextSize="@dimen/app_text_size_min"
                 android:autoSizeStepGranularity="1sp"
                 android:textStyle="bold"
-                android:textSize="26sp"
+                android:textSize="@dimen/app_text_size_normal"
                 android:autoSizePresetSizes="@array/sizes"
                 android:gravity="center_vertical"
                 />
 
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/scene_define"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -122,11 +123,11 @@
                 android:textColor="@color/blue_dark_plus"
                 android:padding="5dp"
                 android:autoSizeTextType="uniform"
-                android:autoSizeMaxTextSize="30sp"
-                android:autoSizeMinTextSize="18sp"
+                android:autoSizeMaxTextSize="@dimen/app_text_size_max"
+                android:autoSizeMinTextSize="@dimen/app_text_size_min"
                 android:autoSizeStepGranularity="1sp"
                 android:textStyle="bold"
-                android:textSize="26sp"
+                android:textSize="@dimen/app_text_size_normal"
                 android:autoSizePresetSizes="@array/sizes"
                 />
             <TextView
@@ -136,17 +137,18 @@
                 android:layout_gravity="center_vertical"
                 android:padding="5dp"
                 android:autoSizeTextType="uniform"
-                android:autoSizeMaxTextSize="30sp"
-                android:autoSizeMinTextSize="18sp"
+                android:autoSizeMaxTextSize="@dimen/app_text_size_max"
+                android:autoSizeMinTextSize="@dimen/app_text_size_min"
                 android:autoSizeStepGranularity="1sp"
                 android:textStyle="bold"
-                android:textSize="26sp"
+                android:textSize="@dimen/app_text_size_normal"
                 android:autoSizePresetSizes="@array/sizes"
                 android:gravity="center_vertical"
                 />
 
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/light_control"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -165,11 +167,11 @@
                 android:layout_gravity="center_vertical"
                 android:padding="5dp"
                 android:autoSizeTextType="uniform"
-                android:autoSizeMaxTextSize="30sp"
-                android:autoSizeMinTextSize="18sp"
+                android:autoSizeMaxTextSize="@dimen/app_text_size_max"
+                android:autoSizeMinTextSize="@dimen/app_text_size_min"
                 android:autoSizeStepGranularity="1sp"
                 android:textStyle="bold"
-                android:textSize="26sp"
+                android:textSize="@dimen/app_text_size_normal"
                 android:autoSizePresetSizes="@array/sizes"
                 />
 
@@ -180,11 +182,11 @@
                 android:layout_gravity="center_vertical"
                 android:padding="5dp"
                 android:autoSizeTextType="uniform"
-                android:autoSizeMaxTextSize="30sp"
-                android:autoSizeMinTextSize="18sp"
+                android:autoSizeMaxTextSize="@dimen/app_text_size_max"
+                android:autoSizeMinTextSize="@dimen/app_text_size_min"
                 android:autoSizeStepGranularity="1sp"
                 android:textStyle="bold"
-                android:textSize="26sp"
+                android:textSize="@dimen/app_text_size_normal"
                 android:autoSizePresetSizes="@array/sizes"
                 android:gravity="center_vertical"/>
 
@@ -208,11 +210,11 @@
                 android:layout_gravity="center_vertical"
                 android:padding="5dp"
                 android:autoSizeTextType="uniform"
-                android:autoSizeMaxTextSize="30sp"
-                android:autoSizeMinTextSize="18sp"
+                android:autoSizeMaxTextSize="@dimen/app_text_size_max"
+                android:autoSizeMinTextSize="@dimen/app_text_size_min"
                 android:autoSizeStepGranularity="1sp"
                 android:textStyle="bold"
-                android:textSize="26sp"
+                android:textSize="@dimen/app_text_size_normal"
                 android:autoSizePresetSizes="@array/sizes"
                 android:gravity="center_vertical"
                 />
@@ -223,11 +225,11 @@
                 android:layout_gravity="center_vertical"
                 android:padding="5dp"
                 android:autoSizeTextType="uniform"
-                android:autoSizeMaxTextSize="30sp"
-                android:autoSizeMinTextSize="18sp"
+                android:autoSizeMaxTextSize="@dimen/app_text_size_max"
+                android:autoSizeMinTextSize="@dimen/app_text_size_min"
                 android:autoSizeStepGranularity="1sp"
                 android:textStyle="bold"
-                android:textSize="26sp"
+                android:textSize="@dimen/app_text_size_normal"
                 android:autoSizePresetSizes="@array/sizes"
                 android:gravity="center_vertical"
                 />

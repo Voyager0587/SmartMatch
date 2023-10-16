@@ -1,12 +1,11 @@
 package com.example.eazylight.ui.find_C.step_one.adapter
 
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.smartmatch.R
-import com.example.smartmatch.chart.FindCTBtnParams
 import com.example.smartmatch.base.RecyclerViewAdapterHelper
+import com.example.smartmatch.chart.FindCTBtnParams
 import com.example.smartmatch.databinding.ItemFindCtBinding
 
 class RvIdentifiedTheCListAdapter(private val findCTBtnParamsList: List<FindCTBtnParams<View>>) :

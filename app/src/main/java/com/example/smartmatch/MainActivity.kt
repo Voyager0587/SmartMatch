@@ -13,6 +13,7 @@ import com.example.smartmatch.base.kxt.toast
 import com.example.smartmatch.base.util.safeLaunch
 import com.example.smartmatch.databinding.ActivityMainBinding
 import com.example.smartmatch.ui.MainViewModel
+
 import com.example.smartmatch.ui.construction.ConstructionFragment
 import com.example.smartmatch.ui.construction.areadefine.AreaDefineFragment
 import com.example.smartmatch.ui.construction.lightcontrol.LightControlFragment
@@ -31,7 +32,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private lateinit var featureFragment: FeatureFragment
     private lateinit var constructionFragment: ConstructionFragment
     private lateinit var personFragment: PersonFragment
-    private lateinit var mCurrentFragment:Fragment
+    private lateinit var mCurrentFragment: Fragment
     private val mViewModel: MainViewModel by lazy {
         ViewModelProvider(
             this,
@@ -42,7 +43,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     @RequiresApi(Build.VERSION_CODES.P)
     override fun ActivityMainBinding.initBindingView() {
         binding.viewModel = mViewModel
-        SmartApplication.sp=initSp()
+        SmartApplication.sp = initSp()
         initFragment()
         setCurrentFragment(constructionFragment)
         StatusUtil.initActivityBar(this@MainActivity, false)
@@ -91,7 +92,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             replace(R.id.fragment_container, fragment)
             setReorderingAllowed(true)
             commit()
-            mCurrentFragment=fragment
+            mCurrentFragment = fragment
         }
 
     private fun jumpToFragment(fragment: Fragment, name: String) {

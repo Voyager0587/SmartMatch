@@ -1,12 +1,6 @@
 package com.example.smartmatch.logic.db
-import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
 
-import androidx.room.RoomDatabase
-import com.example.smartmatch.logic.dao.MMNetDao
-import com.example.smartmatch.logic.model.Area
-import com.example.smartmatch.logic.model.MMNetResponse
+
 
 
 /**
@@ -18,7 +12,7 @@ import com.example.smartmatch.logic.model.MMNetResponse
  **/
 
 //@Database(entities = [MMNetResponse::class], version = 1)
-abstract class MMNetDB : RoomDatabase() {
+abstract class MMNetDB  {
 
 //    abstract fun dao(): MMNetDao
 //
