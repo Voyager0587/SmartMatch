@@ -1,10 +1,8 @@
 package com.example.smartmatch.ui
 
 import android.content.Context
-import android.os.Build
-import androidx.annotation.RequiresApi
 import com.example.smartmatch.R
-import com.example.smartmatch.ServiceCreateApplication
+import com.example.smartmatch.SmartApplication
 import com.example.smartmatch.base.kxt.toast
 import com.kongzue.dialogx.util.InputInfo
 import com.kongzue.dialogx.util.TextInfo
@@ -52,7 +50,7 @@ internal fun dialogInputInfo(context: Context): InputInfo? {
 }
 
 fun String.toast(){
-    ServiceCreateApplication.context.toast(this)
+    SmartApplication.context.toast(this)
 }
 
 enum class DeviceType{

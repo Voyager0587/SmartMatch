@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.smartmatch.logic.Repository
 import com.example.smartmatch.logic.model.MMNetResponse
+import com.example.smartmatch.logic.network.model.ScenarioResponse
 import com.example.smartmatch.ui.construction.ConstructionListener
 
 /**
@@ -18,11 +19,22 @@ class LightControlViewModel:ViewModel() {
     internal var constructionListener: ConstructionListener?=null
     var mmnetData: LiveData<Result<MMNetResponse>>? = null
     private set
+    lateinit var scenarios:ScenarioResponse
 
 
     fun getMMNetData(){
         mmnetData=repository.getMMNetData()
         constructionListener?.processMMNetData(mmnetData!!)
+    }
+
+    fun sendMessage(){
+        repository.instructScenario(scenarios)
+        //发送完,scenarios数据就要清空null
+    }
+
+    fun instructScenario( scenario: ScenarioResponse){
+        val result=repository.instructScenario(scenario)
+        constructionListener?.processResponse(result)
     }
 
 

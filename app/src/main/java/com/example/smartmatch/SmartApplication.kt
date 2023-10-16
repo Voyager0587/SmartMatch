@@ -21,17 +21,21 @@ import com.kongzue.dialogx.style.MaterialStyle
  * @date:  2023/9/23 11:14
  * @version 1.0
  **/
-class ServiceCreateApplication:Application() {
+class SmartApplication:Application() {
+
 
     companion object{
         @SuppressLint("StaticFieldLeak")
         lateinit var context: Context
+        var token :String=""
+        lateinit var sp: SharedPreferences
+
     }
     override fun onCreate() {
         super.onCreate()
         context = applicationContext
         initDialog()
-
+        initSp()
     }
     private fun initDialog() {
         DialogX.init(this)

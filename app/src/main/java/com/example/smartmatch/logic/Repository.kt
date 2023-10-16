@@ -2,7 +2,9 @@ package com.example.smartmatch.logic
 
 
 import androidx.lifecycle.liveData
+import com.example.smartmatch.logic.model.helper.AreaCreationHelper
 import com.example.smartmatch.logic.network.NetworkCenter
+import com.example.smartmatch.logic.network.model.ScenarioResponse
 import kotlinx.coroutines.Dispatchers
 import kotlin.coroutines.CoroutineContext
 
@@ -23,13 +25,26 @@ object Repository {
         }
     }
 
-     fun createNewArea(id: Int, name: String) = fire(Dispatchers.IO) {
-        val response = NetworkCenter.createNewArea(id, name)
+    fun instructScenario( scenario: ScenarioResponse)= fire(Dispatchers.IO){
+        val response=NetworkCenter.instructScenario(scenario)
+        run{
+            Result.success(response)
+        }
+    }
+
+     fun createNewArea(id: Int,areaCreationHelper: AreaCreationHelper) = fire(Dispatchers.IO) {
+        val response = NetworkCenter.createNewArea(id,areaCreationHelper)
         run {
             Result.success(response)
         }
     }
 
+    fun login(username: String, password: String) = fire(Dispatchers.IO) {
+        val response=NetworkCenter.login(username, password)
+        run {
+            Result.success(response)
+        }
+    }
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData<Result<T>>(context) {
             val result = try {

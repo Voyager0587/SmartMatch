@@ -3,6 +3,7 @@ package com.example.smartmatch.ui.construction
 import androidx.lifecycle.LiveData
 import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.MmnetData
+import com.example.smartmatch.logic.network.model.ResponseMessage
 
 /**
  * @className: ConstructionListener
@@ -17,6 +18,11 @@ interface ConstructionListener {
      * 获取当前MMNet的全部数据的回调处理方法
      */
     fun processMMNetData(result: LiveData<Result<MMNetResponse>>) {}
+
+    /**
+     * 处理通用的返回数据，确定是否操作成功
+     */
+    fun processResponse(result:LiveData<Result<ResponseMessage>>){}
 
     fun initListener() {}
 

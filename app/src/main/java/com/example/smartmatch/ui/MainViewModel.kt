@@ -34,4 +34,14 @@ class MainViewModel : ViewModel() {
             _jumpToFragment.emit(random)
         }
     }
+
+    /**
+     * 个人界面
+     */
+
+    fun jumpToLogin(random: Int = 0) {
+        viewModelScope.launch {
+            _jumpToFragment.emit(random)
+        }
+    }
 }

@@ -73,7 +73,7 @@ class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), Construc
                         binding.searchControl.setText(name)
                         binding.containerScene.removeAllViews()
 
-                        for (k in mmnet_data[i].areas.areas_data.indices) {
+                        for (k in mmnet_data[i].areas.areas_data[j].area.scenarios_data.indices) {
                             val sceneName =
                                 mmnet_data[i].areas.areas_data[j].area.scenarios_data[k].name
                             val scene = createItemButton(context, sceneName) {
@@ -88,7 +88,7 @@ class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), Construc
                         }
 
                         val newScene = createItemButton(context, "新建场景") {
-                            InputDialog("新建场景", "请输入场景名称", "确定", "取消", "正在输入的文字")
+                            InputDialog("新建场景", "请输入场景名称", "确定", "取消", "")
                                 .setCancelable(true)
                                 .setOkButton { baseDialog, v, inputStr ->
                                     requireActivity().toast("输入的内容：$inputStr")
@@ -98,6 +98,17 @@ class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), Construc
                                 .show()
                         }
                         binding.containerScene.addView(newScene)
+                        val newScene2 = createItemButton(context, "依据现有场景添加新场景") {
+                            InputDialog("新建场景", "请输入场景名称", "确定", "取消", "")
+                                .setCancelable(true)
+                                .setOkButton { baseDialog, v, inputStr ->
+                                    requireActivity().toast("输入的内容：$inputStr")
+                                    addNewView(inputStr)
+                                    false
+                                }
+                                .show()
+                        }
+                        binding.containerScene.addView(newScene2)
                     }
                     binding.containerArea.addView(area)
                     lastIndex++

@@ -14,15 +14,18 @@
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/app_text_size_normal"
-            android:padding="@dimen/app_add_btn_text_padding"
+            style="@style/textView_normal"
             android:layout_marginStart="@dimen/app_margin_start_distance"
             android:text="@string/area_example_text"
-            android:autoSizeTextType="uniform"
-            android:autoSizeMaxTextSize="@dimen/app_text_size_max"
-            android:autoSizeMinTextSize="@dimen/app_text_size_min"
-            android:autoSizeStepGranularity="1sp"
-            android:textColor="@color/grey"
-            android:layout_centerVertical="true" />
+ />
+        <TextView
+            android:id="@+id/tv_percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/textView_normal"
+            android:text="100%"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/app_margin_end_distance"
+            />
     </RelativeLayout>
 </layout>

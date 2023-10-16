@@ -68,7 +68,8 @@ data class ScenariosData(
     val id: Int,
     val light_data: List<LightData>,
     val light_num: Int,
-    val name: String
+    val name: String,
+    val required_percentage: Double
 )
 
 data class ChildScenario(
@@ -79,6 +80,6 @@ data class ChildScenario(
 
 data class LightData(
     val definitional_percentage: Double,
-    val light_id: Int,
-    val light_wattage: Int
+    val light_execute_wattage: Double,
+    val light_id: Int
 )

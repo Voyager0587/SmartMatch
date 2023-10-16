@@ -5,16 +5,20 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.viewbinding.ViewBinding
-import com.example.smartmatch.ServiceCreateApplication
+import com.example.smartmatch.SmartApplication
 import java.lang.reflect.ParameterizedType
 
 /**
- * @author:SunShibo
+ * @author:SunShibo,Voyager
  * @date:2022-08-22 23:12
  * @feature: some ext func
  */
 fun Context.toast(content: String) =
-    Toast.makeText(ServiceCreateApplication.context, content, Toast.LENGTH_SHORT).show()
+    Toast.makeText(SmartApplication.context, content, Toast.LENGTH_SHORT).show()
+fun toast(s: CharSequence?) {
+    Toast.makeText(SmartApplication.context, s, Toast.LENGTH_SHORT).show()
+}
+fun String.toast() = toast(this)
 
 fun Context.toast(res: Int) =
     Toast.makeText(this, getString(res), Toast.LENGTH_SHORT).show()
