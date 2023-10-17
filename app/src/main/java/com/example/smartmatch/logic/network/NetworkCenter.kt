@@ -23,9 +23,9 @@ import kotlin.coroutines.suspendCoroutine
 
 object NetworkCenter {
 
-   // private val authServer = ServiceCreator.create<AuthService>()
+    // private val authServer = ServiceCreator.create<AuthService>()
     private val constructionServer = ServiceCreator.create<ConstructionService>()
-    private val personServer=ServiceCreator.create<PersonService>()
+    private val personServer = ServiceCreator.create<PersonService>()
 
     /**
      * Construction
@@ -34,48 +34,46 @@ object NetworkCenter {
     /**
      * 获取MMNet全部数据
      */
-    suspend fun getMMNetData()
-        = constructionServer.getMMNetAllData().await()
+    suspend fun getMMNetData() = constructionServer.getMMNetAllData().await()
 
     /**
      * 照明控制--控制场景
      */
-    suspend fun instructScenario( scenario: ScenarioResponse)=
+    suspend fun instructScenario(scenario: ScenarioResponse) =
         constructionServer.instructScenario(scenario).await()
 
     /**
      * 创建Area
      */
-    suspend fun createNewArea(id:Int,areaCreationHelper: AreaCreationHelper)
-        = constructionServer.createNewArea(id,areaCreationHelper).await()
-
+    suspend fun createNewArea(id: Int, areaCreationHelper: AreaCreationHelper) =
+        constructionServer.createNewArea(id, areaCreationHelper).await()
 
 
     /**
      * 登录
      */
-    suspend fun login(username:String,password:String) =
-        personServer.login(User(username.toInt(),password)).await()
+    suspend fun login(username: String, password: String) =
+        personServer.login(User(username.toInt(), password)).await()
 
 
-
-        private suspend fun <T> Call<T>.await(): T {
-            return suspendCoroutine { continuation ->
-                enqueue(object : Callback<T> {
-                    override fun onResponse(call: Call<T>, response: Response<T>) {
-                        val body = response.body()
+    private suspend fun <T> Call<T>.await(): T {
+        return suspendCoroutine { continuation ->
+            enqueue(object : Callback<T> {
+                override fun onResponse(call: Call<T>, response: Response<T>) {
+                    val body = response.body()
 //                    ToDo: delete this
-                        Log.e("NetworkCenter", response.toString())
-                        if (body != null) continuation.resume(body)
-                        else continuation.resumeWithException(
-                            RuntimeException("response body is null")
-                        )
-                    }
-                    override fun onFailure(call: Call<T>, t: Throwable) {
-                        continuation.resumeWithException(t)
-                    }
-                })
-            }
+                    Log.e("NetworkCenter", response.toString())
+                    if (body != null) continuation.resume(body)
+                    else continuation.resumeWithException(
+                        RuntimeException("response body is null")
+                    )
+                }
+
+                override fun onFailure(call: Call<T>, t: Throwable) {
+                    continuation.resumeWithException(t)
+                }
+            })
         }
     }
+}
 
