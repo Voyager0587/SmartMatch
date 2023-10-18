@@ -14,4 +14,6 @@ class CollectionSceneCreationFragment : BaseFragment<FragmentCollectionSceneCrea
 
     }
 
+
+
 }

@@ -1,6 +1,5 @@
 package com.example.smartmatch.ui.feature
 
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.smartmatch.base.activity.BaseFragment
 import com.example.smartmatch.databinding.FragmentFeatureBinding
@@ -18,5 +17,6 @@ class FeatureFragment : BaseFragment<FragmentFeatureBinding>() {
         binding.viewModel=mViewModel
 
     }
+
 
 }

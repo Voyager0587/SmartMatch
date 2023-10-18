@@ -16,6 +16,7 @@ import com.example.smartmatch.ui.construction.ConstructionListener
  **/
 class LightControlViewModel:ViewModel() {
     private val repository = Repository
+    var seekBarPercentage:String="100"
     internal var constructionListener: ConstructionListener?=null
     var mmnetData: LiveData<Result<MMNetResponse>>? = null
     private set
@@ -30,6 +31,10 @@ class LightControlViewModel:ViewModel() {
     fun sendMessage(){
         repository.instructScenario(scenarios)
         //发送完,scenarios数据就要清空null
+    }
+
+    fun closeScene(){
+        repository.closeScene()
     }
 
     fun instructScenario( scenario: ScenarioResponse){

@@ -22,7 +22,7 @@ class AreaDefineViewModel:ViewModel() {
 
     fun getMMNetData(){
         mmnetData=repository.getMMNetData()
-    constructionListener?.processMMNetData(mmnetData!!)
+        constructionListener?.processMMNetData(mmnetData!!)
     }
 
     fun createNewArea(id:Int, name:String):Boolean{

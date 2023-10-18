@@ -11,6 +11,7 @@ import com.example.smartmatch.base.kxt.toast
 import com.example.smartmatch.databinding.FragmentSceneDefineBinding
 import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.MmnetData
+import com.example.smartmatch.logic.model.helper.FindT
 import com.example.smartmatch.ui.construction.ConstructionListener
 import com.example.smartmatch.ui.view.ItemButton
 import com.kongzue.dialogx.dialogs.InputDialog
@@ -145,5 +146,11 @@ class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), Construc
             }
         }
     }
+
+    override fun processFindT(result: LiveData<Result<FindT>>) {
+        TODO("Not yet implemented")
+    }
+
+
 
 }

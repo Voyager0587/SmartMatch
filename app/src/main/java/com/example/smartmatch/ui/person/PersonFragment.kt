@@ -8,7 +8,7 @@ import com.example.smartmatch.ui.MainViewModel
 class PersonFragment : BaseFragment<FragmentPersonBinding>() {
 
     // ! 必须要用这个requireActivity()，否则不会collect到数据
-    private val mViewModel :MainViewModel by lazy {
+    private val mViewModel : MainViewModel by lazy {
         ViewModelProvider(
             requireActivity(),
             ViewModelProvider.NewInstanceFactory()
@@ -21,5 +21,7 @@ class PersonFragment : BaseFragment<FragmentPersonBinding>() {
             mViewModel.jumpToLogin(4)
         }
     }
+
+
 
 }

@@ -6,14 +6,7 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 
-/**
- * @className: MainViewModel
- * @author: Voyager
- * @description: 主界面的ViewModel
- * @date:  2023/9/20 13:09
- * @version 1.0
- **/
-class MainViewModel : ViewModel() {
+class MainViewModel : ViewModel(){
     private val _jumpToFragment = MutableSharedFlow<Int>()
     val jumpToFragment = _jumpToFragment.asSharedFlow()
 
@@ -44,4 +37,5 @@ class MainViewModel : ViewModel() {
             _jumpToFragment.emit(random)
         }
     }
+
 }

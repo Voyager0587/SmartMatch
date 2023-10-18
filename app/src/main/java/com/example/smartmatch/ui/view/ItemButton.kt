@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.smartmatch.R
-import com.example.smartmatch.base.kxt.toast
 
 /**
  * @className: ItemButton
@@ -18,6 +17,7 @@ import com.example.smartmatch.base.kxt.toast
 class ItemButton(context: Context, attrs: AttributeSet?) : LinearLayout(context, attrs){
     lateinit var name:TextView
     lateinit var info:String
+    var net_id:Int =-1
     interface OnClickListener {
         fun onTitleClick()
     }
@@ -31,7 +31,6 @@ class ItemButton(context: Context, attrs: AttributeSet?) : LinearLayout(context,
         val view=LayoutInflater.from(context).inflate(R.layout.item_layout, this)
         name=view.findViewById(R.id.name)
         name.setOnClickListener {
-           context.toast("点击item")
             clickListener?.onTitleClick()
         }
     }

@@ -1,5 +1,6 @@
 package com.example.smartmatch.ui.construction.lightcontrol
 
+import android.annotation.SuppressLint
 import android.widget.SeekBar
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
@@ -10,6 +11,7 @@ import com.example.smartmatch.base.util.safeLaunch
 import com.example.smartmatch.databinding.FragmentLightControlSceneBinding
 import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.ScenariosData
+import com.example.smartmatch.logic.model.helper.FindT
 import com.example.smartmatch.logic.network.model.ResponseMessage
 import com.example.smartmatch.logic.network.model.Scenario
 import com.example.smartmatch.logic.network.model.ScenarioResponse
@@ -46,36 +48,40 @@ class LightControlScenarioFragment(
 
     override fun initListener() {
         super.initListener()
-        binding.swPauseActive.setOnCheckedChangeListener { _, isChecked ->
-            mViewModel
+        binding.swSwitch.setOnCheckedChangeListener { _, isChecked ->
+            if(isChecked){
+                mViewModel.instructScenario(getInstructionScenario())
+            }
+            else
+                mViewModel.closeScene()
+
         }
         binding.btnSendMsg.setOnClickListener {
             mViewModel.instructScenario(getInstructionScenario())
-            toast("adfhiausyhdfuia")
-        }
 
+        }
+        binding.seekBarAdjustBrightness.max=400
         binding.seekBarAdjustBrightness.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
+            @SuppressLint("SetTextI18n")
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 // SeekBar的进度发生改变时执行的操作
-
+                binding.displayPercentage.text = "$progress%"
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {
                 // 用户开始拖动SeekBar时执行的操作
+
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar) {
                 // 用户停止拖动SeekBar时执行的操作
                 brightness_adjustment_percentage = seekBar.progress
-
+                adapter.adjustPercentage=seekBar.progress.toFloat()
             }
 
         })
 
-        binding.swSwitch.setOnCheckedChangeListener { _, isChecked ->
-
-        }
     }
 
     override fun processResponse(result: LiveData<Result<ResponseMessage>>) {
@@ -83,12 +89,17 @@ class LightControlScenarioFragment(
         result.observe(this) {
             if(it.isSuccess){
                 val responseMessage = it.getOrNull()
-                if(responseMessage?.code==1)
+                if(responseMessage?.code==1){
+                    adapter.notifyDataSetChanged()
                     toast("控制成功")
-                else toast("控制失败")
+                }
+                else toast(responseMessage?.msg)
             }
-
         }
+    }
+
+    override fun processFindT(result: LiveData<Result<FindT>>) {
+
     }
 
 
@@ -111,7 +122,7 @@ class LightControlScenarioFragment(
         for (scene in scenariosDataList) {
             val scenario =
                 Scenario(scene.id,
-                    (scene.required_percentage *100* brightness_adjustment_percentage).toInt()
+                    (scene.required_percentage *4* brightness_adjustment_percentage).toInt()
                 )
             scenarioList.add(scenario)
         }
@@ -123,5 +134,8 @@ class LightControlScenarioFragment(
             area_index
         )?.area?.scenarios_data ?: emptyList()
     }
+
+
+
 
 }

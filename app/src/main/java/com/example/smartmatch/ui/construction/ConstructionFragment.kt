@@ -5,6 +5,7 @@ import com.example.smartmatch.base.activity.BaseFragment
 import com.example.smartmatch.databinding.FragmentConstructionBinding
 import com.example.smartmatch.ui.MainViewModel
 
+
 /**
  * @className ConstructionFragment
  * @description 施工界面
@@ -20,7 +21,6 @@ class ConstructionFragment : BaseFragment<FragmentConstructionBinding>() {
             ViewModelProvider.NewInstanceFactory()
         )[MainViewModel::class.java]
     }
-
     override fun FragmentConstructionBinding.initBindingView() {
         binding.viewModel = mViewModel
 
@@ -37,5 +37,7 @@ class ConstructionFragment : BaseFragment<FragmentConstructionBinding>() {
         }
 
     }
+
+
 
 }

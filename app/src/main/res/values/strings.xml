@@ -11,7 +11,8 @@
     <string name="area">Area定义</string>
     <string name="scene_definition">场景定义</string>
     <string name="light_control">照明控制</string>
-    <string name="cascade_control">集合场景</string>
+    <string name="cascade_control">级联控制</string>
+
 
     <!-- Area定义页面 -->
     <string name="choose_net">选择Net</string>
@@ -24,6 +25,39 @@
     <string name="light_control_scenario_title">场景Scenario</string>
     <string name="scenario_example_text">小林的桌面</string>
     <string name="area_example_text">文科楼205</string>
-
-
+<!--    找C-->
+    <string name="find_c">找C</string>
+    <string name="find_t">找T</string>
+    <string name="choice_t">选择T</string>
+    <string name="next_one">下一个</string>
+    <string name="next_step">下一步</string>
+    <string name="CurrentlydeterminedC">当前确定C</string>
+    <string name="Single_C_test">单C测试</string>
+    <string name="Confirm">确认</string>
+    <string name="IdentifiedTheCList">已确定C列表</string>
+    <string name="start">开始</string>
+    <string name="Full_C_test">全C测试</string>
+    <string name="AdjustedTlist">已调节的T列表</string>
+    <string name="ThecurrentlyselectedTlist">当前选择的T列表</string>
+    <string name="BrightnessAdjustment">亮度调节</string>
+    <string name="SelectallunadjustedT">选择所有未调节的T</string>
+    <string name="choose">选择</string>
+<!--    找T-->
+    <string name="hand_add">手动添加</string>
+    <string name="smart_add">自动添加</string>
+    <string name="lights_text">亮灯测试</string>
+    <string name="single_on">单灯开</string>
+    <string name="single_off">单灯关</string>
+    <string name="single_flicker">单灯闪</string>
+    <string name="all_on">灯全开</string>
+    <string name="all_off">灯全关</string>
+    <string name="all_flickeer">灯全闪</string>
+<!--    验证-->
+    <string name="check">验证</string>
+    <string name="scene_name">场景名</string>
+    <string name="finsh">完成</string>
+<!--    手动找T-->
+    <string name="handfindt">手动找T</string>
+    <string name="bright">亮</string>
+    <string name="dark">暗</string>
 </resources>

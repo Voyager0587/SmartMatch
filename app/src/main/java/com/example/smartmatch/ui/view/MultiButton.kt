@@ -8,7 +8,6 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.example.smartmatch.R
-import com.example.smartmatch.base.kxt.toast
 
 /**
  * @className: MultiButton
@@ -69,7 +68,6 @@ class MultiButton(context: Context, attrs: AttributeSet?) : LinearLayout(context
     }
 
     private fun toggleBackground() {
-        context.toast("点击item")
         judge = !judge
         val backgroundResource =
             if (judge) R.drawable.round_20_selected else R.drawable.round_20
