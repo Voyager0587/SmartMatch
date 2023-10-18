@@ -9,7 +9,7 @@
 
         <variable
             name="handfindtModel"
-            type="com.example.smartmatch.ui.viewModel1.MainViewModel" />
+            type="com.example.smartmatch.ui.MainViewModel" />
 
     </data>
 

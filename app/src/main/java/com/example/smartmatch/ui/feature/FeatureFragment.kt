@@ -1,13 +1,9 @@
 package com.example.smartmatch.ui.feature
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.smartmatch.base.activity.BaseFragment
 import com.example.smartmatch.databinding.FragmentFeatureBinding
-import com.example.smartmatch.ui.viewModel1.MainViewModel
+import com.example.smartmatch.ui.MainViewModel
 
 
 class FeatureFragment : BaseFragment<FragmentFeatureBinding>() {
@@ -22,12 +18,5 @@ class FeatureFragment : BaseFragment<FragmentFeatureBinding>() {
 
     }
 
-    override fun initFragment(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        TODO("Not yet implemented")
-    }
 
 }

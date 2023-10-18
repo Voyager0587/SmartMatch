@@ -1,9 +1,5 @@
 package com.example.smartmatch.ui.construction.collectionscene
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import com.example.smartmatch.base.activity.BaseFragment
@@ -79,11 +75,5 @@ class CollectionSceneFragment : BaseFragment<FragmentCollectionSceneBinding>(),C
 
     }
 
-    override fun initFragment(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        TODO("Not yet implemented")
-    }
+
 }

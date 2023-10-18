@@ -6,27 +6,20 @@ import com.example.smartmatch.R
 import com.example.smartmatch.base.activity.BaseFragment
 import com.example.smartmatch.base.util.CTNumberUtils
 import com.example.smartmatch.chart.FindCTBtnParams
-import com.example.smartmatch.databinding.FragmentAreaDefineBinding
 import com.example.smartmatch.databinding.FragmentFindCStepOneBinding
 import com.example.smartmatch.ui.construction.ConstructionListener
-import com.example.smartmatch.ui.construction.areadefine.AreaDefineViewModel
 import com.example.smartmatch.ui.viewModel1.FindCStepOneViewModel
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
-import android.os.Bundle
 import android.view.Gravity
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.helper.FindT
 import com.example.smartmatch.ui.choiceT.ChoiceTActivity
-import com.example.smartmatch.ui.findT.FindTActivity
 
 import java.util.*
 
@@ -431,13 +424,7 @@ class FindCStepOneFragment :  BaseFragment<FragmentFindCStepOneBinding>(), Const
         }
     }
 
-    override fun initFragment(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        TODO("Not yet implemented")
-    }
+
 
     override fun processFindT(result: LiveData<Result<FindT>>) {
         TODO("Not yet implemented")

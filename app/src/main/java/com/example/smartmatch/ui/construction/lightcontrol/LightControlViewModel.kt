@@ -32,6 +32,10 @@ class LightControlViewModel:ViewModel() {
         //发送完,scenarios数据就要清空null
     }
 
+    fun closeScene(){
+        repository.closeScene()
+    }
+
     fun instructScenario( scenario: ScenarioResponse){
         val result=repository.instructScenario(scenario)
         constructionListener?.processResponse(result)

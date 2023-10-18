@@ -1,4 +1,18 @@
-//package com.example.smartmatch.logic.dao
+package com.example.smartmatch.logic.dao
+
+
+/**
+ * @className: MMNetDao
+ * @author: Voyager
+ * @description: MMNet所有的数据的dao
+ * @date:  2023/9/25 15:11
+ * @version 1.0
+ **/
+//@Dao
+//interface MMNetDao {
+
+//    @Insert
+//    fun insertMMNetData(data: MMNetResponse)
 //
 //
 ///**

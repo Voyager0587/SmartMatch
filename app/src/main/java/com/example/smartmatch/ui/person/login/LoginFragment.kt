@@ -1,20 +1,23 @@
 package com.example.smartmatch.ui.person.login
 
 import android.annotation.SuppressLint
-import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import com.example.smartmatch.SmartApplication
 import com.example.smartmatch.base.activity.BaseFragment
+import com.example.smartmatch.base.kxt.toast
 import com.example.smartmatch.databinding.FragmentLoginBinding
 import com.example.smartmatch.logic.network.model.ResponseMessage
 import com.example.smartmatch.ui.person.PersonListener
 
+/**
+ * @className LoginFragment
+ * @description 登录界面
+ * @author Voyager
+ * @date 2023/10/17 11:02
+ */
 class LoginFragment : BaseFragment<FragmentLoginBinding>(), PersonListener {
 
     private val mViewModel: LoginViewModel by lazy {
@@ -66,16 +69,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(), PersonListener {
         super.processResponse(result)
         result.observe(this) { re ->
             val message = re.getOrNull()
+            requireActivity().toast("登陆成功")
             SmartApplication.token= message?.token.toString()
             SmartApplication.sp.edit().putString("token",SmartApplication.token).apply()
+            requireActivity().supportFragmentManager.popBackStack()
         }
     }
 
-    override fun initFragment(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        TODO("Not yet implemented")
-    }
+
 }

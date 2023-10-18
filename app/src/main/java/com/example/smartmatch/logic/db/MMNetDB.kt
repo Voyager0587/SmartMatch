@@ -1,7 +1,20 @@
-//package com.example.smartmatch.logic.db
-//import android.content.Context
-//import androidx.room.Database
-//import androidx.room.Room
+package com.example.smartmatch.logic.db
+
+
+
+
+/**
+ * @className: MMNetDB
+ * @author: Voyager
+ * @description: MMNet的database
+ * @date:  2023/9/25 15:45
+ * @version 1.0
+ **/
+
+//@Database(entities = [MMNetResponse::class], version = 1)
+//abstract class MMNetDB  {
+
+//    abstract fun dao(): MMNetDao
 //
 //import androidx.room.RoomDatabase
 //import com.example.smartmatch.logic.dao.MMNetDao

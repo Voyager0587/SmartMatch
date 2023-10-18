@@ -1,11 +1,10 @@
 package com.example.smartmatch.ui.construction.areadefine
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.Build
-import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -14,11 +13,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.base.util.StatusUtil
 import com.example.smartmatch.base.activity.BaseFragment
 import com.example.smartmatch.base.kxt.toast
+import com.example.smartmatch.base.util.safeLaunch
 import com.example.smartmatch.databinding.FragmentAreaDefineBinding
 import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.MmnetData
 import com.example.smartmatch.logic.model.helper.FindT
 import com.example.smartmatch.ui.construction.ConstructionListener
+import com.example.smartmatch.ui.findC.FindCActivity
 import com.example.smartmatch.ui.view.ItemButton
 import com.kongzue.dialogx.dialogs.InputDialog
 
@@ -34,6 +35,7 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
      * area的view数组的最后元素的index，便于删除view
      */
     private var lastIndex = 0
+    val NET_ID="net_id"
 
     private val mViewModel: AreaDefineViewModel by lazy {
         ViewModelProvider(
@@ -46,7 +48,10 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
     override fun FragmentAreaDefineBinding.initBindingView() {
         binding.viewModel = mViewModel
         mViewModel.constructionListener = this@AreaDefineFragment
-        mViewModel.getMMNetData()
+        viewLifecycleOwner.safeLaunch {
+            if (mViewModel.mmnetData == null)
+                mViewModel.getMMNetData()
+        }
         initListener()
         StatusUtil.initFragmentBar(this@AreaDefineFragment, false)
     }
@@ -63,6 +68,7 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
         }
     }
 
+    @SuppressLint("SuspiciousIndentation")
     override fun initRecyclerList(mmnet_data: List<MmnetData>) {
         super.initRecyclerList(mmnet_data)
         val context = requireContext()
@@ -83,7 +89,10 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
                     val area = createItemButton(context, areaName) {
                         Toast.makeText(context, "Clicked on: $areaName", Toast.LENGTH_SHORT).show()
                     }
-                    binding.containerArea.addView(area)
+                    requireActivity().runOnUiThread{
+                        binding.containerArea.addView(area)
+                    }
+
                     lastIndex++
                 }
 
@@ -93,14 +102,22 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
                         .setOkButton { baseDialog, v, inputStr ->
                             requireActivity().toast("输入的内容：$inputStr")
                             addNewView(inputStr)
-                            mViewModel.createNewArea(100, inputStr)
+
+                            val intent=Intent(requireActivity(),FindCActivity::class.java)
+                              intent.putExtra(NET_ID,mmnet_data[i].mmnet_id)//发送mmnet的id
+                            requireActivity().startActivity(intent)
+                          //  mViewModel.createNewArea(mmnet_data[i].mmnet_id, inputStr)
                             false
                         }
                         .show()
                 }
-                binding.containerArea.addView(newArea)
+                requireActivity().runOnUiThread{
+                    binding.containerArea.addView(newArea)
+                }
             }
-            binding.containerC.addView(net)
+            requireActivity().runOnUiThread{
+                binding.containerC.addView(net)
+            }
         }
     }
 
@@ -144,13 +161,7 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
         TODO("Not yet implemented")
     }
 
-    override fun initFragment(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        TODO("Not yet implemented")
-    }
+
 
 
 }

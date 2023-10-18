@@ -17,11 +17,15 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ServiceCreator {
 
     private const val BASE_URL = "http://175.178.88.228:8080"
+    private const val BASE_CLOUD_URL = "https://mock.apifox.cn/m1/2970761-0-default/"
 
     private var client: OkHttpClient = OkHttpClient.Builder()
+        .retryOnConnectionFailure(true)
         .addInterceptor { chain ->
             val request: Request = chain.request().newBuilder()
                 .addHeader("Authorization", SmartApplication.sp.getString("token","")!!)
+                .addHeader("content-type", "application/json")
+                .addHeader("Connection","close")
                 .build()
             chain.proceed(request)
         }

@@ -31,6 +31,8 @@ interface ConstructionService {
     @GET("/mmnet/data")
     fun getMMNetAllData(): Call<MMNetResponse>
 
+    @POST("/instructions/scenario/off")
+    fun closeScene():Call<ResponseMessage>
 
     @POST("/mmnet/scenario/{id}")
     fun createNewScenario(@Field("id") id: Int, @Header("name") name: String)

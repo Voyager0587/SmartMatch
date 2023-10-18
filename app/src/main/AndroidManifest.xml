@@ -46,6 +46,14 @@
             android:exported="true">
 
         </activity>
+        <activity android:name=".ui.findC.FindCActivity"
+            android:exported="true">
+
+        </activity>
+        <activity android:name=".ui.findT.FindTActivity"
+            android:exported="true">
+
+        </activity>
     </application>
 
 

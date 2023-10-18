@@ -11,7 +11,7 @@
     <string name="area">Area定义</string>
     <string name="scene_definition">场景定义</string>
     <string name="light_control">照明控制</string>
-    <string name="cascade_control">集合场景</string>
+    <string name="cascade_control">级联控制</string>
 
 
     <!-- Area定义页面 -->
