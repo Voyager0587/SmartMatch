@@ -21,8 +21,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.smartmatch.logic.model.MMNetResponse
+import com.example.smartmatch.logic.model.helper.FindT
 import com.example.smartmatch.ui.choiceT.ChoiceTActivity
 import com.example.smartmatch.ui.findT.FindTActivity
 
@@ -82,7 +84,7 @@ class FindCStepOneFragment :  BaseFragment<FragmentFindCStepOneBinding>(), Const
     }
 
     override fun observerDataStateUpdateAction() {
-        viewModel.CNumber.observe(this, { integer ->
+        viewModel.CNumber.observe(this) { integer ->
             val layout = CTNumberUtils.count(integer)
             if (layout == null) {
                 return@observe
@@ -97,15 +99,16 @@ class FindCStepOneFragment :  BaseFragment<FragmentFindCStepOneBinding>(), Const
                 binding.ll3.visibility = View.VISIBLE
             }
             viewModel.layout.value = layout
-        })
-        viewModel.layout.observe(this, { layout ->
+        }
+        viewModel.layout.observe(this) { layout ->
             //改变布局显示
             if (layout == null) {
                 return@observe
             }
             if (layout.size >= 1) {
                 for (i in 0 until layout[0]) {
-                    val lp = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1.0f)
+                    val lp =
+                        LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1.0f)
                     val linearLayout = LinearLayout(requireActivity())
                     linearLayout.orientation = LinearLayout.VERTICAL
                     linearLayout.gravity = Gravity.CENTER_HORIZONTAL
@@ -130,7 +133,8 @@ class FindCStepOneFragment :  BaseFragment<FragmentFindCStepOneBinding>(), Const
             }
             if (layout.size >= 2) {
                 for (i in 0 until layout[1]) {
-                    val lp = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1.0f)
+                    val lp =
+                        LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1.0f)
                     val linearLayout = LinearLayout(requireActivity())
                     linearLayout.orientation = LinearLayout.VERTICAL
                     linearLayout.gravity = Gravity.CENTER_HORIZONTAL
@@ -155,7 +159,8 @@ class FindCStepOneFragment :  BaseFragment<FragmentFindCStepOneBinding>(), Const
             }
             if (layout.size >= 3) {
                 for (i in 0 until layout[2]) {
-                    val lp = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1.0f)
+                    val lp =
+                        LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1.0f)
                     val linearLayout = LinearLayout(requireActivity())
                     linearLayout.orientation = LinearLayout.VERTICAL
                     linearLayout.gravity = Gravity.CENTER_HORIZONTAL
@@ -178,7 +183,7 @@ class FindCStepOneFragment :  BaseFragment<FragmentFindCStepOneBinding>(), Const
                     binding.ll3.addView(linearLayout, lp)
                 }
             }
-        })
+        }
     }
 
     override fun initDataAfterView() {
@@ -194,7 +199,6 @@ class FindCStepOneFragment :  BaseFragment<FragmentFindCStepOneBinding>(), Const
                 val btn = ((binding.ll1.getChildAt(i) as LinearLayout).getChildAt(0) as LinearLayout).getChildAt(1) as TextView
                 val tv = (binding.ll1.getChildAt(i) as LinearLayout).getChildAt(1) as TextView
                 val viewFindCTBtnParams = FindCTBtnParams<TextView>()
-                viewFindCTBtnParams.houduan_id= viewModel.response.value.toString()
                 viewFindCTBtnParams.view = btn
                 viewFindCTBtnParams.tv = tv
                 val location = IntArray(2)
@@ -432,6 +436,10 @@ class FindCStepOneFragment :  BaseFragment<FragmentFindCStepOneBinding>(), Const
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        TODO("Not yet implemented")
+    }
+
+    override fun processFindT(result: LiveData<Result<FindT>>) {
         TODO("Not yet implemented")
     }
 

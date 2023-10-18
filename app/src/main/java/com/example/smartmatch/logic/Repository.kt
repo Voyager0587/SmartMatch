@@ -2,6 +2,8 @@ package com.example.smartmatch.logic
 
 
 import androidx.lifecycle.liveData
+import com.example.smartmatch.logic.model.LightOffBody
+import com.example.smartmatch.logic.model.TPrecentageBody
 import com.example.smartmatch.logic.model.helper.AreaCreationHelper
 import com.example.smartmatch.logic.model.helper.FindT
 import com.example.smartmatch.logic.network.NetworkCenter
@@ -60,19 +62,19 @@ object Repository {
          }
     }
 
-    fun findT()= fire(Dispatchers.IO){
-        val response=NetworkCenter.findTid()
+    fun findT(id: Int)= fire(Dispatchers.IO){
+        val response=NetworkCenter.findTid(id)
         run{
             Result.success(response)
         }
     }
-    fun checkyulan(id: Int) = fire(Dispatchers.IO) {
-        val response = NetworkCenter.checkyulan(id)
+    fun checkyulan(light:TPrecentageBody) = fire(Dispatchers.IO) {
+        val response = NetworkCenter.checkyulan(light)
         run {
             Result.success(response)
         }
     }
-    fun checkOk(ok:Int)= fire(Dispatchers.IO){
+    fun checkOk(ok: LightOffBody)= fire(Dispatchers.IO){
         val response=NetworkCenter.checkok(ok)
         run{
             Result.success(response)
