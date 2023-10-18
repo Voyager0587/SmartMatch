@@ -41,8 +41,19 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment(), BaseBinding<VB> 
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         binding = getViewBinding(inflater, container)
+        initDataBeforeView()
+        observerDataStateUpdateAction()
+        initView()
+        initDataAfterView()
         return binding.root
+    }
+    /**
+     * 为视图设置初值
+     * */
+    protected open fun initView() {
+        TODO("Not yet implemented")
     }
 
 
@@ -53,7 +64,6 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment(), BaseBinding<VB> 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.initBindingView()
-
     }
 
     override fun onResume() {
@@ -65,5 +75,26 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment(), BaseBinding<VB> 
         super.onDestroy()
         if (!::binding.isInitialized) return
         binding.unbind()
+    }
+    protected abstract fun initFragment(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View
+
+    /**
+     * 为视图设初值
+     */
+    protected open fun initDataBeforeView(){
+
+    }
+
+    /**
+     * 监测数据变化
+     */
+    protected open fun observerDataStateUpdateAction(){
+
+    }
+    /**
+     * 在initView后初始化数据后，进行其他操作
+     */
+    protected open fun initDataAfterView() {
+
     }
 }

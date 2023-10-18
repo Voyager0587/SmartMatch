@@ -12,7 +12,7 @@ import com.example.smartmatch.base.kxt.initSp
 import com.example.smartmatch.base.kxt.toast
 import com.example.smartmatch.base.util.safeLaunch
 import com.example.smartmatch.databinding.ActivityMainBinding
-import com.example.smartmatch.ui.MainViewModel
+import com.example.smartmatch.ui.viewModel1.MainViewModel
 import com.example.smartmatch.ui.construction.ConstructionFragment
 import com.example.smartmatch.ui.construction.areadefine.AreaDefineFragment
 import com.example.smartmatch.ui.construction.lightcontrol.LightControlFragment

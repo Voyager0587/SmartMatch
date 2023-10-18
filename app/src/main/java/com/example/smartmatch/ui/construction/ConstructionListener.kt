@@ -3,6 +3,7 @@ package com.example.smartmatch.ui.construction
 import androidx.lifecycle.LiveData
 import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.MmnetData
+import com.example.smartmatch.logic.model.helper.FindT
 import com.example.smartmatch.logic.network.model.ResponseMessage
 
 /**
@@ -23,6 +24,7 @@ interface ConstructionListener {
      * 处理通用的返回数据，确定是否操作成功
      */
     fun processResponse(result:LiveData<Result<ResponseMessage>>){}
+    fun processFindT(result: LiveData<Result<FindT>>)
 
     fun initListener() {}
 
