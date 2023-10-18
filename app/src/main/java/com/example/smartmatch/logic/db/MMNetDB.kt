@@ -12,7 +12,7 @@ package com.example.smartmatch.logic.db
  **/
 
 //@Database(entities = [MMNetResponse::class], version = 1)
-abstract class MMNetDB  {
+//abstract class MMNetDB  {
 
 //    abstract fun dao(): MMNetDao
 //

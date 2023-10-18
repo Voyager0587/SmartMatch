@@ -1,12 +1,10 @@
 package com.example.smartmatch.ui.construction.areadefine
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -70,6 +68,7 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
         }
     }
 
+    @SuppressLint("SuspiciousIndentation")
     override fun initRecyclerList(mmnet_data: List<MmnetData>) {
         super.initRecyclerList(mmnet_data)
         val context = requireContext()
@@ -103,7 +102,7 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
                         .setOkButton { baseDialog, v, inputStr ->
                             requireActivity().toast("输入的内容：$inputStr")
                             addNewView(inputStr)
-                                //TODO 跳转
+
                             val intent=Intent(requireActivity(),FindCActivity::class.java)
                               intent.putExtra(NET_ID,mmnet_data[i].mmnet_id)//发送mmnet的id
                             requireActivity().startActivity(intent)
@@ -162,13 +161,7 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
         TODO("Not yet implemented")
     }
 
-    override fun initFragment(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        TODO("Not yet implemented")
-    }
+
 
 
 }

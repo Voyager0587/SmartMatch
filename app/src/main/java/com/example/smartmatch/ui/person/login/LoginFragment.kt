@@ -1,12 +1,8 @@
 package com.example.smartmatch.ui.person.login
 
 import android.annotation.SuppressLint
-import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import com.example.smartmatch.SmartApplication
@@ -80,11 +76,5 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(), PersonListener {
         }
     }
 
-    override fun initFragment(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        TODO("Not yet implemented")
-    }
+
 }

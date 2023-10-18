@@ -9,7 +9,7 @@ package com.example.smartmatch.logic.dao
  * @version 1.0
  **/
 //@Dao
-interface MMNetDao {
+//interface MMNetDao {
 
 //    @Insert
 //    fun insertMMNetData(data: MMNetResponse)

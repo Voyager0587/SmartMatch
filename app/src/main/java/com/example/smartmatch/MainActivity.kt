@@ -2,29 +2,31 @@ package com.example.smartmatch
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
+import com.example.base.util.StatusUtil
 import com.example.smartmatch.base.activity.BaseActivity
 import com.example.smartmatch.base.kxt.initSp
 import com.example.smartmatch.base.kxt.toast
+import com.example.smartmatch.base.util.safeLaunch
 import com.example.smartmatch.databinding.ActivityMainBinding
-import com.example.smartmatch.ui.viewModel1.MainViewModel
 import com.example.smartmatch.ui.construction.ConstructionFragment
 import com.example.smartmatch.ui.construction.areadefine.AreaDefineFragment
+import com.example.smartmatch.ui.construction.lightcontrol.LightControlFragment
+import com.example.smartmatch.ui.construction.scenedefine.SceneDefineFragment
 import com.example.smartmatch.ui.feature.FeatureFragment
 import com.example.smartmatch.ui.person.PersonFragment
-
-import kotlinx.coroutines.launch
-import org.litepal.tablemanager.Connector
 import com.example.smartmatch.ui.person.login.LoginFragment
+import com.example.smartmatch.ui.MainViewModel
 
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     private lateinit var featureFragment: FeatureFragment
     private lateinit var constructionFragment: ConstructionFragment
     private lateinit var personFragment: PersonFragment
-    private lateinit var mCurrentFragment:Fragment
+    private lateinit var mCurrentFragment: Fragment
     private val mViewModel: MainViewModel by lazy {
         ViewModelProvider(
             this,
@@ -32,9 +34,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         )[MainViewModel::class.java]
     }
 
+    @RequiresApi(Build.VERSION_CODES.P)
     override fun ActivityMainBinding.initBindingView() {
         binding.viewModel = mViewModel
-        SmartApplication.sp=initSp()
+        SmartApplication.sp = initSp()
         initFragment()
         setCurrentFragment(constructionFragment)
 
@@ -89,8 +92,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             replace(R.id.fragment_container, fragment)
             setReorderingAllowed(true)
             commit()
-            mCurrentFragment=fragment
+            mCurrentFragment = fragment
         }
+
     private fun jumpToFragment(fragment: Fragment, name: String) {
         supportFragmentManager.beginTransaction().apply {
             add(R.id.container_main, fragment)

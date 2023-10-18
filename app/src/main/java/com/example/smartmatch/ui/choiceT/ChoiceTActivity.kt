@@ -1,10 +1,9 @@
 package com.example.smartmatch.ui.choiceT
 
-import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import com.example.smartmatch.base.activity.BaseActivity
 import com.example.smartmatch.databinding.ActivityChoiceTBinding
-import com.example.smartmatch.ui.viewModel1.MainViewModel
+import com.example.smartmatch.ui.MainViewModel
 
 class ChoiceTActivity :BaseActivity<ActivityChoiceTBinding>(){
     private val mViewModel: MainViewModel by lazy {
