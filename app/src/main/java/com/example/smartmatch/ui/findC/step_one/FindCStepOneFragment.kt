@@ -12,6 +12,7 @@ import com.example.smartmatch.ui.construction.ConstructionListener
 import com.example.smartmatch.ui.construction.areadefine.AreaDefineViewModel
 import com.example.smartmatch.ui.viewModel1.FindCStepOneViewModel
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
@@ -21,6 +22,9 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.smartmatch.logic.model.MMNetResponse
+import com.example.smartmatch.ui.choiceT.ChoiceTActivity
+import com.example.smartmatch.ui.findT.FindTActivity
 
 import java.util.*
 
@@ -34,10 +38,17 @@ class FindCStepOneFragment :  BaseFragment<FragmentFindCStepOneBinding>(), Const
             ViewModelProvider.NewInstanceFactory()
         )[FindCStepOneViewModel::class.java]
     }
-
     override fun FragmentFindCStepOneBinding.initBindingView() {
         binding.vm=viewModel
         binding.click=Click()
+        initeView()
+    }
+    fun initeView(){
+        binding.button4.setOnClickListener{
+            val intent= Intent();
+            intent.setClass(requireActivity(),ChoiceTActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 
@@ -183,6 +194,7 @@ class FindCStepOneFragment :  BaseFragment<FragmentFindCStepOneBinding>(), Const
                 val btn = ((binding.ll1.getChildAt(i) as LinearLayout).getChildAt(0) as LinearLayout).getChildAt(1) as TextView
                 val tv = (binding.ll1.getChildAt(i) as LinearLayout).getChildAt(1) as TextView
                 val viewFindCTBtnParams = FindCTBtnParams<TextView>()
+                viewFindCTBtnParams.houduan_id= viewModel.response.value.toString()
                 viewFindCTBtnParams.view = btn
                 viewFindCTBtnParams.tv = tv
                 val location = IntArray(2)
@@ -257,7 +269,7 @@ class FindCStepOneFragment :  BaseFragment<FragmentFindCStepOneBinding>(), Const
         }
     }
 
-    @SuppressLint("ClickableViewAccessibility")
+    @SuppressLint("ClickableViewAccessibility", "SuspiciousIndentation")
     override fun initView() {
         adapter = RvIdentifiedTheCListAdapter(viewModel.identifiedTheCList)
         val layoutManager =
@@ -302,6 +314,7 @@ class FindCStepOneFragment :  BaseFragment<FragmentFindCStepOneBinding>(), Const
                         }
                     //进行选中
                     viewParams.view?.setBackgroundResource(R.drawable.ct_ll_btn_selected_36dp)
+
                     if (viewParams.START_CID == viewParams.END_CID)
                         viewModel.currentlyDeterminedCBtn.value = viewParams
                     if (viewModel.btnsParams2.value != null) {
@@ -405,6 +418,8 @@ class FindCStepOneFragment :  BaseFragment<FragmentFindCStepOneBinding>(), Const
                     viewParams.view?.setBackgroundResource(R.drawable.ct_ll_btn_selected_36dp)
                     if (viewParams.START_CID == viewParams.END_CID)
                         viewModel.currentlyDeterminedCBtn.value = viewParams
+                        binding.currentlyDeterminedCBtn.text="C"+viewParams.START_CID
+
                     break
                 }
             }

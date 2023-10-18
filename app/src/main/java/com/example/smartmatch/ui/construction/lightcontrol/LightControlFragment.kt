@@ -2,7 +2,10 @@ package com.example.smartmatch.ui.construction.lightcontrol
 
 import android.content.Context
 import android.os.Build
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -15,6 +18,7 @@ import com.example.smartmatch.base.util.safeLaunch
 import com.example.smartmatch.databinding.FragmentLightControlBinding
 import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.MmnetData
+import com.example.smartmatch.logic.model.helper.FindT
 import com.example.smartmatch.ui.construction.ConstructionListener
 import com.example.smartmatch.ui.view.ItemButton
 
@@ -60,6 +64,10 @@ class LightControlFragment : BaseFragment<FragmentLightControlBinding>(), Constr
                 initRecyclerList(mmnetDataList)
             }
         }
+    }
+
+    override fun processFindT(result: LiveData<Result<FindT>>) {
+        TODO("Not yet implemented")
     }
 
     override fun initListener() {
@@ -129,6 +137,14 @@ class LightControlFragment : BaseFragment<FragmentLightControlBinding>(), Constr
         button.setOnClickListener {
             container.visibility = if (button.isChecked) View.VISIBLE else View.GONE
         }
+    }
+
+    override fun initFragment(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        TODO("Not yet implemented")
     }
 
 }

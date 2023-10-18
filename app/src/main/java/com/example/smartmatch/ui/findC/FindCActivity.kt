@@ -20,7 +20,6 @@ import com.example.smartmatch.ui.construction.areadefine.AreaDefineFragment
 import com.example.smartmatch.ui.findC.step_one.FindCStepOneFragment
 import com.example.smartmatch.ui.viewModel1.FindCStepOneViewModel
 import com.example.smartmatch.ui.viewModel1.FindCViewModel
-import org.litepal.tablemanager.Connector
 
 
 class FindCActivity : BaseActivity<ActivityFindcBinding>() {
@@ -37,7 +36,7 @@ class FindCActivity : BaseActivity<ActivityFindcBinding>() {
         binding.findcviewModel = mfindcViewModel
        initActivity()
         initView()
-        Connector.getDatabase()
+        //Connector.getDatabase()
     }
         fun initActivity() {
         //init(R.layout.activity_findc, FindCViewModel::class.java, this)

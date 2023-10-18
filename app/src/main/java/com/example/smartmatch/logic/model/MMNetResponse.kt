@@ -23,7 +23,8 @@ data class MmnetData(
     val admin_id: String,
     val areas: Areas,
     val mmnet_id: Int,
-    val mmnet_name: String
+    val mmnet_name: String,
+    val findtdata: findtdata
 )
 
 data class C(
@@ -83,3 +84,12 @@ data class LightData(
     val light_execute_wattage: Double,
     val light_id: Int
 )
+
+    data class  findtdata(val lightList:List<light>,val ift:Int)
+    data class LightDatat(val id :Int )
+
+data class light(val id: Int,
+    val percentage:Double
+)
+data class lightoff(val id: Int)
+

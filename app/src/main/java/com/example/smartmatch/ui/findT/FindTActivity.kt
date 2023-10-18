@@ -14,7 +14,6 @@ import com.example.smartmatch.ui.findT.step_one.FindTStepOneFragment
 import com.example.smartmatch.ui.findC.step_one.FindCStepOneFragment
 import com.example.smartmatch.ui.viewModel1.FindCViewModel
 import com.example.smartmatch.ui.viewModel1.FindTViewModel
-import org.litepal.tablemanager.Connector
 
 
 class FindTActivity : BaseActivity<ActivityFindtBinding>() {
@@ -31,7 +30,7 @@ class FindTActivity : BaseActivity<ActivityFindtBinding>() {
         binding.findtviewModel = mfindTViewModel
         initActivity()
         initView()
-        Connector.getDatabase()
+       // Connector.getDatabase()
     }
     fun initActivity() {
         //init(R.layout.activity_findc, FindCViewModel::class.java, this)

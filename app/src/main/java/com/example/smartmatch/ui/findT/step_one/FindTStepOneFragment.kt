@@ -1,12 +1,17 @@
 package com.example.smartmatch.ui.findT.step_one
-import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CompoundButton
 import android.widget.LinearLayout
+import android.widget.RadioGroup
+import android.widget.RadioGroup.OnCheckedChangeListener
+import android.widget.SeekBar
+import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -15,26 +20,93 @@ import com.example.smartmatch.R
 import com.example.smartmatch.base.activity.BaseFragment
 import com.example.smartmatch.base.util.CTNumberUtils
 import com.example.smartmatch.chart.FindCTBtnParams
+import com.example.smartmatch.chart.TData
 import com.example.smartmatch.databinding.FragmentFindTStepOneBinding
+import com.example.smartmatch.logic.model.LightDatat
+import com.example.smartmatch.logic.model.MMNetResponse
+import com.example.smartmatch.logic.model.MmnetData
+import com.example.smartmatch.logic.model.findtdata
+import com.example.smartmatch.logic.model.light
+import com.example.smartmatch.logic.network.model.Scenario
+import com.example.smartmatch.logic.network.model.ScenarioResponse
 import com.example.smartmatch.ui.construction.ConstructionListener
+import com.example.smartmatch.ui.construction.adapter.LightControlScenarioAdapter
+import com.example.smartmatch.ui.findT.FindTAdapter
 import com.example.smartmatch.ui.viewModel1.FindTStepOneViewModel
-class FindTStepOneFragment : BaseFragment<FragmentFindTStepOneBinding>(),ConstructionListener {
+
+abstract class FindTStepOneFragment : BaseFragment<FragmentFindTStepOneBinding>(),ConstructionListener {
     private lateinit var chooseAdapter: RvIdentifiedTheCListAdapter
     private lateinit var hasAuditAdapter: RvIdentifiedTheCListAdapter
+    private lateinit var adapter: FindTAdapter
+    abstract val tdata: TData
     private val viewModel: FindTStepOneViewModel by lazy {
             ViewModelProvider(
                 requireActivity(),
                 ViewModelProvider.NewInstanceFactory()
             )[FindTStepOneViewModel::class.java]
         }
-
-
+    var id:Int = 0
+   val intent=Intent()
+    private var  t_percentage = 0
 
 
     override fun FragmentFindTStepOneBinding.initBindingView() {
         binding.vmT=viewModel
         binding.clickT=Click()
+
+        binding.swFindt.setOnCheckedChangeListener(object :OnCheckedChangeListener,
+            CompoundButton.OnCheckedChangeListener {
+            override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
+
+            }
+
+            override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
+              if(isChecked){
+                  id=1
+              }
+                if(!isChecked){
+                    id=0
+                }
+                viewModel.checkyulan(id)
+            }
+
+        })
+        binding.ok.setOnClickListener{
+            viewModel.ok(id)
+        }
     }
+    fun sb_clickListener(){
+        binding.sbFindt.setOnSeekBarChangeListener(object :OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+               binding.tvTprogress.text= progress.toString()+"%"
+                tdata.setPrecent(progress)
+
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+              t_percentage=seekBar!!.progress
+            }
+
+        })
+
+    }
+    private fun getlighton(mmnetData: MmnetData): findtdata {
+        val checkid = adapter.checktid
+        val lightList = ArrayList<light>()
+        for (checkt in checkid) {
+            val checkt =
+                light(checkt.id,
+                    (checkt.percentage).toDouble()
+                )
+            lightList.add(checkt)
+        }
+        return findtdata(lightList,if(binding.swFindt.isChecked)1 else 0)
+    }
+
     inner class Click {
         fun chose(view: View) {
             val value = viewModel.currentlyDeterminedCBtn.value
@@ -42,7 +114,7 @@ class FindTStepOneFragment : BaseFragment<FragmentFindTStepOneBinding>(),Constru
                 val listValue = viewModel.chooseTheCList
                 for (vp in listValue)
                     if (vp.START_CID == value.START_CID)
-                        return
+                return
                 val newV = FindCTBtnParams<View>()
                 newV.START_CID = value.START_CID
                 listValue.add(newV)
@@ -83,6 +155,8 @@ class FindTStepOneFragment : BaseFragment<FragmentFindTStepOneBinding>(),Constru
         viewModel.btnsParams1.value = ArrayList()
         viewModel.btnsParams2.value = ArrayList()
         viewModel.btnsParams3.value = ArrayList()
+        viewModel.t_num=intent.getStringExtra("num")?:""
+        viewModel.findtid=intent.getStringExtra("id")?:""
     }
 
     override fun observerDataStateUpdateAction() {
@@ -158,7 +232,7 @@ class FindTStepOneFragment : BaseFragment<FragmentFindTStepOneBinding>(),Constru
                     btnLL.addView(fill2, lp)
 
                     val textView = TextView(requireActivity())
-                    textView.text = "C-C"
+                    textView.text = "T-T"
                     textView.setTextColor(Color.BLACK)
                     textView.gravity = Gravity.CENTER
 
@@ -189,7 +263,7 @@ class FindTStepOneFragment : BaseFragment<FragmentFindTStepOneBinding>(),Constru
                     btnLL.addView(fill2, lp)
 
                     val textView = TextView(requireActivity())
-                    textView.text = "C-C"
+                    textView.text = "T-T"
                     textView.setTextColor(Color.BLACK)
                     textView.gravity = Gravity.CENTER
 
@@ -203,10 +277,12 @@ class FindTStepOneFragment : BaseFragment<FragmentFindTStepOneBinding>(),Constru
     }
 
     override fun initDataAfterView() {
-        viewModel.CNumber.value = 127
+        val lightdata:LightDatat
+        viewModel.CNumber.value =127
     }
 
     fun initViewParams() {
+        val lightdata:LightDatat=LightDatat(id)
         val let = viewModel.layout.value?.let { layout ->
             viewModel.CNumber.value?.let { cNumber ->
                 if (viewModel.layout.value!!.size >= 1) {
@@ -227,7 +303,7 @@ class FindTStepOneFragment : BaseFragment<FragmentFindTStepOneBinding>(),Constru
                         viewFindCTBtnParams.START_CID = cid1[0][i]
                         viewFindCTBtnParams.END_CID = cid1[1][i]
                         viewFindCTBtnParams.l = 1
-                        tv.text = "C" + viewFindCTBtnParams.START_CID + "-" + "C" + viewFindCTBtnParams.END_CID
+                        tv.text = "T" + viewFindCTBtnParams.START_CID + "-" + "T" + viewFindCTBtnParams.END_CID
                         btn.text = (i + 1).toString()
 //                viewModel.btnsParams.getValue().add(viewFindCTBtnParams);
                         viewModel.btnsParams1.value!!.add(viewFindCTBtnParams as FindCTBtnParams<View>)
@@ -254,9 +330,9 @@ class FindTStepOneFragment : BaseFragment<FragmentFindTStepOneBinding>(),Constru
                         viewFindCTBtnParams.END_CID = cid2[1][i]
                         viewFindCTBtnParams.l = 2
                         if (viewFindCTBtnParams.START_CID == viewFindCTBtnParams.END_CID)
-                            tv.text = "C" + viewFindCTBtnParams.START_CID
+                            tv.text = "T" + viewFindCTBtnParams.START_CID
                         else
-                            tv.text = "C" + viewFindCTBtnParams.START_CID + "-" + "C" + viewFindCTBtnParams.END_CID
+                            tv.text = "T" + viewFindCTBtnParams.START_CID + "-" + "T" + viewFindCTBtnParams.END_CID
                         btn.text = (i + 1).toString()
 //                viewModel.btnsParams.getValue().add(viewFindCTBtnParams);
                         viewModel.btnsParams2.value!!.add(viewFindCTBtnParams as FindCTBtnParams<View>)
@@ -270,6 +346,7 @@ class FindTStepOneFragment : BaseFragment<FragmentFindTStepOneBinding>(),Constru
                         val tv = (binding.ll3.getChildAt(i) as LinearLayout).getChildAt(1) as TextView
                         val viewFindCTBtnParams = FindCTBtnParams<TextView>()
                         val location = IntArray(2)
+                        viewFindCTBtnParams.houduan_id= lightdata.id
                         btn.getLocationOnScreen(location)
                         viewFindCTBtnParams.view = btn
                         viewFindCTBtnParams.tv = tv
@@ -353,10 +430,10 @@ class FindTStepOneFragment : BaseFragment<FragmentFindTStepOneBinding>(),Constru
                                 cids[1][i] + viewParams.START_CID - 1
                             if (viewFindCTBtnParams.START_CID == viewFindCTBtnParams.END_CID)
                                 viewFindCTBtnParams.tv?.text =
-                                    "C" + viewFindCTBtnParams.START_CID
+                                    "T" + viewFindCTBtnParams.START_CID
                             else
                                 viewFindCTBtnParams.tv?.text =
-                                    "C" + viewFindCTBtnParams.START_CID + "-" + "C" + viewFindCTBtnParams.END_CID
+                                    "T" + viewFindCTBtnParams.START_CID + "-" + "T" + viewFindCTBtnParams.END_CID
 
                         }
                     }
@@ -410,10 +487,10 @@ class FindTStepOneFragment : BaseFragment<FragmentFindTStepOneBinding>(),Constru
                                 cids[1][i] + viewParams.START_CID - 1
                             if (viewFindCTBtnParams.START_CID == viewFindCTBtnParams.END_CID)
                                 viewFindCTBtnParams.tv?.text =
-                                    "C" + viewFindCTBtnParams.START_CID
+                                    "T" + viewFindCTBtnParams.START_CID
                             else
                                 viewFindCTBtnParams.tv?.text =
-                                    "C" + viewFindCTBtnParams.START_CID + "-" + "C" + viewFindCTBtnParams.END_CID
+                                    "T" + viewFindCTBtnParams.START_CID + "-" + "T" + viewFindCTBtnParams.END_CID
 
                         }
                     }
@@ -446,8 +523,13 @@ class FindTStepOneFragment : BaseFragment<FragmentFindTStepOneBinding>(),Constru
                         vp.view?.setBackgroundResource(R.drawable.ct_ll_btn_36dp)
                     }
                     viewParams.view?.setBackgroundResource(R.drawable.ct_ll_btn_selected_36dp)
-                    if (viewParams.START_CID == viewParams.END_CID)
+                    if (viewParams.START_CID == viewParams.END_CID){
                         viewModel.currentlyDeterminedCBtn.value = viewParams
+                        tdata.setId(viewParams.id)
+                        sb_clickListener()
+                        tdata.save()
+                    }
+
                     break
                 }
             }

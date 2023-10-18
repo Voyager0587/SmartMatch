@@ -11,11 +11,20 @@
     <string name="area">Area定义</string>
     <string name="scene_definition">场景定义</string>
     <string name="light_control">照明控制</string>
-    <string name="cascade_control">级联控制</string>
+    <string name="cascade_control">集合场景</string>
+
 
     <!-- Area定义页面 -->
     <string name="choose_net">选择Net</string>
     <string name="choose_area">选择区域Area</string>
+    <string name="next">下一步</string>
+    <string name="cascadeControl_title">集合场景</string>
+    <string name="collection_scene_example_text">文科楼二楼</string>
+    <string name="app_light_control_choose_item">选择目标</string>
+
+    <string name="light_control_scenario_title">场景Scenario</string>
+    <string name="scenario_example_text">小林的桌面</string>
+    <string name="area_example_text">文科楼205</string>
 <!--    找C-->
     <string name="find_c">找C</string>
     <string name="find_t">找T</string>
