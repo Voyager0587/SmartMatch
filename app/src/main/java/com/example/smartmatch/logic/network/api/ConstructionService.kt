@@ -1,6 +1,9 @@
 package com.example.smartmatch.logic.network.api
 
+import com.example.smartmatch.logic.model.LightOffBody
 import com.example.smartmatch.logic.model.MMNetResponse
+import com.example.smartmatch.logic.model.MmnetScenarioLight
+import com.example.smartmatch.logic.model.TPrecentageBody
 import com.example.smartmatch.logic.model.helper.AreaCreationHelper
 import com.example.smartmatch.logic.model.helper.FindT
 import com.example.smartmatch.logic.network.model.Checkyulan
@@ -45,10 +48,10 @@ interface ConstructionService {
     fun instructScenario(@Body scenario: ScenarioResponse):Call<ResponseMessage>
     @GET("/mmnet/area/c/{id}")
     fun  findC(@Path("id") id: String):Call<MMNetResponse>
-    @GET("/mmnet/scenario/light/")
-   fun findT():Call<MMNetResponse>
+    @GET("/mmnet/scenario/light/{id}")
+    suspend fun findT(@Path("id") id: Int): MmnetScenarioLight
     @POST("instructions/light/on")
-   fun postLightOn(@Body requestBody: Int): Call<MMNetResponse>
+    suspend  fun postLightOn(@Body requestBody: TPrecentageBody): MMNetResponse
     @POST("/instructions/light/off")
-    fun checkok(@Body ok:Int):Call<MMNetResponse>
+    suspend fun checkok(@Body ok: LightOffBody):MMNetResponse
 }
