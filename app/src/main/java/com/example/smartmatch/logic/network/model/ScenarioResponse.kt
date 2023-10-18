@@ -16,3 +16,6 @@ data class Scenario(
     val id: Int,
     val percentage: Int
 )
+data class Checkyulan(
+    val if_check:Int
+)
