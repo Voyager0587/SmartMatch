@@ -1,9 +1,6 @@
 package com.example.smartmatch.ui.construction.lightcontrol
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.annotation.SuppressLint
 import android.widget.SeekBar
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
@@ -52,32 +49,35 @@ class LightControlScenarioFragment(
     override fun initListener() {
         super.initListener()
         binding.swSwitch.setOnCheckedChangeListener { _, isChecked ->
-            if(isChecked)
+            if(isChecked){
                 mViewModel.instructScenario(getInstructionScenario())
+            }
             else
                 mViewModel.closeScene()
-            toast("adfhiausyhdfuia")
+
         }
         binding.btnSendMsg.setOnClickListener {
             mViewModel.instructScenario(getInstructionScenario())
 
         }
-
+        binding.seekBarAdjustBrightness.max=400
         binding.seekBarAdjustBrightness.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
+            @SuppressLint("SetTextI18n")
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 // SeekBar的进度发生改变时执行的操作
-
+                binding.displayPercentage.text = "$progress%"
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {
                 // 用户开始拖动SeekBar时执行的操作
+
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar) {
                 // 用户停止拖动SeekBar时执行的操作
                 brightness_adjustment_percentage = seekBar.progress
-
+                adapter.adjustPercentage=seekBar.progress.toFloat()
             }
 
         })
@@ -89,15 +89,17 @@ class LightControlScenarioFragment(
         result.observe(this) {
             if(it.isSuccess){
                 val responseMessage = it.getOrNull()
-                if(responseMessage?.code==1)
+                if(responseMessage?.code==1){
+                    adapter.notifyDataSetChanged()
                     toast("控制成功")
-                else toast("控制失败")
+                }
+                else toast(responseMessage?.msg)
             }
         }
     }
 
     override fun processFindT(result: LiveData<Result<FindT>>) {
-        TODO("Not yet implemented")
+
     }
 
 
