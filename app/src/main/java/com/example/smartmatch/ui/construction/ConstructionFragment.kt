@@ -1,9 +1,13 @@
 package com.example.smartmatch.ui.construction
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.smartmatch.base.activity.BaseFragment
 import com.example.smartmatch.databinding.FragmentConstructionBinding
-import com.example.smartmatch.ui.MainViewModel
+import com.example.smartmatch.ui.viewModel1.MainViewModel
 
 
 /**
@@ -21,21 +25,20 @@ class ConstructionFragment : BaseFragment<FragmentConstructionBinding>() {
             ViewModelProvider.NewInstanceFactory()
         )[MainViewModel::class.java]
     }
-
     override fun FragmentConstructionBinding.initBindingView() {
         binding.viewModel = mViewModel
         areaDefineLayout.setOnClickListener {
             mViewModel.jumpToAreaDefine(1)
         }
 
-        sceneDefine.setOnClickListener {
-            mViewModel.jumpToSceneDefine(2)
-        }
+    }
 
-        lightControl.setOnClickListener {
-            mViewModel.jumpToLightControl(3)
-        }
-
+    override fun initFragment(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        TODO("Not yet implemented")
     }
 
 

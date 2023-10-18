@@ -146,6 +146,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/login_btn" />
+                    <Switch
+                        android:id="@+id/sw_findt"
+                        android:paddingHorizontal="5dp"
+                        android:text="预览"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"/>
 
                     <TextView
                         android:textColor="@color/black"
@@ -153,13 +161,22 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/BrightnessAdjustment" />
-
+                    <TextView
+                        android:id="@+id/tv_tprogress"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20%"
+                        android:textSize="13dp"/>
                     <SeekBar
+                        android:id="@+id/sb_findt"
                         android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
                     <Button
+                        android:id="@+id/ok"
                         android:onClick="@{clickT::confirm}"
                         android:text="@string/Confirm"
                         android:textColor="@color/white"

@@ -3,6 +3,7 @@ package com.example.smartmatch.logic
 
 import androidx.lifecycle.liveData
 import com.example.smartmatch.logic.model.helper.AreaCreationHelper
+import com.example.smartmatch.logic.model.helper.FindT
 import com.example.smartmatch.logic.network.NetworkCenter
 import com.example.smartmatch.logic.network.model.ScenarioResponse
 import kotlinx.coroutines.Dispatchers
@@ -49,6 +50,31 @@ object Repository {
     fun login(username: String, password: String) = fire(Dispatchers.IO) {
         val response=NetworkCenter.login(username, password)
         run {
+            Result.success(response)
+        }
+    }
+    fun findC(id: String)= fire(Dispatchers.IO){
+        val response=NetworkCenter.findCid(id)
+         run{
+             Result.success(response)
+         }
+    }
+
+    fun findT()= fire(Dispatchers.IO){
+        val response=NetworkCenter.findTid()
+        run{
+            Result.success(response)
+        }
+    }
+    fun checkyulan(id: Int) = fire(Dispatchers.IO) {
+        val response = NetworkCenter.checkyulan(id)
+        run {
+            Result.success(response)
+        }
+    }
+    fun checkOk(ok:Int)= fire(Dispatchers.IO){
+        val response=NetworkCenter.checkok(ok)
+        run{
             Result.success(response)
         }
     }

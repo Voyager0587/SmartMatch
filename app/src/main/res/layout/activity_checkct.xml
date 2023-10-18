@@ -23,7 +23,68 @@
             android:layout_height="match_parent" >
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/check"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="wrap_content"
+                    android:layout_height="130dp"
+                    android:layout_gravity="center_horizontal" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="wrap_content"
+                    android:layout_height="140dp"
+                    android:layout_gravity="center_horizontal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/lights_text"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal">
+                    <Button
+                        android:layout_width="70dp"
+                        android:layout_height="50dp"
+                        android:text="@string/all_on"
+                        android:textSize="10dp"
+                        android:layout_marginLeft="10dp"/>
+                    <Button
+                        android:layout_width="70dp"
+                        android:layout_height="50dp"
+                        android:text= "@string/all_off"
+                        android:textSize="10dp"
+                        android:layout_marginLeft="10dp"/>
+
+                    <Button
+                        android:layout_width="70dp"
+                        android:layout_height="50dp"
+                        android:text="@string/all_flickeer"
+                        android:textSize="10dp"
+                        android:layout_marginLeft="10dp"/>
+                </LinearLayout>
+                <SeekBar
+                    android:id="@id/checkct_sb"
+                    android:layout_width="300dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"/>
+                <Button
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:text="@string/finsh"
+                    android:textSize="10dp"
+                    android:layout_marginLeft="280dp"/>
+
 
             </LinearLayout>
         </FrameLayout>

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.smartmatch.ui.MainViewModel" />
+            type="com.example.smartmatch.ui.viewModel1.MainViewModel" />
     </data>
 <FrameLayout
     android:id="@+id/container_main"

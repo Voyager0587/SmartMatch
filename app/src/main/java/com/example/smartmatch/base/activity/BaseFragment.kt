@@ -53,7 +53,6 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment(), BaseBinding<VB> 
      * 为视图设置初值
      * */
     protected open fun initView() {
-
     }
 
 

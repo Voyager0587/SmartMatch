@@ -3,7 +3,10 @@ package com.example.smartmatch.ui.construction.areadefine
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -16,7 +19,7 @@ import com.example.smartmatch.base.util.safeLaunch
 import com.example.smartmatch.databinding.FragmentAreaDefineBinding
 import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.MmnetData
-import com.example.smartmatch.logic.network.model.ResponseMessage
+import com.example.smartmatch.logic.model.helper.FindT
 import com.example.smartmatch.ui.construction.ConstructionListener
 import com.example.smartmatch.ui.findC.FindCActivity
 import com.example.smartmatch.ui.view.ItemButton
@@ -95,7 +98,7 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
                 }
 
                 val newArea = createItemButton(context, "新建区域") {
-                    InputDialog("新建区域", "请输入区域名称", "确定", "取消", "")
+                    InputDialog("新建区域", "请输入区域名称", "确定", "取消", "正在输入的文字")
                         .setCancelable(true)
                         .setOkButton { baseDialog, v, inputStr ->
                             requireActivity().toast("输入的内容：$inputStr")
@@ -155,11 +158,17 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
         }
     }
 
-    override fun processResponse(result: LiveData<Result<ResponseMessage>>) {
-        super.processResponse(result)
-        result.observe(this) { re ->
-            val responseMsg=re.getOrNull()
-            responseMsg?.name?.isEmpty()
-        }
+    override fun processFindT(result: LiveData<Result<FindT>>) {
+        TODO("Not yet implemented")
     }
+
+    override fun initFragment(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        TODO("Not yet implemented")
+    }
+
+
 }
