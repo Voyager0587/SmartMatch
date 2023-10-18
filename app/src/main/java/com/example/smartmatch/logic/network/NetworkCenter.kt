@@ -3,8 +3,10 @@ package com.example.smartmatch.logic.network
 import android.util.Log
 import com.example.smartmatch.logic.model.User
 import com.example.smartmatch.logic.model.helper.AreaCreationHelper
+import com.example.smartmatch.logic.model.helper.FindT
 import com.example.smartmatch.logic.network.api.ConstructionService
 import com.example.smartmatch.logic.network.api.PersonService
+import com.example.smartmatch.logic.network.model.Checkyulan
 import com.example.smartmatch.logic.network.model.ScenarioResponse
 
 import retrofit2.Call
@@ -45,8 +47,10 @@ object NetworkCenter {
     /**
      * 创建Area
      */
-    suspend fun createNewArea(id: Int, areaCreationHelper: AreaCreationHelper) =
-        constructionServer.createNewArea(id, areaCreationHelper).await()
+    suspend fun createNewArea(id:Int,areaCreationHelper: AreaCreationHelper)
+        = constructionServer.createNewArea(id,areaCreationHelper).await()
+    suspend fun checkyulan(checkyulan: Int) = constructionServer.postLightOn(checkyulan).await()
+    suspend fun checkok(ok:Int)= constructionServer.checkok(ok).await()
 
 
     /**
@@ -54,6 +58,17 @@ object NetworkCenter {
      */
     suspend fun login(username: String, password: String) =
         personServer.login(User(username.toInt(), password)).await()
+
+    /**
+     * 找C
+     */
+    suspend fun findCid(id: String)=constructionServer.findC(id).await()
+
+    /**
+     * 找T
+     */
+    suspend fun findTid()= constructionServer.findT().await()
+
 
 
     private suspend fun <T> Call<T>.await(): T {

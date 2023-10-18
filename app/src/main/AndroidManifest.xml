@@ -22,15 +22,28 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
+
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity android:name=".ui.findC.FindCActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
+        </activity>
+        <activity android:name=".ui.findT.FindTActivity"
+            android:exported="true">
+
+        </activity>
+        <activity android:name=".ui.choiceT.ChoiceTActivity"
+            android:exported="true">
+
         </activity>
         <activity android:name=".ui.findC.FindCActivity"
             android:exported="true">
@@ -42,4 +55,6 @@
         </activity>
     </application>
 
-</manifest>
+
+
+    </manifest>

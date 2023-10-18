@@ -1,5 +1,9 @@
 package com.example.smartmatch.ui.construction.lightcontrol
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
@@ -10,6 +14,7 @@ import com.example.smartmatch.base.util.safeLaunch
 import com.example.smartmatch.databinding.FragmentLightControlSceneBinding
 import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.ScenariosData
+import com.example.smartmatch.logic.model.helper.FindT
 import com.example.smartmatch.logic.network.model.ResponseMessage
 import com.example.smartmatch.logic.network.model.Scenario
 import com.example.smartmatch.logic.network.model.ScenarioResponse
@@ -89,6 +94,10 @@ class LightControlScenarioFragment(
             }
 
         }
+    }
+
+    override fun processFindT(result: LiveData<Result<FindT>>) {
+        TODO("Not yet implemented")
     }
 
 

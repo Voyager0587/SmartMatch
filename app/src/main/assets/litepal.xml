@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname value="SmartMatchData"></dbname>
+    <version value="1"></version>
+    <list>
+        <mapping value="com.example.smartmatch.logic.model.TPrecent"></mapping>
+        <mapping value="com.example.smartmatch.chart.TData"></mapping>
+    </list>
+<strorage value="external"></strorage>
+
+</litepal>

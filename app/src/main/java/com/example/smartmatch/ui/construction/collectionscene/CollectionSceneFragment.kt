@@ -1,5 +1,9 @@
 package com.example.smartmatch.ui.construction.collectionscene
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import com.example.smartmatch.base.activity.BaseFragment
@@ -7,6 +11,7 @@ import com.example.smartmatch.base.util.safeLaunch
 import com.example.smartmatch.databinding.FragmentCollectionSceneBinding
 import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.MmnetData
+import com.example.smartmatch.logic.model.helper.FindT
 import com.example.smartmatch.ui.construction.ConstructionListener
 import com.example.smartmatch.ui.construction.adapter.SceneAdapter
 
@@ -53,6 +58,10 @@ class CollectionSceneFragment : BaseFragment<FragmentCollectionSceneBinding>(),C
         }
     }
 
+    override fun processFindT(result: LiveData<Result<FindT>>) {
+        TODO("Not yet implemented")
+    }
+
     override fun initListener() {
         super.initListener()
         binding.imageBtnAddScene.setOnClickListener {
@@ -68,5 +77,13 @@ class CollectionSceneFragment : BaseFragment<FragmentCollectionSceneBinding>(),C
     override fun initRecyclerList(mmnet_data: List<MmnetData>) {
         super.initRecyclerList(mmnet_data)
 
+    }
+
+    override fun initFragment(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        TODO("Not yet implemented")
     }
 }

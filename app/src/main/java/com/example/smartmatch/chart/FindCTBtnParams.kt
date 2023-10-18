@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.TextView
 
 class FindCTBtnParams<V : View> {
+    var houduan_id:Int=0
     var id: Int = 0
     var l: Int = 0
     var view: V? = null
@@ -18,6 +19,7 @@ class FindCTBtnParams<V : View> {
     override fun toString(): String {
         return "ViewParams{" +
                 "view=" + view +
+                ",houduan_id"+houduan_id+
                 ", id=" + id +
                 ", rawX=" + rawX +
                 ", rawY=" + rawY +
