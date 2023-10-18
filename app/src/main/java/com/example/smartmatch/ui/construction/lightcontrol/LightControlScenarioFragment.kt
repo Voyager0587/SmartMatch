@@ -46,12 +46,16 @@ class LightControlScenarioFragment(
 
     override fun initListener() {
         super.initListener()
-        binding.swPauseActive.setOnCheckedChangeListener { _, isChecked ->
-            mViewModel
+        binding.swSwitch.setOnCheckedChangeListener { _, isChecked ->
+            if(isChecked)
+                mViewModel.instructScenario(getInstructionScenario())
+            else
+                mViewModel.closeScene()
+            toast("adfhiausyhdfuia")
         }
         binding.btnSendMsg.setOnClickListener {
             mViewModel.instructScenario(getInstructionScenario())
-            toast("adfhiausyhdfuia")
+
         }
 
         binding.seekBarAdjustBrightness.setOnSeekBarChangeListener(object :
@@ -73,9 +77,6 @@ class LightControlScenarioFragment(
 
         })
 
-        binding.swSwitch.setOnCheckedChangeListener { _, isChecked ->
-
-        }
     }
 
     override fun processResponse(result: LiveData<Result<ResponseMessage>>) {
@@ -87,7 +88,6 @@ class LightControlScenarioFragment(
                     toast("控制成功")
                 else toast("控制失败")
             }
-
         }
     }
 
@@ -111,7 +111,7 @@ class LightControlScenarioFragment(
         for (scene in scenariosDataList) {
             val scenario =
                 Scenario(scene.id,
-                    (scene.required_percentage *100* brightness_adjustment_percentage).toInt()
+                    (scene.required_percentage *4* brightness_adjustment_percentage).toInt()
                 )
             scenarioList.add(scenario)
         }

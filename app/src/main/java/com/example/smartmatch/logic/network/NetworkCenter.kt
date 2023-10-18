@@ -36,6 +36,8 @@ object NetworkCenter {
      */
     suspend fun getMMNetData() = constructionServer.getMMNetAllData().await()
 
+    suspend fun closeScene()= constructionServer.closeScene().await()
+
     /**
      * 照明控制--控制场景
      */

@@ -1,11 +1,12 @@
 package com.example.smartmatch.ui.construction.adapter
 
 
+import android.annotation.SuppressLint
 import com.example.smartmatch.base.activity.BaseAdapter
 import com.example.smartmatch.databinding.ItemLightControlScenarioBinding
 import com.example.smartmatch.logic.model.ScenariosData
 import com.example.smartmatch.ui.construction.lightcontrol.LightControlScenarioFragment
-import com.example.smartmatch.ui.toast
+import com.example.smartmatch.ui.view.MultiButton
 
 /**
  * @className: LightControlScenario
@@ -23,20 +24,24 @@ class LightControlScenarioAdapter(private val fragment: LightControlScenarioFrag
 
 
     override fun ItemLightControlScenarioBinding.onBindViewHolder(
-        bean: ScenariosData,
+        @SuppressLint("RecyclerView") bean: ScenariosData,
         position: Int
     ) {
         //   multiBtn.text=bean.name
         multiBtn.text(bean.name, bean.required_percentage, bean.id)
         // ? 这里通过add（记得判断重复点击，查找重复？），removeAt来操作
         // ! id记录，但是percentage要X一下发过去
-        multiBtn.setOnClickListener{
-            if(multiBtn.judge)
-                scenarioList.add(bean)
-            else
-                scenarioList.remove(bean)
-            "Adapter:点击了item".toast()
-        }
+
+        multiBtn.setOnClickListener(object :MultiButton.OnClickListener{
+            override fun onTitleClick() {
+                if(multiBtn.judge)
+                    scenarioList.add(bean)
+                else
+                    scenarioList.remove(bean)
+
+            }
+
+        })
     }
 
 }

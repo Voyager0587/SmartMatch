@@ -25,6 +25,13 @@ object Repository {
         }
     }
 
+    fun closeScene()=fire(Dispatchers.IO) {
+        val response = NetworkCenter.closeScene()
+        run {
+            Result.success(response)
+        }
+    }
+
     fun instructScenario( scenario: ScenarioResponse)= fire(Dispatchers.IO){
         val response=NetworkCenter.instructScenario(scenario)
         run{
