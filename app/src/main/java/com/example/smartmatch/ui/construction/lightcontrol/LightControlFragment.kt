@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Build
 import android.view.View
 import android.widget.CompoundButton
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
@@ -106,7 +105,7 @@ class LightControlFragment : BaseFragment<FragmentLightControlBinding>(), Constr
                 for (j in mmnet_data[i].areas.areas_data.indices) {
                     val areaName = mmnet_data[i].areas.areas_data[j].area.name
                     val area = createItemButton(context, areaName) {
-                        Toast.makeText(context, "Clicked on: $areaName", Toast.LENGTH_SHORT).show()
+                       // Toast.makeText(context, "Clicked on: $areaName", Toast.LENGTH_SHORT).show()
                         binding.searchArea.setText(areaName)
                         area_id = mmnet_data[i].areas.areas_data[j].area.id
                         area_index = j
