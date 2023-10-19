@@ -18,6 +18,7 @@ class AreaDefineViewModel:ViewModel() {
     private val repository = Repository
     internal var constructionListener: ConstructionListener?=null
     var mmnetData: LiveData<Result<MMNetResponse>>? = null
+
     var areaCreationHelper=AreaCreationHelper()
 
     fun getMMNetData(){

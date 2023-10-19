@@ -5,13 +5,10 @@ import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.MmnetScenarioLight
 import com.example.smartmatch.logic.model.TPrecentageBody
 import com.example.smartmatch.logic.model.helper.AreaCreationHelper
-import com.example.smartmatch.logic.model.helper.FindT
-import com.example.smartmatch.logic.network.model.Checkyulan
 import com.example.smartmatch.logic.network.model.ResponseMessage
 import com.example.smartmatch.logic.network.model.ScenarioResponse
-import okhttp3.RequestBody
+import com.example.smartmatch.logic.network.model.SceneCreationResponse
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.GET
@@ -30,6 +27,12 @@ interface ConstructionService {
 
     @GET("/mmnet/data")
     fun getMMNetAllData(): Call<MMNetResponse>
+
+    @GET("/mmnet/scenario/light/{id}")
+    fun getTByAreaId(@Path("id") id: Int): Call<SceneCreationResponse>
+
+    @GET("/mmnet/scenario/light/{id}")
+    fun getLightByAreaId(@Path("id") id: Int): Call<SceneCreationResponse>
 
     @POST("/instructions/scenario/off")
     fun closeScene():Call<ResponseMessage>

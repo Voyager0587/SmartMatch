@@ -5,6 +5,7 @@ import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.MmnetData
 import com.example.smartmatch.logic.model.helper.FindT
 import com.example.smartmatch.logic.network.model.ResponseMessage
+import com.example.smartmatch.logic.network.model.SceneCreationResponse
 
 /**
  * @className: ConstructionListener
@@ -19,6 +20,8 @@ interface ConstructionListener {
      * 获取当前MMNet的全部数据的回调处理方法
      */
     fun processMMNetData(result: LiveData<Result<MMNetResponse>>) {}
+
+    fun processTData(result: LiveData<Result<SceneCreationResponse>>) {}
 
     /**
      * 处理通用的返回数据，确定是否操作成功

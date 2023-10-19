@@ -12,6 +12,7 @@ import com.example.smartmatch.databinding.FragmentSceneDefineBinding
 import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.MmnetData
 import com.example.smartmatch.logic.model.helper.FindT
+import com.example.smartmatch.logic.network.model.SceneCreationResponse
 import com.example.smartmatch.ui.construction.ConstructionListener
 import com.example.smartmatch.ui.view.ItemButton
 import com.kongzue.dialogx.dialogs.InputDialog
@@ -94,6 +95,7 @@ class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), Construc
                                 .setOkButton { baseDialog, v, inputStr ->
                                     requireActivity().toast("Input content：$inputStr")
                                     addNewView(inputStr)
+                                    mViewModel.getTByAreaId(1)
                                     false
                                 }
                                 .show()
@@ -105,6 +107,7 @@ class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), Construc
                                 .setOkButton { baseDialog, v, inputStr ->
                                     requireActivity().toast("Input content：$inputStr")
                                     addNewView(inputStr)
+
                                     false
                                 }
                                 .show()
@@ -126,7 +129,6 @@ class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), Construc
     ): ItemButton {
         val button = ItemButton(context, null)
         button.text(text)
-        toast("Choose $text")
         button.setOnClickListener { onClick() }
         button.setOnClickListener(object :ItemButton.OnClickListener{
             override fun onTitleClick() {
@@ -151,6 +153,17 @@ class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), Construc
             re?.getOrNull()?.let { response ->
                 val mmnetDataList = response.data.mmnet_data
                 initRecyclerList(mmnetDataList)
+            }
+        }
+    }
+
+
+    override fun processTData(result: LiveData<Result<SceneCreationResponse>>) {
+        super.processTData(result)
+        result.observe(this) { re ->
+            re?.getOrNull()?.let { response ->
+                val lightDataList = response.data.light_data
+
             }
         }
     }
