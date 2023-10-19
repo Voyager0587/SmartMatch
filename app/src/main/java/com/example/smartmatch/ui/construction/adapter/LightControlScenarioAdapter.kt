@@ -27,9 +27,14 @@ class LightControlScenarioAdapter(private val fragment: LightControlScenarioFrag
         @SuppressLint("RecyclerView") bean: ScenariosData,
         position: Int
     ) {
-        var temp=bean.required_percentage*(adjustPercentage/100)
-        val str :String = String.format("%.2f",(temp))
-        multiBtn.text(bean.name, str.toDouble(), bean.id)
+        if(multiBtn.judge){
+            //val temp=bean.required_percentage*(adjustPercentage/100)
+            val str :String = String.format("%.2f",(adjustPercentage/100))
+            multiBtn.text(bean.name, str.toDouble(), bean.id)
+        }else{
+            multiBtn.text(bean.name, bean.required_percentage, bean.id)
+        }
+
         // ? 这里通过add（记得判断重复点击，查找重复？），removeAt来操作
         // ! id记录，但是percentage要X一下发过去
 

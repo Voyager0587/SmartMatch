@@ -23,6 +23,8 @@ interface ConstructionListener {
 
     fun processTData(result: LiveData<Result<SceneCreationResponse>>) {}
 
+    fun processSceneCloseResponse(result:LiveData<Result<ResponseMessage>>){}
+
     /**
      * 处理通用的返回数据，确定是否操作成功
      */

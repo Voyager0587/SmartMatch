@@ -12,6 +12,8 @@ import com.example.smartmatch.databinding.FragmentLightControlSceneBinding
 import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.ScenariosData
 import com.example.smartmatch.logic.model.helper.FindT
+import com.example.smartmatch.logic.model.helper.ScenarioChild
+import com.example.smartmatch.logic.model.helper.SceneCloseHelper
 import com.example.smartmatch.logic.network.model.ResponseMessage
 import com.example.smartmatch.logic.network.model.Scenario
 import com.example.smartmatch.logic.network.model.ScenarioResponse
@@ -50,14 +52,22 @@ class LightControlScenarioFragment(
         super.initListener()
         binding.swSwitch.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
-                mViewModel.instructScenario(getInstructionScenario())
+                if(adapter.scenarioList.isNotEmpty())
+                    mViewModel.instructScenario(getInstructionScenario())
             }
-            else
-                mViewModel.closeScene()
+            else{
+                val scenario= mutableListOf<ScenarioChild>()
+                val scenes=getInstructionScenario()
+                for (scene in scenes.scenario){
+                   scenario.add(ScenarioChild(scene.id))
+                }
+                mViewModel.closeScene(SceneCloseHelper(scenario.toList()))
+            }
+
 
         }
 
-        binding.seekBarAdjustBrightness.max=400
+        binding.seekBarAdjustBrightness.max=150
         binding.seekBarAdjustBrightness.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             @SuppressLint("SetTextI18n")
@@ -75,6 +85,10 @@ class LightControlScenarioFragment(
                 // 用户停止拖动SeekBar时执行的操作
                 brightness_adjustment_percentage = seekBar.progress
                 adapter.adjustPercentage=seekBar.progress.toFloat()
+                if(binding.swSwitch.isChecked){
+                    mViewModel.instructScenario(getInstructionScenario())
+                }
+
             }
 
         })
@@ -118,12 +132,25 @@ class LightControlScenarioFragment(
         val scenarioList = ArrayList<Scenario>()
         for (scene in scenariosDataList) {
             val scenario =
-                Scenario(scene.id,
-                    (scene.required_percentage *4* brightness_adjustment_percentage).toInt()
+                Scenario(scene.id, (adapter.adjustPercentage/100)
                 )
             scenarioList.add(scenario)
         }
         return ScenarioResponse(scenarioList,if(binding.swSwitch.isChecked)1 else 0)
+    }
+
+    override fun processSceneCloseResponse(result: LiveData<Result<ResponseMessage>>) {
+        super.processSceneCloseResponse(result)
+        result.observe(this) {
+            if(it.isSuccess){
+                val responseMessage = it.getOrNull()
+                if(responseMessage?.code==1){
+                    adapter.notifyDataSetChanged()
+                    toast("控制成功")
+                }
+                else toast(responseMessage?.msg)
+            }
+        }
     }
 
     private fun searchData(mmnetData: MMNetResponse): List<ScenariosData> {

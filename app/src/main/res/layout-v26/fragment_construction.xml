@@ -56,6 +56,7 @@
                 android:textStyle="bold"
                 android:autoSizePresetSizes="@array/sizes"
                 android:gravity="center_vertical"
+                android:textColor="@color/grey"
                 />
 
         </LinearLayout>
@@ -100,6 +101,7 @@
                 android:textSize="@dimen/app_text_size_normal"
                 android:autoSizePresetSizes="@array/sizes"
                 android:gravity="center_vertical"
+                android:textColor="@color/grey"
                 />
 
         </LinearLayout>
@@ -144,6 +146,7 @@
                 android:textSize="@dimen/app_text_size_normal"
                 android:autoSizePresetSizes="@array/sizes"
                 android:gravity="center_vertical"
+                android:textColor="@color/grey"
                 />
 
         </LinearLayout>
@@ -188,7 +191,9 @@
                 android:textStyle="bold"
                 android:textSize="@dimen/app_text_size_normal"
                 android:autoSizePresetSizes="@array/sizes"
-                android:gravity="center_vertical"/>
+                android:gravity="center_vertical"
+                android:textColor="@color/grey"
+                />
 
         </LinearLayout>
         <LinearLayout
@@ -232,6 +237,7 @@
                 android:textSize="@dimen/app_text_size_normal"
                 android:autoSizePresetSizes="@array/sizes"
                 android:gravity="center_vertical"
+                android:textColor="@color/grey"
                 />
 
         </LinearLayout>
