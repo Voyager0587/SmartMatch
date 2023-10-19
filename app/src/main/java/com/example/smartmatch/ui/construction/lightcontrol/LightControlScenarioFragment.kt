@@ -56,10 +56,7 @@ class LightControlScenarioFragment(
                 mViewModel.closeScene()
 
         }
-        binding.btnSendMsg.setOnClickListener {
-            mViewModel.instructScenario(getInstructionScenario())
 
-        }
         binding.seekBarAdjustBrightness.max=400
         binding.seekBarAdjustBrightness.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
