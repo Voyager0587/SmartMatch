@@ -1,6 +1,7 @@
 package com.example.smartmatch.ui.construction.scenedefine
 
 import android.content.Context
+import android.content.Intent
 import android.view.View
 import android.widget.CompoundButton
 import android.widget.Toast
@@ -12,7 +13,9 @@ import com.example.smartmatch.databinding.FragmentSceneDefineBinding
 import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.MmnetData
 import com.example.smartmatch.logic.model.helper.FindT
+import com.example.smartmatch.logic.network.model.SceneCreationResponse
 import com.example.smartmatch.ui.construction.ConstructionListener
+import com.example.smartmatch.ui.findT.FindTActivity
 import com.example.smartmatch.ui.view.ItemButton
 import com.kongzue.dialogx.dialogs.InputDialog
 
@@ -25,6 +28,7 @@ import com.kongzue.dialogx.dialogs.InputDialog
 class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), ConstructionListener {
 
     private var lastIndex = 0
+    private var area_id=0
     private val mViewModel: SceneDefineViewModel by lazy {
         ViewModelProvider(
             requireActivity(),
@@ -73,7 +77,7 @@ class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), Construc
                         lastIndex = 0
                         binding.searchControl.setText(name)
                         binding.containerScene.removeAllViews()
-
+                        area_id=mmnet_data[i].areas.areas_data[j].area.id
                         for (k in mmnet_data[i].areas.areas_data[j].area.scenarios_data.indices) {
                             val sceneName =
                                 mmnet_data[i].areas.areas_data[j].area.scenarios_data[k].name
@@ -94,6 +98,10 @@ class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), Construc
                                 .setOkButton { baseDialog, v, inputStr ->
                                     requireActivity().toast("Input content：$inputStr")
                                     addNewView(inputStr)
+                                    mViewModel.getTByAreaId(area_id)
+                                    var intent=Intent(requireContext(),FindTActivity::class.java)
+                                    intent.putExtra("area_id",area_id)
+                                    requireContext().startActivity(intent)
                                     false
                                 }
                                 .show()
@@ -105,6 +113,7 @@ class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), Construc
                                 .setOkButton { baseDialog, v, inputStr ->
                                     requireActivity().toast("Input content：$inputStr")
                                     addNewView(inputStr)
+
                                     false
                                 }
                                 .show()
@@ -126,7 +135,6 @@ class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), Construc
     ): ItemButton {
         val button = ItemButton(context, null)
         button.text(text)
-        toast("Choose $text")
         button.setOnClickListener { onClick() }
         button.setOnClickListener(object :ItemButton.OnClickListener{
             override fun onTitleClick() {
@@ -151,6 +159,17 @@ class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), Construc
             re?.getOrNull()?.let { response ->
                 val mmnetDataList = response.data.mmnet_data
                 initRecyclerList(mmnetDataList)
+            }
+        }
+    }
+
+
+    override fun processTData(result: LiveData<Result<SceneCreationResponse>>) {
+        super.processTData(result)
+        result.observe(this) { re ->
+            re?.getOrNull()?.let { response ->
+                val lightDataList = response.data.light_data
+
             }
         }
     }

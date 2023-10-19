@@ -5,10 +5,8 @@ import com.example.smartmatch.logic.model.LightOffBody
 import com.example.smartmatch.logic.model.TPrecentageBody
 import com.example.smartmatch.logic.model.User
 import com.example.smartmatch.logic.model.helper.AreaCreationHelper
-import com.example.smartmatch.logic.model.helper.FindT
 import com.example.smartmatch.logic.network.api.ConstructionService
 import com.example.smartmatch.logic.network.api.PersonService
-import com.example.smartmatch.logic.network.model.Checkyulan
 import com.example.smartmatch.logic.network.model.ScenarioResponse
 
 import retrofit2.Call
@@ -39,7 +37,8 @@ object NetworkCenter {
      * 获取MMNet全部数据
      */
     suspend fun getMMNetData() = constructionServer.getMMNetAllData().await()
-
+    suspend fun getTByAreaId(id:Int)= constructionServer.getTByAreaId(id).await()
+    suspend fun getLightByAreaId(id:Int)= constructionServer.getLightByAreaId(id).await()
     suspend fun closeScene()= constructionServer.closeScene().await()
 
     /**

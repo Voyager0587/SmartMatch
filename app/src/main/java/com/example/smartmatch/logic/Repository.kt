@@ -5,7 +5,6 @@ import androidx.lifecycle.liveData
 import com.example.smartmatch.logic.model.LightOffBody
 import com.example.smartmatch.logic.model.TPrecentageBody
 import com.example.smartmatch.logic.model.helper.AreaCreationHelper
-import com.example.smartmatch.logic.model.helper.FindT
 import com.example.smartmatch.logic.network.NetworkCenter
 import com.example.smartmatch.logic.network.model.ScenarioResponse
 import kotlinx.coroutines.Dispatchers
@@ -28,6 +27,18 @@ object Repository {
         }
     }
 
+    fun getTByAreaId(id: Int) = fire(Dispatchers.IO) {
+        val response = NetworkCenter.getTByAreaId(id)
+        run {
+            Result.success(response)
+        }
+    }
+    fun getLightByAreaId(id: Int) = fire(Dispatchers.IO) {
+        val response = NetworkCenter.getLightByAreaId(id)
+        run {
+            Result.success(response)
+        }
+    }
     fun closeScene()=fire(Dispatchers.IO) {
         val response = NetworkCenter.closeScene()
         run {
