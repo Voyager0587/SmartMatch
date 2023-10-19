@@ -9,7 +9,7 @@
 
         <variable
             name="checkctModel"
-            type="com.example.smartmatch.ui.MainViewModel" />
+            type="com.example.smartmatch.ui.viewModel1.FindTStepOneViewModel" />
 
     </data>
 
