@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.smartmatch.chart.FindCTBtnParams
 import com.example.smartmatch.logic.Repository
+import com.example.smartmatch.logic.model.CheckCTData
 import com.example.smartmatch.logic.model.LightOffBody
 import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.MmnetScenarioLight
@@ -24,16 +25,14 @@ class FindTStepOneViewModel : ViewModel() {
     var chooseTheCList = mutableListOf<FindCTBtnParams<View>>()
     var auditTCList = mutableListOf<FindCTBtnParams<View>>()
     var currentlyDeterminedCBtn: MutableLiveData<FindCTBtnParams<View>> = MutableLiveData()
-    val findtdata=MutableLiveData<FindT>()
+    var currentchooseBt= mutableListOf<Int>()
+    var currentlight= mutableListOf< CheckCTData>()
     private var lightOffBody :LightOffBody? = null
     private var tPrecentageBody:TPrecentageBody?=null
     private val repository = Repository
-    var findtid=""
-    var t_num=""
     internal var constructionListener: ConstructionListener?=null
     var findt:LiveData<Result<MmnetScenarioLight>>?=null
     val findT=FindT()
-    val findTid="116412487"
 
     var checkyulan by Delegates.notNull<Int>()
     var ok by Delegates.notNull<Int>()

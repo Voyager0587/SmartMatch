@@ -9,7 +9,7 @@
 
         <variable
             name="checkctModel"
-            type="com.example.smartmatch.ui.MainViewModel" />
+            type="com.example.smartmatch.ui.viewModel1.FindTStepOneViewModel" />
 
     </data>
 
@@ -34,13 +34,9 @@
                     android:textColor="@color/black"/>
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_checktvdata"
                     android:layout_width="wrap_content"
                     android:layout_height="130dp"
-                    android:layout_gravity="center_horizontal" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="wrap_content"
-                    android:layout_height="140dp"
                     android:layout_gravity="center_horizontal" />
 
                 <TextView
@@ -73,8 +69,14 @@
                         android:textSize="10dp"
                         android:layout_marginLeft="10dp"/>
                 </LinearLayout>
+                <TextView
+                    android:id="@+id/checkct_pg_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0%"
+                    android:layout_gravity="center_horizontal"/>
                 <SeekBar
-
+                    android:id="@+id/sb_progress_checkct"
                     android:layout_width="300dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center"/>

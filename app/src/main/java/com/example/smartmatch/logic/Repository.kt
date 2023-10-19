@@ -2,6 +2,7 @@ package com.example.smartmatch.logic
 
 
 import androidx.lifecycle.liveData
+import com.example.smartmatch.logic.model.CheckCTData
 import com.example.smartmatch.logic.model.LightOffBody
 import com.example.smartmatch.logic.model.TPrecentageBody
 import com.example.smartmatch.logic.model.helper.AreaCreationHelper
@@ -91,6 +92,13 @@ object Repository {
             Result.success(response)
         }
     }
+    fun setnewscenario(checkCTData: CheckCTData)=fire(Dispatchers.IO){
+        val response=NetworkCenter.setnewscenario(checkCTData)
+        run{
+            Result.success(response)
+        }
+    }
+
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData<Result<T>>(context) {
             val result = try {

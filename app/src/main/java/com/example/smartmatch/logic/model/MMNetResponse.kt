@@ -24,6 +24,7 @@ data class MmnetData(
     val C: C,
     val admin_id: String,
     val areas: Areas,
+    val checkCTData: CheckCTData,
     val mmnet_id: Int,
     val mmnet_name: String,
 
@@ -137,4 +138,22 @@ data class Light1(
     val id: Int,
     @SerializedName("percentage")
     val percentage: Int
+)
+data class CheckCTData(
+    @SerializedName("name")
+    val name: String,
+    @SerializedName("scenario_definitional_percentage")
+    val scenarioDefinitionalPercentage: Double,
+    @SerializedName("scenario_light")
+    val scenarioLight: List<CheckCTData>
+)
+data class checkctRepose(
+    val data: List<CheckCTData>
+)
+
+data class ScenarioLight(
+    @SerializedName("light_definitional_percentage")
+    val lightDefinitionalPercentage: Double,
+    @SerializedName("light_id")
+    val lightId: Int
 )

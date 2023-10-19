@@ -1,9 +1,13 @@
 package com.example.smartmatch.ui.findT.step_one
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.os.Bundle
 import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.CompoundButton
 import android.widget.LinearLayout
 import android.widget.RadioGroup
@@ -18,28 +22,32 @@ import com.example.smartmatch.base.activity.BaseFragment
 import com.example.smartmatch.base.util.CTNumberUtils
 import com.example.smartmatch.chart.FindCTBtnParams
 import com.example.smartmatch.databinding.FragmentFindTStepOneBinding
+import com.example.smartmatch.logic.model.CheckCTData
 import com.example.smartmatch.logic.model.Light
 import com.example.smartmatch.logic.model.Light1
 import com.example.smartmatch.logic.model.LightOffBody
+import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.TPrecentageBody
 import com.example.smartmatch.logic.model.helper.FindT
+import com.example.smartmatch.ui.checkCT.CheckCTActivity
 import com.example.smartmatch.ui.construction.ConstructionListener
 import com.example.smartmatch.ui.viewModel1.FindTStepOneViewModel
-class FindTStepOneFragment : BaseFragment<FragmentFindTStepOneBinding>(),ConstructionListener {
+class FindTStepOneFragment (var idd:Int,var name:String): BaseFragment<FragmentFindTStepOneBinding>(),ConstructionListener {
     private lateinit var chooseAdapter: RvIdentifiedTheCListAdapter
     private lateinit var hasAuditAdapter: RvIdentifiedTheCListAdapter
+    val viewFindCTBtnParams = FindCTBtnParams<TextView>()
     private val viewModel: FindTStepOneViewModel by lazy {
         ViewModelProvider(
             requireActivity(),
             ViewModelProvider.NewInstanceFactory()
         )[FindTStepOneViewModel::class.java]
     }
+
     var idi:Int = 0
-    val intent= Intent()
     private var  t_percentage = 0
-
-
-
+    var idt:Int=0
+    var namet:String=""
+//    var current:CheckCTData=null
     override fun FragmentFindTStepOneBinding.initBindingView() {
         binding.vmT=viewModel
         binding.clickT=Click()
@@ -65,7 +73,7 @@ class FindTStepOneFragment : BaseFragment<FragmentFindTStepOneBinding>(),Constru
                 viewModel.sendMessage()
             }
         }
-        sb_clickListener()
+
     }
     fun sb_clickListener(){
         binding.sbFindt.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
@@ -89,18 +97,28 @@ class FindTStepOneFragment : BaseFragment<FragmentFindTStepOneBinding>(),Constru
 
         })
     }
+
+
     inner class Click {
         fun chose(view: View) {
             val value = viewModel.currentlyDeterminedCBtn.value
             if (value != null) {
                 val listValue = viewModel.chooseTheCList
+                var listid=viewModel.currentchooseBt
                 for (vp in listValue)
                     if (vp.START_CID == value.START_CID)
                         return
                 val newV = FindCTBtnParams<View>()
                 newV.START_CID = value.START_CID
+                listid.add(viewFindCTBtnParams.view?.tag as Int)
                 listValue.add(newV)
                 chooseAdapter.notifyItemInserted(listValue.size)
+
+                viewModel.currentlight.add(1, CheckCTData(namet,t_percentage.toDouble(),viewModel.currentlight.toList()))
+
+
+
+
             }
         }
 
@@ -126,7 +144,11 @@ class FindTStepOneFragment : BaseFragment<FragmentFindTStepOneBinding>(),Constru
     }
 
 
-
+//    override fun onAttach(context: Context) {
+//         idt=idd
+//        namet=name
+//        super.onAttach(context)
+//    }
     override fun initDataBeforeView() {
         viewModel.btnsParams1.value = ArrayList()
         viewModel.btnsParams2.value = ArrayList()
@@ -134,7 +156,7 @@ class FindTStepOneFragment : BaseFragment<FragmentFindTStepOneBinding>(),Constru
     }
 
     override fun observerDataStateUpdateAction() {
-        viewModel.CNumber.observe(this) { integer ->
+        viewModel.CNumber?.observe(this) { integer ->
             val layout = CTNumberUtils.count(integer)
             if (layout == null) {
                 return@observe
@@ -255,7 +277,7 @@ class FindTStepOneFragment : BaseFragment<FragmentFindTStepOneBinding>(),Constru
 
     override fun initDataAfterView() {
 
-        viewModel.CNumber.value =3//viewModel.getFIndT(100).value?.getOrNull()?.data?.lightNum
+        viewModel.CNumber.value =3//viewModel.getFIndT(1).value?.getOrNull()?.data?.lightNum
     }
 
     fun initViewParams() {
@@ -322,9 +344,9 @@ class FindTStepOneFragment : BaseFragment<FragmentFindTStepOneBinding>(),Constru
                     for (i in 0 until binding.ll3.childCount) {
                         val btn = ((binding.ll3.getChildAt(i) as LinearLayout).getChildAt(0) as LinearLayout).getChildAt(1) as TextView
                         val tv = (binding.ll3.getChildAt(i) as LinearLayout).getChildAt(1) as TextView
-                        val viewFindCTBtnParams = FindCTBtnParams<TextView>()
+
                         val location = IntArray(2)
-                        viewFindCTBtnParams.view?.tag=viewModel.getFIndT(100).value?.getOrNull()?.data?.lightData
+                        viewFindCTBtnParams.view?.tag=viewModel.getFIndT(1).value?.getOrNull()?.data?.lightData
                         btn.getLocationOnScreen(location)
                         viewFindCTBtnParams.view = btn
                         viewFindCTBtnParams.tv = tv
@@ -505,7 +527,7 @@ class FindTStepOneFragment : BaseFragment<FragmentFindTStepOneBinding>(),Constru
             }
             val btns = viewModel.btnsParams3.value!!
             viewModel.save(LightOffBody(btns.map { Light(it.id)  }))
-           viewModel.saveLightList(TPrecentageBody(btns.map { Light1(it.id,t_percentage)}))
+            viewModel.saveLightList(TPrecentageBody(btns.map { Light1(it.id,t_percentage)}))
             for (viewParams in btns) {
                 if (rawX >= viewParams.rawX && rawX <= viewParams.rawX + viewParams.width) {
                     for (vp in btns) {
@@ -525,8 +547,14 @@ class FindTStepOneFragment : BaseFragment<FragmentFindTStepOneBinding>(),Constru
     }
 
     override fun processFindT(result: LiveData<Result<FindT>>) {
-        TODO("Not yet implemented")
-    }
+        result.observe(this) { re ->
+            val response = re.getOrNull()
+            if (response != null) {
+                sb_clickListener()
+            }
 
+        }
+
+    }
 
 }
