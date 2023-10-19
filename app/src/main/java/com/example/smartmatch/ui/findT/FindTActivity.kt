@@ -11,7 +11,7 @@ import com.example.smartmatch.R
 import com.example.smartmatch.base.activity.BaseActivity
 import com.example.smartmatch.databinding.ActivityFindcBinding
 import com.example.smartmatch.databinding.ActivityFindtBinding
-import com.example.smartmatch.ui.checkCT.CheckCTActivity
+//import com.example.smartmatch.ui.checkCT.CheckCTActivity
 import com.example.smartmatch.ui.construction.areadefine.AreaDefineFragment
 import com.example.smartmatch.ui.findT.step_one.FindTStepOneFragment
 import com.example.smartmatch.ui.findC.step_one.FindCStepOneFragment

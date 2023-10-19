@@ -114,6 +114,10 @@ data class MmnetScenarioLight(
     @SerializedName("msg")
     val msg: String?
 )
+data class LightReponse(
+    val mmnetScenarioLight: MmnetScenarioLight,
+    val switch:Int
+)
 
 data class TData(
     @SerializedName("light_data")

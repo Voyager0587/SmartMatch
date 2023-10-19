@@ -80,6 +80,7 @@ object Repository {
             Result.success(response)
         }
     }
+
     fun checkyulan(light:TPrecentageBody) = fire(Dispatchers.IO) {
         val response = NetworkCenter.checkyulan(light)
         run {
