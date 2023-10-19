@@ -97,11 +97,11 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
                     lastIndex++
                 }
 
-                val newArea = createItemButton(context, "新建区域") {
-                    InputDialog("新建区域", "请输入区域名称", "确定", "取消", "正在输入的文字")
+                val newArea = createItemButton(context, "Create a new area") {
+                    InputDialog("Create a new area", "Please enter a area name", "Confirm", "Cancel", "")
                         .setCancelable(true)
                         .setOkButton { baseDialog, v, inputStr ->
-                            requireActivity().toast("输入的内容：$inputStr")
+                            requireActivity().toast("Input content：$inputStr")
                             addNewView(inputStr)
 
                             val intent=Intent(requireActivity(),FindCActivity::class.java)
@@ -130,6 +130,12 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
         val button = ItemButton(context, null)
         button.text(text)
         button.setOnClickListener { onClick() }
+        button.setOnClickListener(object : ItemButton.OnClickListener{
+            override fun onTitleClick() {
+                onClick()
+            }
+
+        })
         return button
     }
 

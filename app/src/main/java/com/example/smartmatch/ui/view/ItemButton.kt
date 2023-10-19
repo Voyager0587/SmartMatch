@@ -7,6 +7,7 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.example.smartmatch.R
+import com.example.smartmatch.base.kxt.toast
 
 /**
  * @className: ItemButton
@@ -35,6 +36,11 @@ class ItemButton(context: Context, attrs: AttributeSet?) : LinearLayout(context,
         rl=view.findViewById(R.id.rl_item)
         name.setOnClickListener {
             clickListener?.onTitleClick()
+            toast("Choose:$info")
+        }
+        rl.setOnClickListener{
+            clickListener?.onTitleClick()
+            toast("Choose:$info")
         }
 //        rl.setOnClickListener{
 //            clickListener?.onTitleClick()

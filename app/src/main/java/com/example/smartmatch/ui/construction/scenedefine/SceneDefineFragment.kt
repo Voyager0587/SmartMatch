@@ -88,22 +88,22 @@ class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), Construc
                             lastIndex++
                         }
 
-                        val newScene = createItemButton(context, "新建场景") {
-                            InputDialog("新建场景", "请输入场景名称", "确定", "取消", "")
+                        val newScene = createItemButton(context, "Create a new scene") {
+                            InputDialog("Create a new scene", "Please enter a scene name", "Confirm", "Cancel", "")
                                 .setCancelable(true)
                                 .setOkButton { baseDialog, v, inputStr ->
-                                    requireActivity().toast("输入的内容：$inputStr")
+                                    requireActivity().toast("Input content：$inputStr")
                                     addNewView(inputStr)
                                     false
                                 }
                                 .show()
                         }
                         binding.containerScene.addView(newScene)
-                        val newScene2 = createItemButton(context, "依据现有场景添加新场景") {
-                            InputDialog("新建场景", "请输入场景名称", "确定", "取消", "")
+                        val newScene2 = createItemButton(context, "Add a new scene based on an existing scene") {
+                            InputDialog("Add a new scene based on an existing scene", "Please enter a scene name", "Confirm", "Cancel", "")
                                 .setCancelable(true)
                                 .setOkButton { baseDialog, v, inputStr ->
-                                    requireActivity().toast("输入的内容：$inputStr")
+                                    requireActivity().toast("Input content：$inputStr")
                                     addNewView(inputStr)
                                     false
                                 }
@@ -126,7 +126,15 @@ class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), Construc
     ): ItemButton {
         val button = ItemButton(context, null)
         button.text(text)
+        toast("Choose $text")
         button.setOnClickListener { onClick() }
+        button.setOnClickListener(object :ItemButton.OnClickListener{
+            override fun onTitleClick() {
+                onClick()
+
+            }
+
+        })
         return button
     }
 
@@ -148,7 +156,7 @@ class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), Construc
     }
 
     override fun processFindT(result: LiveData<Result<FindT>>) {
-        TODO("Not yet implemented")
+
     }
 
 

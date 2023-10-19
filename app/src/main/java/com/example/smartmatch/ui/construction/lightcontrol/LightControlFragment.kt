@@ -126,6 +126,12 @@ class LightControlFragment : BaseFragment<FragmentLightControlBinding>(), Constr
         val button = ItemButton(context, null)
         button.text(text)
         button.setOnClickListener { onClick() }
+        button.setOnClickListener(object : ItemButton.OnClickListener{
+            override fun onTitleClick() {
+                onClick()
+            }
+
+        })
         return button
     }
 
