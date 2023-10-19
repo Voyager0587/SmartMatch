@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.smartmatch.logic.Repository
 import com.example.smartmatch.logic.model.MMNetResponse
+import com.example.smartmatch.logic.model.helper.SceneCloseHelper
 import com.example.smartmatch.logic.network.model.ScenarioResponse
 import com.example.smartmatch.ui.construction.ConstructionListener
 
@@ -33,8 +34,9 @@ class LightControlViewModel:ViewModel() {
         //发送完,scenarios数据就要清空null
     }
 
-    fun closeScene(){
-        repository.closeScene()
+    fun closeScene(sceneCloseHelper: SceneCloseHelper){
+        val result= repository.closeScene(sceneCloseHelper)
+        constructionListener?.processSceneCloseResponse(result)
     }
 
     fun instructScenario( scenario: ScenarioResponse){

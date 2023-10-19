@@ -5,6 +5,7 @@ import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.MmnetScenarioLight
 import com.example.smartmatch.logic.model.TPrecentageBody
 import com.example.smartmatch.logic.model.helper.AreaCreationHelper
+import com.example.smartmatch.logic.model.helper.SceneCloseHelper
 import com.example.smartmatch.logic.network.model.ResponseMessage
 import com.example.smartmatch.logic.network.model.ScenarioResponse
 import com.example.smartmatch.logic.network.model.SceneCreationResponse
@@ -35,7 +36,7 @@ interface ConstructionService {
     fun getLightByAreaId(@Path("id") id: Int): Call<SceneCreationResponse>
 
     @POST("/instructions/scenario/off")
-    fun closeScene():Call<ResponseMessage>
+    fun closeScene(@Body scene:SceneCloseHelper):Call<ResponseMessage>
 
     @POST("/mmnet/scenario/{id}")
     fun createNewScenario(@Field("id") id: Int, @Header("name") name: String)

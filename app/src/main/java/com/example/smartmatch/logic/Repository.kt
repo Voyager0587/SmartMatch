@@ -5,6 +5,7 @@ import androidx.lifecycle.liveData
 import com.example.smartmatch.logic.model.LightOffBody
 import com.example.smartmatch.logic.model.TPrecentageBody
 import com.example.smartmatch.logic.model.helper.AreaCreationHelper
+import com.example.smartmatch.logic.model.helper.SceneCloseHelper
 import com.example.smartmatch.logic.network.NetworkCenter
 import com.example.smartmatch.logic.network.model.ScenarioResponse
 import kotlinx.coroutines.Dispatchers
@@ -39,8 +40,8 @@ object Repository {
             Result.success(response)
         }
     }
-    fun closeScene()=fire(Dispatchers.IO) {
-        val response = NetworkCenter.closeScene()
+    fun closeScene(sceneCloseHelper: SceneCloseHelper)=fire(Dispatchers.IO) {
+        val response = NetworkCenter.closeScene(sceneCloseHelper)
         run {
             Result.success(response)
         }
