@@ -1,5 +1,6 @@
 package com.example.smartmatch.logic.network.api
 
+import com.example.smartmatch.logic.model.CheckCTData
 import com.example.smartmatch.logic.model.LightOffBody
 import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.MmnetScenarioLight
@@ -60,4 +61,6 @@ interface ConstructionService {
     suspend  fun postLightOn(@Body requestBody: TPrecentageBody): MMNetResponse
     @POST("/instructions/light/off")
     suspend fun checkok(@Body ok: LightOffBody):MMNetResponse
+    @POST("/mmnet/scenario/{id}")
+    suspend fun setnewscenario(@Body checkCTData: CheckCTData):MMNetResponse
 }

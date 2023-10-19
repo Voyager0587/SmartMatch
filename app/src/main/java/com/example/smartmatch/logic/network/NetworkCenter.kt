@@ -1,6 +1,7 @@
 package com.example.smartmatch.logic.network
 
 import android.util.Log
+import com.example.smartmatch.logic.model.CheckCTData
 import com.example.smartmatch.logic.model.LightOffBody
 import com.example.smartmatch.logic.model.TPrecentageBody
 import com.example.smartmatch.logic.model.User
@@ -55,7 +56,7 @@ object NetworkCenter {
         = constructionServer.createNewArea(id,areaCreationHelper).await()
     suspend fun checkyulan(checkyulan: TPrecentageBody) = constructionServer.postLightOn(checkyulan)
     suspend fun checkok(ok: LightOffBody)= constructionServer.checkok(ok)
-
+    suspend fun setnewscenario(checkCTData: CheckCTData)= constructionServer.setnewscenario(checkCTData)
 
     /**
      * 登录
@@ -72,6 +73,7 @@ object NetworkCenter {
      * 找T
      */
     suspend fun findTid(id: Int)= constructionServer.findT(id)
+
 
 
 

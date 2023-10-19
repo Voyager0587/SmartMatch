@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.smartmatch.chart.FindCTBtnParams
 import com.example.smartmatch.logic.Repository
+import com.example.smartmatch.logic.model.CheckCTData
 import com.example.smartmatch.logic.model.LightOffBody
 import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.MmnetScenarioLight
@@ -24,44 +25,42 @@ class FindTStepOneViewModel : ViewModel() {
     var chooseTheCList = mutableListOf<FindCTBtnParams<View>>()
     var auditTCList = mutableListOf<FindCTBtnParams<View>>()
     var currentlyDeterminedCBtn: MutableLiveData<FindCTBtnParams<View>> = MutableLiveData()
-    val findtdata=MutableLiveData<FindT>()
-    private var lightOffBody :LightOffBody? = null
-    private var tPrecentageBody:TPrecentageBody?=null
-    private val repository = Repository
-    var findtid=""
-    var t_num=""
-    internal var constructionListener: ConstructionListener?=null
-    var findt:LiveData<Result<MmnetScenarioLight>>?=null
-    val findT=FindT()
-    val findTid="116412487"
+//    var currentchooseBt= mutableListOf<Int>()
+//    var currentlight= mutableListOf< CheckCTData>()
+//    private var lightOffBody :LightOffBody? = null
+//    private var tPrecentageBody:TPrecentageBody?=null
+//    private val repository = Repository
+//    internal var constructionListener: ConstructionListener?=null
+//    var findt:LiveData<Result<MmnetScenarioLight>>?=null
+//    val findT=FindT()
 
-    var checkyulan by Delegates.notNull<Int>()
-    var ok by Delegates.notNull<Int>()
-    fun getFIndT(id: Int): LiveData<Result<MmnetScenarioLight>> {
-        return repository.findT(id)///.getOrNull()?.data?.lightNum
-    }
+//    var checkyulan by Delegates.notNull<Int>()
+//    var ok by Delegates.notNull<Int>()
+//    fun getFIndT(id: Int): LiveData<Result<MmnetScenarioLight>> {
+//        return repository.findT(id)///.getOrNull()?.data?.lightNum
+//    }
 
-    fun sendMessage(){
-
-        //repository.checkyulan(checkyulan)
-        lightOffBody?.let { repository.checkOk(it) }
-        //发送完,scenarios数据就要清空null
-    }
-    fun sendLightList(){
-        tPrecentageBody?.let{repository.checkyulan(tPrecentageBody!!)}
-    }
-    fun saveLightList(tPrecentageBody: TPrecentageBody){
-
-    }
-
-    fun save(lightOffBody: LightOffBody){
-        this.lightOffBody = lightOffBody
-    }
-
-    fun checkyulan(checkyulan: TPrecentageBody){
-        val result=repository.checkyulan(checkyulan)
-        constructionListener?.processMMNetData(result)
-    }
+//    fun sendMessage(){
+//
+//        //repository.checkyulan(checkyulan)
+//        lightOffBody?.let { repository.checkOk(it) }
+//        //发送完,scenarios数据就要清空null
+//    }
+//    fun sendLightList(){
+//        tPrecentageBody?.let{repository.checkyulan(tPrecentageBody!!)}
+//    }
+//    fun saveLightList(tPrecentageBody: TPrecentageBody){
+//        this.tPrecentageBody=tPrecentageBody
+//    }
+//
+//    fun save(lightOffBody: LightOffBody){
+//        this.lightOffBody = lightOffBody
+//    }
+//
+//    fun checkyulan(checkyulan: TPrecentageBody){
+//        val result=repository.checkyulan(checkyulan)
+//        constructionListener?.processMMNetData(result)
+//    }
 
 
 

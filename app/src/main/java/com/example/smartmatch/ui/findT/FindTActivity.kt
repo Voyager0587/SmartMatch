@@ -1,5 +1,6 @@
 package com.example.smartmatch.ui.findT
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -10,6 +11,8 @@ import com.example.smartmatch.R
 import com.example.smartmatch.base.activity.BaseActivity
 import com.example.smartmatch.databinding.ActivityFindcBinding
 import com.example.smartmatch.databinding.ActivityFindtBinding
+//import com.example.smartmatch.ui.checkCT.CheckCTActivity
+import com.example.smartmatch.ui.construction.areadefine.AreaDefineFragment
 import com.example.smartmatch.ui.findT.step_one.FindTStepOneFragment
 import com.example.smartmatch.ui.findC.step_one.FindCStepOneFragment
 import com.example.smartmatch.ui.viewModel1.FindCViewModel
@@ -29,7 +32,7 @@ class FindTActivity : BaseActivity<ActivityFindtBinding>() {
     override fun ActivityFindtBinding.initBindingView() {
         binding.findtviewModel = mfindTViewModel
         initActivity()
-        initView()
+       // initView()
        // Connector.getDatabase()
     }
     fun initActivity() {
@@ -42,10 +45,17 @@ class FindTActivity : BaseActivity<ActivityFindtBinding>() {
     }
 
     fun initView() {
-        findTStepOneFragment = FindTStepOneFragment()
+
+        findTStepOneFragment = FindTStepOneFragment(intent.getIntExtra("area_id",1),
+            intent.getStringExtra("area_id").toString()
+        )
         replaceFragment(findTStepOneFragment)
     }
 
+    override fun onAttachedToWindow() {
+        initView()
+        super.onAttachedToWindow()
+    }
     fun replaceFragment(fragment: Fragment) {
         val fragmentManager: FragmentManager = supportFragmentManager
         val transaction: FragmentTransaction = fragmentManager.beginTransaction()
