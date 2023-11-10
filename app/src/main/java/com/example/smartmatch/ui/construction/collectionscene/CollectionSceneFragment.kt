@@ -13,7 +13,7 @@ import com.example.smartmatch.ui.construction.adapter.SceneAdapter
 
 /**
  * @className CollectionSceneFragment
- * @description 集合场景
+ * @description 集群场景
  * @author Voyager
  * @date 2023/10/2 19:06
  */

@@ -51,7 +51,9 @@ ext {
             "videocache"    : 'cn.yc:VideoCache:3.0.5',
             "colorPicker"   : 'com.github.skydoves:colorpickerview:2.2.4',
             "datetimepicker": 'com.github.loper7:DateTimePicker:0.6.2',
-            "litepal": 'org.litepal.guolindev:core:3.2.3'
+            "litepal": 'org.litepal.guolindev:core:3.2.3',
+            "nifty-slider": 'io.github.litao0621:nifty-slider:1.4.5',
+            "nifty-slider-effect": 'io.github.litao0621:nifty-slider-effect:1.4.5',
 
     ]
 

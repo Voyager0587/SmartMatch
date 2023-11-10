@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.example.smartmatch'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.smartmatch"
         minSdk 26
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -48,14 +48,14 @@ dependencies {
     implementation rootProject.ext.depsLibs["lifecycle"]
     implementation rootProject.ext.depsLibs["lifecycle-ext"]
     implementation rootProject.ext.depsLibs["lifecycle-livedata"]
-    implementation rootProject.ext.depsLibs["litepal"]
     implementation rootProject.ext.depsLibs["coroutines-android"]
     implementation rootProject.ext.depsLibs["coroutines-core"]
+
     //Lottie Animation
     implementation 'com.airbnb.android:lottie:3.4.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
+//    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
 }

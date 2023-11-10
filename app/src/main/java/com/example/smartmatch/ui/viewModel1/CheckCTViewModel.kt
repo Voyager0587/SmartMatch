@@ -4,9 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.smartmatch.logic.Repository
 import com.example.smartmatch.logic.model.CheckCTData
-import com.example.smartmatch.logic.model.Light1
 import com.example.smartmatch.logic.model.MMNetResponse
-import com.example.smartmatch.logic.network.model.ScenarioResponse
 import com.example.smartmatch.ui.construction.ConstructionListener
 
 class CheckCTViewModel :ViewModel(){
@@ -24,10 +22,10 @@ class CheckCTViewModel :ViewModel(){
         repository.setnewscenario(checkCTData)
         //发送完,scenarios数据就要清空null
     }
-
-    fun closeScene(){
-        repository.closeScene()
-    }
+//
+//    fun closeScene(){
+//        repository.closeScene()
+//    }
 
     fun checkctdata( checkCTData: CheckCTData){
         val result=repository.setnewscenario(checkCTData)

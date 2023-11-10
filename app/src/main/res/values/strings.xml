@@ -18,7 +18,7 @@
     <string name="choose_net">Choose Net</string>
     <string name="choose_area">Choose Area</string>
     <string name="next">Next</string>
-    <string name="cascadeControl_title">CascadeControl</string>
+    <string name="clusterControl">Cluster control</string>
     <string name="collection_scene_example_text">The second floor of the humanities building</string>
     <string name="app_light_control_choose_item">Select Target</string>
 

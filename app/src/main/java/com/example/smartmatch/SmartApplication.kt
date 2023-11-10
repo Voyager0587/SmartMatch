@@ -12,7 +12,6 @@ import com.example.smartmatch.ui.dialogTitleInfo
 import com.kongzue.dialogx.DialogX
 import com.kongzue.dialogx.dialogs.MessageDialog
 import com.kongzue.dialogx.style.MaterialStyle
-import org.litepal.LitePal
 
 
 /**
@@ -22,23 +21,24 @@ import org.litepal.LitePal
  * @date:  2023/9/23 11:14
  * @version 1.0
  **/
-class SmartApplication:Application() {
+class SmartApplication : Application() {
 
 
-    companion object{
+    companion object {
         @SuppressLint("StaticFieldLeak")
         lateinit var context: Context
-        var token :String=""
+        var token: String = ""
         lateinit var sp: SharedPreferences
 
     }
+
     override fun onCreate() {
         super.onCreate()
         context = applicationContext
-        LitePal.initialize(this)
         initDialog()
         initSp()
     }
+
     private fun initDialog() {
         DialogX.init(this)
         DialogX.globalStyle = MaterialStyle.style()

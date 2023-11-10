@@ -29,7 +29,7 @@ interface ConstructionListener {
      * 处理通用的返回数据，确定是否操作成功
      */
     fun processResponse(result:LiveData<Result<ResponseMessage>>){}
-    fun processFindT(result: LiveData<Result<FindT>>)
+    fun processFindT(result: LiveData<Result<FindT>>){}
 
     fun initListener() {}
 
