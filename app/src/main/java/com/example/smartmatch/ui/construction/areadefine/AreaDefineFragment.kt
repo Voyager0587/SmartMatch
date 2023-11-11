@@ -92,6 +92,7 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
                     }
                     requireActivity().runOnUiThread{
                         binding.containerArea.addView(area)
+
                     }
 
                     lastIndex++
@@ -112,6 +113,7 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
                         }
                         .show()
                 }
+
                 requireActivity().runOnUiThread{
                     binding.containerArea.addView(newArea)
                 }

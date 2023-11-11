@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_5"
+        android:paddingVertical="10dp">
+
+        <TextView
+            android:id="@+id/text_net"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/app_margin_start_distance"
+            android:text="Net："
+            android:textSize="@dimen/app_text_size_normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_net_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="@dimen/app_text_size_normal"
+            app:layout_constraintStart_toEndOf="@id/text_net"
+            app:layout_constraintTop_toTopOf="@id/text_net" />
+
+        <TextView
+            android:id="@+id/text_area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/app_margin_start_distance"
+            android:layout_marginTop="10dp"
+            android:text="Area："
+            android:textSize="@dimen/app_text_size_normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_net" />
+
+        <TextView
+            android:id="@+id/text_area_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="@dimen/app_text_size_normal"
+            app:layout_constraintStart_toEndOf="@id/text_area"
+            app:layout_constraintTop_toTopOf="@id/text_area" />
+
+        <TextView
+            android:id="@+id/text_Scenario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/app_margin_start_distance"
+            android:layout_marginTop="10dp"
+            android:text="Scenario："
+            android:textSize="@dimen/app_text_size_normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_area" />
+
+        <TextView
+            android:id="@+id/text_Scenario_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="@dimen/app_text_size_normal"
+            app:layout_constraintStart_toEndOf="@id/text_Scenario"
+            app:layout_constraintTop_toTopOf="@id/text_Scenario" />
+
+        <TextView
+            android:id="@+id/text_percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/app_margin_start_distance"
+            android:layout_marginTop="10dp"
+            android:text="Percentage brightness："
+            android:textSize="@dimen/app_text_size_normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_Scenario" />
+
+        <TextView
+            android:id="@+id/text_percent_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="@dimen/app_text_size_normal"
+            app:layout_constraintStart_toEndOf="@id/text_percent"
+            app:layout_constraintTop_toTopOf="@id/text_percent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

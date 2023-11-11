@@ -69,7 +69,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(), PersonListener {
         super.processResponse(result)
         result.observe(this) { re ->
             val message = re.getOrNull()
-            requireActivity().toast("Log in successfully")
+            requireActivity().toast(message?.token.toString())
+            "跑到这了".toast()
             SmartApplication.token= message?.token.toString()
             SmartApplication.sp.edit().putString("token",SmartApplication.token).apply()
             requireActivity().supportFragmentManager.popBackStack()

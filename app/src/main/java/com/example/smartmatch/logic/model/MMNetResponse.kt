@@ -9,6 +9,8 @@ import com.google.gson.annotations.SerializedName
  * @date:  2023/9/22 20:53
  * @version 1.0
  **/
+
+
 data class MMNetResponse(
     val code: Int,
     val `data`: Data,
@@ -24,10 +26,9 @@ data class MmnetData(
     val C: C,
     val admin_id: String,
     val areas: Areas,
-    val checkCTData: CheckCTData,
+    val control: Control,
     val mmnet_id: Int,
-    val mmnet_name: String,
-
+    val mmnet_name: String
 )
 
 data class C(
@@ -38,6 +39,11 @@ data class C(
 data class Areas(
     val area_num: Int,
     val areas_data: List<AreasData>
+)
+
+data class Control(
+    val control_data: List<Any>,
+    val control_num: Int
 )
 
 data class CData(
@@ -77,6 +83,7 @@ data class ScenariosData(
 )
 
 data class ChildScenario(
+    val child_scenario: List<ChildScenarioX>,
     val definitional_percentage: Double,
     val id: Int,
     val name: String
@@ -84,8 +91,14 @@ data class ChildScenario(
 
 data class LightData(
     val definitional_percentage: Double,
-    val light_execute_wattage: Double,
+    val executable_percentage: Double,
     val light_id: Int
+)
+
+data class ChildScenarioX(
+    val definitional_percentage: Double,
+    val id: Int,
+    val name: String
 )
 
     //data class  findtdata(val lightList:List<light>,val ift:Int)

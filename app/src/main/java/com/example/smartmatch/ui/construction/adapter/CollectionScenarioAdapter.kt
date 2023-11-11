@@ -1,8 +1,10 @@
 package com.example.smartmatch.ui.construction.adapter
 
+import android.view.View
 import com.example.smartmatch.base.activity.BaseAdapter
-import com.example.smartmatch.databinding.ItemCollectionScenarioBinding
+import com.example.smartmatch.databinding.ItemClusterControlBinding
 import com.example.smartmatch.logic.model.helper.CollectionScenarioHelper
+import com.example.smartmatch.logic.model.helper.SceneCategory
 
 /**
  * @className: CollectionScenarioAdapter
@@ -12,16 +14,32 @@ import com.example.smartmatch.logic.model.helper.CollectionScenarioHelper
  * @version 1.0
  **/
 class CollectionScenarioAdapter :
-    BaseAdapter<CollectionScenarioHelper, ItemCollectionScenarioBinding>() {
-    override fun ItemCollectionScenarioBinding.onBindViewHolder(
+    BaseAdapter<CollectionScenarioHelper, ItemClusterControlBinding>() {
+    override fun ItemClusterControlBinding.onBindViewHolder(
         bean: CollectionScenarioHelper,
         position: Int
     ) {
-        tvMmnetName.text = bean.mmnet_name
-        tvAreaName.text = bean.area_name
-        tvSceneName.text = bean.scene_name
-        tvLightPercent.text = bean.light_percent.toString()
-        tvRank.text = position.toString()
+        textNetDisplay.text=bean.netName
+        textPercentDisplay.text=bean.brightnessPercent.toString()
+        when(bean.flags){
+            SceneCategory.SceneCategoryType.BASIC_SCENARIOS->
+            {
+                textAreaDisplay.text=bean.areaName
+                textScenarioDisplay.text=bean.scenarioName
+
+            }
+            SceneCategory.SceneCategoryType.GATHERING_SCENES->{
+                textScenario.visibility=View.GONE
+                textScenarioDisplay.visibility=View.GONE
+                textArea.text="集合场景"
+                textAreaDisplay.text=bean.collectionScenesName
+            }
+            // !!!  树状显示那里还是用RecyclerView来显示吧，后面总会这样用的
+
+        }
+
+
+
     }
 
 }
