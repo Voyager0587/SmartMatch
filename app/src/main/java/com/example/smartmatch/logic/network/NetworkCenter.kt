@@ -1,14 +1,12 @@
 package com.example.smartmatch.logic.network
 
 import android.util.Log
-import com.example.smartmatch.logic.model.CheckCTData
-import com.example.smartmatch.logic.model.LightOffBody
-import com.example.smartmatch.logic.model.TPrecentageBody
 import com.example.smartmatch.logic.model.User
 import com.example.smartmatch.logic.model.helper.AreaCreationHelper
 import com.example.smartmatch.logic.model.helper.SceneCloseHelper
 import com.example.smartmatch.logic.network.api.ConstructionService
 import com.example.smartmatch.logic.network.api.PersonService
+import com.example.smartmatch.logic.network.model.CheckCTData
 import com.example.smartmatch.logic.network.model.ScenarioResponse
 
 import retrofit2.Call
@@ -35,13 +33,36 @@ object NetworkCenter {
      * Construction
      */
 
+
+    /**
+     * 建筑物
+     */
+
     /**
      * 获取MMNet全部数据
      */
     suspend fun getMMNetData() = constructionServer.getMMNetAllData().await()
-    suspend fun getTByAreaId(id:Int)= constructionServer.getTByAreaId(id).await()
-    suspend fun getLightByAreaId(id:Int)= constructionServer.getLightByAreaId(id).await()
-    suspend fun closeScene(scene:SceneCloseHelper)= constructionServer.closeScene(scene).await()
+
+    /**
+     * 根据地区ID获取T数据
+     */
+    suspend fun getTByAreaId(id: Int) = constructionServer.getTByAreaId(id).await()
+
+    /**
+     * 根据地区ID获取灯光数据
+     */
+    suspend fun getLightByAreaId(id: Int) = constructionServer.getLightByAreaId(id).await()
+
+    /**
+     * 关闭场景
+     */
+    suspend fun closeScene(scene: SceneCloseHelper) = constructionServer.closeScene(scene).await()
+
+    /**
+     * 根据MMNetID获取集合场景
+     */
+    suspend fun getCollectionScenarioByNetId(id: Int) =
+        constructionServer.getCollectionScenarioByNetId(id).await()
 
     /**
      * 照明控制--控制场景
@@ -52,11 +73,14 @@ object NetworkCenter {
     /**
      * 创建Area
      */
-    suspend fun createNewArea(id:Int,areaCreationHelper: AreaCreationHelper)
-        = constructionServer.createNewArea(id,areaCreationHelper).await()
-    suspend fun checkyulan(checkyulan: TPrecentageBody) = constructionServer.postLightOn(checkyulan)
-    suspend fun checkok(ok: LightOffBody)= constructionServer.checkok(ok)
-    suspend fun setnewscenario(checkCTData: CheckCTData)= constructionServer.setnewscenario(checkCTData)
+    suspend fun createNewArea(id: Int, areaCreationHelper: AreaCreationHelper) =
+        constructionServer.createNewArea(id, areaCreationHelper).await()
+
+    /**
+     * 设置新的场景
+     */
+    suspend fun setnewscenario(checkCTData: CheckCTData) =
+        constructionServer.setnewscenario(checkCTData)
 
     /**
      * 登录
@@ -67,34 +91,38 @@ object NetworkCenter {
     /**
      * 找C
      */
-    suspend fun findCid(id: String)=constructionServer.findC(id).await()
+    suspend fun findCid(id: String) = constructionServer.findC(id).await()
 
     /**
      * 找T
      */
-    suspend fun findTid(id: Int)= constructionServer.findT(id)
-
-
 
 
     private suspend fun <T> Call<T>.await(): T {
+        // 创建一个挂起函数，用于等待Call对象的响应并返回结果
         return suspendCoroutine { continuation ->
+            // 注册一个回调函数，当Call对象有响应时调用
             enqueue(object : Callback<T> {
+                // 当Call对象有响应时调用
                 override fun onResponse(call: Call<T>, response: Response<T>) {
+                    // 获取响应的body数据
                     val body = response.body()
-//                    ToDo: delete this
+                    // ToDo: 删除此行
                     Log.e("NetworkCenter", response.toString())
+                    // 如果body数据不为空，通过挂起函数的continuation继续执行后续代码并传递body数据
                     if (body != null) continuation.resume(body)
-                    else continuation.resumeWithException(
-                        RuntimeException("response body is null")
-                    )
+                    // 如果body数据为空，抛出一个运行时异常
+                    else continuation.resumeWithException(RuntimeException("response body is null"))
                 }
 
+                // 当Call对象发生失败时调用
                 override fun onFailure(call: Call<T>, t: Throwable) {
+                    // 抛出一个运行时异常
                     continuation.resumeWithException(t)
                 }
             })
         }
     }
+
 }
 

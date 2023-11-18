@@ -63,6 +63,16 @@ class MainViewModel : ViewModel() {
     }
 
     /**
+     * 跳转到集合场景界面
+     *
+     * @param random 随机数（默认为0）
+     */
+    fun jumpToCollectionContrl(random: Int = 0) {
+        viewModelScope.launch {
+            _jumpToFragment.emit(random)
+        }
+    }
+    /**
      * 跳转到个人界面
      *
      * @param random 随机数（默认为0）

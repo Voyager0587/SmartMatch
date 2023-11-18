@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.MmnetData
 import com.example.smartmatch.logic.model.helper.FindT
+import com.example.smartmatch.logic.network.model.CollectionScenariosResponse
 import com.example.smartmatch.logic.network.model.ResponseMessage
 import com.example.smartmatch.logic.network.model.SceneCreationResponse
 
@@ -21,16 +22,38 @@ interface ConstructionListener {
      */
     fun processMMNetData(result: LiveData<Result<MMNetResponse>>) {}
 
-    fun processTData(result: LiveData<Result<SceneCreationResponse>>) {}
+    /**
+     * 处理集合场景响应的函数
+     * @param result 活跃的集合场景响应结果的LiveData
+     */
+    fun processCollectionScenariosResponse(result: LiveData<Result<CollectionScenariosResponse>>){}
 
+    /**
+     * 处理T数据的回调处理方法
+     * @param result T数据结果的LiveData
+     */
+    fun processTData(result: LiveData<Result<SceneCreationResponse>>){}
+
+    /**
+     * 处理场景关闭响应的回调处理方法
+     * @param result 场景关闭响应结果的LiveData
+     */
     fun processSceneCloseResponse(result:LiveData<Result<ResponseMessage>>){}
 
     /**
      * 处理通用的返回数据，确定是否操作成功
      */
     fun processResponse(result:LiveData<Result<ResponseMessage>>){}
+
+    /**
+     * 处理FindT数据的回调处理方法
+     * @param result FindT数据结果的LiveData
+     */
     fun processFindT(result: LiveData<Result<FindT>>){}
 
+    /**
+     * 初始化监听器
+     */
     fun initListener() {}
 
     /**
@@ -40,12 +63,15 @@ interface ConstructionListener {
 
     /**
      * 初始化View的列表
+     * @param mmnet_data MMNet数据列表
      */
     fun initRecyclerList(mmnet_data: List<MmnetData>){}
 
     /**
      * 添加新View
+     * @param name View的名称
      */
     fun addNewView(name:String){}
+
 
 }

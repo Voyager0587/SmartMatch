@@ -3,8 +3,9 @@ package com.example.smartmatch.ui.viewModel1
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.smartmatch.logic.Repository
-import com.example.smartmatch.logic.model.CheckCTData
+
 import com.example.smartmatch.logic.model.MMNetResponse
+import com.example.smartmatch.logic.network.model.CheckCTData
 import com.example.smartmatch.ui.construction.ConstructionListener
 
 class CheckCTViewModel :ViewModel(){

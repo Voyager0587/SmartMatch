@@ -22,6 +22,7 @@ class MultiButton(context: Context, attrs: AttributeSet?) : LinearLayout(context
     var percent:TextView
     var layout: RelativeLayout
     var scene_id:Int=-1
+    var net_id:Int=-1
     lateinit var info: String
         private set
     var judge = false

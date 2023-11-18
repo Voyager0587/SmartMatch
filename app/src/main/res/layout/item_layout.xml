@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="80dp"
-    android:id="@+id/rl_item"
-    android:background="@drawable/round_20"
-    android:layout_marginHorizontal="15dp"
-    >
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/app_text_size_normal"
-        android:padding="@dimen/app_add_btn_text_padding"
-        android:layout_marginStart="@dimen/app_margin_start_distance"
-        android:text="@string/area_example_text"
-        android:autoSizeTextType="uniform"
-        android:autoSizeMaxTextSize="@dimen/app_text_size_max"
-        android:autoSizeMinTextSize="@dimen/app_text_size_min"
-        android:autoSizeStepGranularity="1sp"
-        android:textColor="@color/grey"
-        android:layout_centerVertical="true"
-        />
-</RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:id="@+id/rl_item"
+        android:background="@drawable/round_20"
+        android:layout_marginHorizontal="15dp">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/app_text_size_normal"
+            android:padding="@dimen/app_add_btn_text_padding"
+            android:layout_marginStart="@dimen/app_margin_start_distance"
+            android:text="@string/area_example_text"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMaxTextSize="@dimen/app_text_size_max"
+            android:autoSizeMinTextSize="@dimen/app_text_size_min"
+            android:autoSizeStepGranularity="1sp"
+            android:textColor="@color/grey"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+</layout>

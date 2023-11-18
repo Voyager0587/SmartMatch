@@ -19,7 +19,7 @@ class AreaDefineViewModel:ViewModel() {
     internal var constructionListener: ConstructionListener?=null
     var mmnetData: LiveData<Result<MMNetResponse>>? = null
 
-    var areaCreationHelper=AreaCreationHelper()
+    private var areaCreationHelper=AreaCreationHelper()
 
     fun getMMNetData(){
         mmnetData=repository.getMMNetData()

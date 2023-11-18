@@ -197,6 +197,7 @@
 
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/collection_scene"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -226,7 +227,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cascade_control"
+                android:text="@string/collection_scene"
                 android:layout_gravity="center_vertical"
                 android:padding="5dp"
                 android:autoSizeTextType="uniform"

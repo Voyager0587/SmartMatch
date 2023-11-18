@@ -2,12 +2,11 @@ package com.example.smartmatch.logic
 
 
 import androidx.lifecycle.liveData
-import com.example.smartmatch.logic.model.CheckCTData
-import com.example.smartmatch.logic.model.LightOffBody
-import com.example.smartmatch.logic.model.TPrecentageBody
+
 import com.example.smartmatch.logic.model.helper.AreaCreationHelper
 import com.example.smartmatch.logic.model.helper.SceneCloseHelper
 import com.example.smartmatch.logic.network.NetworkCenter
+import com.example.smartmatch.logic.network.model.CheckCTData
 import com.example.smartmatch.logic.network.model.ScenarioResponse
 import kotlinx.coroutines.Dispatchers
 import kotlin.coroutines.CoroutineContext
@@ -21,8 +20,14 @@ import kotlin.coroutines.CoroutineContext
  **/
 object Repository {
 
+    fun getCollectionScenarioByNetId(id: Int)= fire(Dispatchers.IO){
+        val response=NetworkCenter.getCollectionScenarioByNetId(id)
+        run{
+            Result.success(response)
+        }
+    }
 
-     fun getMMNetData() = fire(Dispatchers.IO) {
+    fun getMMNetData() = fire(Dispatchers.IO) {
         val response = NetworkCenter.getMMNetData()
         run {
             Result.success(response)
@@ -35,68 +40,55 @@ object Repository {
             Result.success(response)
         }
     }
+
     fun getLightByAreaId(id: Int) = fire(Dispatchers.IO) {
         val response = NetworkCenter.getLightByAreaId(id)
         run {
             Result.success(response)
         }
     }
-    fun closeScene(sceneCloseHelper: SceneCloseHelper)=fire(Dispatchers.IO) {
+
+    fun closeScene(sceneCloseHelper: SceneCloseHelper) = fire(Dispatchers.IO) {
         val response = NetworkCenter.closeScene(sceneCloseHelper)
         run {
             Result.success(response)
         }
     }
 
-    fun instructScenario( scenario: ScenarioResponse)= fire(Dispatchers.IO){
-        val response=NetworkCenter.instructScenario(scenario)
-        run{
+    fun instructScenario(scenario: ScenarioResponse) = fire(Dispatchers.IO) {
+        val response = NetworkCenter.instructScenario(scenario)
+        run {
             Result.success(response)
         }
     }
 
-     fun createNewArea(id: Int,areaCreationHelper: AreaCreationHelper) = fire(Dispatchers.IO) {
-        val response = NetworkCenter.createNewArea(id,areaCreationHelper)
+    fun createNewArea(id: Int, areaCreationHelper: AreaCreationHelper) = fire(Dispatchers.IO) {
+        val response = NetworkCenter.createNewArea(id, areaCreationHelper)
         run {
             Result.success(response)
         }
     }
 
     fun login(username: String, password: String) = fire(Dispatchers.IO) {
-        val response=NetworkCenter.login(username, password)
+        val response = NetworkCenter.login(username, password)
         run {
             Result.success(response)
         }
     }
-    fun findC(id: String)= fire(Dispatchers.IO){
-        val response=NetworkCenter.findCid(id)
-         run{
-             Result.success(response)
-         }
-    }
 
-    fun findT(id: Int)= fire(Dispatchers.IO){
-        val response=NetworkCenter.findTid(id)
-        run{
-            Result.success(response)
-        }
-    }
-
-    fun checkyulan(light:TPrecentageBody) = fire(Dispatchers.IO) {
-        val response = NetworkCenter.checkyulan(light)
+    fun findC(id: String) = fire(Dispatchers.IO) {
+        val response = NetworkCenter.findCid(id)
         run {
             Result.success(response)
         }
     }
-    fun checkOk(ok: LightOffBody)= fire(Dispatchers.IO){
-        val response=NetworkCenter.checkok(ok)
-        run{
-            Result.success(response)
-        }
-    }
-    fun setnewscenario(checkCTData: CheckCTData)=fire(Dispatchers.IO){
-        val response=NetworkCenter.setnewscenario(checkCTData)
-        run{
+
+
+
+
+    fun setnewscenario(checkCTData: CheckCTData) = fire(Dispatchers.IO) {
+        val response = NetworkCenter.setnewscenario(checkCTData)
+        run {
             Result.success(response)
         }
     }

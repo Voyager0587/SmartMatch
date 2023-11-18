@@ -11,7 +11,7 @@
     <string name="area">Area Definition</string>
     <string name="scene_definition">Scenario Definition</string>
     <string name="light_control">Lighting control</string>
-    <string name="cascade_control">Cascade control</string>
+    <string name="collection_scene">Collection Scene</string>
 
 
     <!-- Area定义页面 -->
@@ -25,7 +25,7 @@
     <string name="light_control_scenario_title">Scenario</string>
     <string name="scenario_example_text">小林的桌面</string>
     <string name="area_example_text">文科楼205</string>
-<!--    找C-->
+    <!--    找C-->
     <string name="find_c">Find C</string>
     <string name="find_t">Find T</string>
     <string name="choice_t">Choice T</string>
@@ -42,7 +42,7 @@
     <string name="BrightnessAdjustment">Brightness adjustment</string>
     <string name="SelectallunadjustedT">Select all unregulated T</string>
     <string name="choose">choice</string>
-<!--    找T-->
+    <!--    找T-->
     <string name="hand_add">Manual addition</string>
     <string name="smart_add">Auto light adding</string>
     <string name="lights_text">Light on test</string>
@@ -52,11 +52,11 @@
     <string name="all_on">All lights on</string>
     <string name="all_off">All lights off</string>
     <string name="all_flickeer">All lights flashing</string>
-<!--    验证-->
+    <!--    验证-->
     <string name="check">Verify</string>
     <string name="scene_name">Scene Name</string>
     <string name="finsh">Finished</string>
-<!--    手动找T-->
+    <!--    手动找T-->
     <string name="handfindt">Manually find T</string>
     <string name="bright">bright</string>
     <string name="dark">dark</string>

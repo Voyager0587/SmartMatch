@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.smartmatch.ui.construction.collectioncontrol.CollectionControlViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        tools:context=".ui.construction.collectioncontrol.NewCollectionSceneFragment">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/newCollectionListRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/btn_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:text="@string/Confirm" />
+
+        </RelativeLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/image_btn_add_cluster_scene"
+                android:layout_width="@dimen/app_add_btn_height"
+                android:layout_height="@dimen/app_add_btn_height"
+                android:layout_marginEnd="100dp"
+                android:layout_marginBottom="@dimen/app_margin_bottom_distance_big"
+                android:background="@drawable/app_add_scene_iv_btn"
+                app:layout_constraintBottom_toTopOf="@id/image_btn_add_collection_scene"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image_btn_add_cluster_scene"
+                android:text="添加场景"
+                android:textSize="@dimen/app_text_size_min"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_add_cluster_scene"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_add_cluster_scene"
+                app:layout_constraintTop_toBottomOf="@id/image_btn_add_cluster_scene" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/image_btn_add_collection_scene"
+                android:layout_width="@dimen/app_add_btn_height"
+                android:layout_height="@dimen/app_add_btn_height"
+                android:layout_marginEnd="100dp"
+                android:layout_marginBottom="60dp"
+                android:background="@drawable/app_add_scene_iv_btn"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="添加集合场景"
+                android:textSize="@dimen/app_text_size_min"
+                app:layout_constraintEnd_toEndOf="@+id/image_btn_add_collection_scene"
+                app:layout_constraintStart_toStartOf="@+id/image_btn_add_collection_scene"
+                app:layout_constraintTop_toBottomOf="@id/image_btn_add_collection_scene" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="亮度调节"
+                android:textSize="@dimen/app_text_size_min"
+                app:layout_constraintBottom_toTopOf="@+id/adjust_light"
+                app:layout_constraintEnd_toEndOf="@+id/adjust_light"
+                app:layout_constraintStart_toStartOf="@+id/adjust_light" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/adjust_light"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="@dimen/app_margin_end_distance_big"
+                app:layout_constraintBottom_toBottomOf="@id/image_btn_add_collection_scene"
+                app:layout_constraintEnd_toStartOf="@+id/image_btn_add_collection_scene" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</layout>

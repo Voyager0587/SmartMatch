@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.smartmatch.ui.construction.collectioncontrol.CollectionControlViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/blue_light">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/search_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="#F8F8F8"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeWidth="0dp"
+            app:errorEnabled="true"
+            app:counterTextColor="@color/black"
+            android:layout_marginHorizontal="@dimen/app_horizontal_margin_distance"
+            android:layout_marginTop="@dimen/app_margin_top_distance">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_input"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_add_btn_height"
+                android:drawableEnd="@drawable/search_icon"
+                android:hint="Chhose Net"
+                android:textAlignment="viewStart"
+                android:textSize="@dimen/app_text_size_normal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/net_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/search_input"
+            android:layout_above="@+id/btn_next"
+            android:layout_marginHorizontal="@dimen/app_horizontal_margin_distance"
+            android:layout_marginTop="@dimen/app_margin_top_distance"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/btn_normal"
+            android:text="@string/next_step"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            />
+
+
+    </RelativeLayout>
+</layout>

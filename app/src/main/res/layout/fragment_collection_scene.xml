@@ -4,14 +4,14 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.smartmatch.ui.construction.collectionscene.CollectionSceneViewModel" />
+            type="com.example.smartmatch.ui.construction.clusterscene.CollectionSceneViewModel" />
 
     </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.construction.collectionscene.CollectionSceneFragment">
+        tools:context=".ui.construction.clusterscene.ClusterSceneFragment">
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
         android:layout_marginTop="@dimen/app_margin_top_distance"
         />
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/image_btn_add_scene"
+        android:id="@+id/image_btn_add_cluster_scene"
         android:layout_width="@dimen/app_add_btn_height"
         android:layout_height="@dimen/app_add_btn_height"
         android:background="@drawable/app_add_scene_iv_btn"
@@ -40,6 +40,7 @@
         android:layout_marginBottom="@dimen/app_margin_bottom_distance"
         android:layout_marginTop="@dimen/app_margin_top_distance"
         android:layout_marginEnd="@dimen/app_margin_end_distance"
+        android:text=" "
         />
 
     </RelativeLayout>

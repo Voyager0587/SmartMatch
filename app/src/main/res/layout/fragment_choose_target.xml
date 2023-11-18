@@ -4,14 +4,14 @@
 <data>
     <variable
         name="viewModel"
-        type="com.example.smartmatch.ui.construction.collectionscene.CollectionSceneViewModel" />
+        type="com.example.smartmatch.ui.construction.clusterscene.CollectionSceneViewModel" />
 
 </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.construction.collectionscene.ChooseTargetFragment">
+        tools:context=".ui.construction.clusterscene.ChooseTargetFragment">
 
 
     </FrameLayout>

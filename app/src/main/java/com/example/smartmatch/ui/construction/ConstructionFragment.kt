@@ -36,6 +36,10 @@ class ConstructionFragment : BaseFragment<FragmentConstructionBinding>() {
             mViewModel.jumpToLightControl(3)
         }
 
+        collectionScene.setOnClickListener {
+            mViewModel.jumpToCollectionContrl(5)
+        }
+
     }
 
 

@@ -1,4 +1,4 @@
-package com.example.smartmatch.ui.construction.collectionscene
+package com.example.smartmatch.ui.construction.clusterscene
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
@@ -17,7 +17,7 @@ import com.example.smartmatch.ui.construction.adapter.SceneAdapter
  * @author Voyager
  * @date 2023/10/2 19:06
  */
-class CollectionSceneFragment : BaseFragment<FragmentCollectionSceneBinding>(),ConstructionListener {
+class ClusterSceneFragment : BaseFragment<FragmentCollectionSceneBinding>(),ConstructionListener {
 
     private lateinit var adapter: SceneAdapter
 
@@ -32,7 +32,7 @@ class CollectionSceneFragment : BaseFragment<FragmentCollectionSceneBinding>(),C
 
     override fun FragmentCollectionSceneBinding.initBindingView() {
         binding.viewModel = mViewModel
-        mViewModel.constructionListener=this@CollectionSceneFragment
+        mViewModel.constructionListener=this@ClusterSceneFragment
         mViewModel.getMMNetData()
         initListener()
 
@@ -60,7 +60,7 @@ class CollectionSceneFragment : BaseFragment<FragmentCollectionSceneBinding>(),C
 
     override fun initListener() {
         super.initListener()
-        binding.imageBtnAddScene.setOnClickListener {
+        binding.imageBtnAddClusterScene.setOnClickListener {
             // ☆ 跳转到下一个界面
 
         }

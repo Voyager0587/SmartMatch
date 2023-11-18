@@ -1,4 +1,4 @@
-package com.example.smartmatch.ui.construction.collectionscene
+package com.example.smartmatch.ui.construction.clusterscene
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -9,7 +9,7 @@ import com.example.smartmatch.ui.construction.ConstructionListener
 /**
  * @className: CascadeControlViewModel
  * @author: Voyager
- * @description: 集合场景的ViewModel
+ * @description: 集群场景的ViewModel
  * @date:  2023/9/30 19:46
  * @version 1.0
  **/

@@ -1,4 +1,4 @@
-package com.example.smartmatch.ui.construction.collectionscene
+package com.example.smartmatch.ui.construction.clusterscene
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
@@ -7,7 +7,7 @@ import com.example.smartmatch.databinding.FragmentCollectionSceneCreationBinding
 import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.helper.CollectionScenarioHelper
 import com.example.smartmatch.ui.construction.ConstructionListener
-import com.example.smartmatch.ui.construction.adapter.CollectionScenarioAdapter
+import com.example.smartmatch.ui.construction.adapter.ClusterScenarioAdapter
 
 /**
  * @className CollectionSceneCreationFragment
@@ -15,10 +15,10 @@ import com.example.smartmatch.ui.construction.adapter.CollectionScenarioAdapter
  * @author Voyager
  * @date 2023/10/10 14:53
  */
-class CollectionSceneCreationFragment : BaseFragment<FragmentCollectionSceneCreationBinding>(),
+class ClusterSceneCreationFragment : BaseFragment<FragmentCollectionSceneCreationBinding>(),
     ConstructionListener {
 
-    lateinit var adapter: CollectionScenarioAdapter
+    lateinit var adapter: ClusterScenarioAdapter
     lateinit var sceneList: MutableList<CollectionScenarioHelper>
     private val mViewModel: CollectionSceneViewModel by lazy {
         ViewModelProvider(
@@ -29,7 +29,7 @@ class CollectionSceneCreationFragment : BaseFragment<FragmentCollectionSceneCrea
 
     override fun FragmentCollectionSceneCreationBinding.initBindingView() {
         binding.viewModel = mViewModel
-        mViewModel.constructionListener = this@CollectionSceneCreationFragment
+        mViewModel.constructionListener = this@ClusterSceneCreationFragment
 
 
     }

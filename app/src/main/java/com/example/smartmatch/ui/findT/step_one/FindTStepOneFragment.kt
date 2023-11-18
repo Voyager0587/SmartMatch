@@ -1,13 +1,11 @@
 package com.example.smartmatch.ui.findT.step_one
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.graphics.Color
 import android.view.Gravity
 import android.view.View
 import android.widget.CompoundButton
 import android.widget.LinearLayout
 import android.widget.RadioGroup
-import android.widget.SeekBar
 import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
@@ -18,11 +16,6 @@ import com.example.smartmatch.base.activity.BaseFragment
 import com.example.smartmatch.base.util.CTNumberUtils
 import com.example.smartmatch.chart.FindCTBtnParams
 import com.example.smartmatch.databinding.FragmentFindTStepOneBinding
-import com.example.smartmatch.logic.model.CheckCTData
-import com.example.smartmatch.logic.model.Light
-import com.example.smartmatch.logic.model.Light1
-import com.example.smartmatch.logic.model.LightOffBody
-import com.example.smartmatch.logic.model.TPrecentageBody
 import com.example.smartmatch.logic.model.helper.FindT
 //import com.example.smartmatch.ui.checkCT.CheckCTActivity
 import com.example.smartmatch.ui.construction.ConstructionListener

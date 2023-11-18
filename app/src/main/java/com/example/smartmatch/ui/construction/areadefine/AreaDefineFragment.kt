@@ -37,6 +37,7 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
     private var lastIndex = 0
     val NET_ID="net_id"
     var area_id=-1;
+    var net_id=-1;
     private val mViewModel: AreaDefineViewModel by lazy {
         ViewModelProvider(
             this,
@@ -83,12 +84,11 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
                 lastIndex = 0
                 binding.searchControl.setText(name)
                 binding.containerArea.removeAllViews()
-
+                net_id=mmnet_data[i].mmnet_id
                 for (j in mmnet_data[i].areas.areas_data.indices) {
                     val areaName = mmnet_data[i].areas.areas_data[j].area.name
                     val area = createItemButton(context, areaName) {
                         Toast.makeText(context, "Clicked on: $areaName", Toast.LENGTH_SHORT).show()
-                        area_id=mmnet_data[i].areas.areas_data[j].area.id
                     }
                     requireActivity().runOnUiThread{
                         binding.containerArea.addView(area)
@@ -106,7 +106,7 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
                             addNewView(inputStr)
 
                             val intent=Intent(requireActivity(),FindCActivity::class.java)
-                            intent.putExtra(NET_ID,area_id)//发送area的id
+                            intent.putExtra(NET_ID,net_id)//发送area的id
                             requireActivity().startActivity(intent)
                           //  mViewModel.createNewArea(mmnet_data[i].mmnet_id, inputStr)
                             false
