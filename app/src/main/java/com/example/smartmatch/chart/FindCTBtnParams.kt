@@ -9,7 +9,7 @@ class FindCTBtnParams<V : View> {
     var l: Int = 0
     var view: V? = null
     var tv: TextView? = null
-    var rawX: Float = 0f
+    var rawX: Float = 0f //s
     var rawY: Float = 0f
     var height: Float = 0f
     var width: Float = 0f
