@@ -96,4 +96,7 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment(), BaseBinding<VB> 
     protected open fun initDataAfterView() {
 
     }
+    protected open fun initDataAfterView(num:Int) {
+
+    }
 }

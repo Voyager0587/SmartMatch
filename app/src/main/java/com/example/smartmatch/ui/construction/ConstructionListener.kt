@@ -5,6 +5,8 @@ import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.MmnetData
 import com.example.smartmatch.logic.model.helper.FindT
 import com.example.smartmatch.logic.network.model.CollectionScenariosResponse
+import com.example.smartmatch.logic.network.model.FindCData
+import com.example.smartmatch.logic.network.model.FindTData
 import com.example.smartmatch.logic.network.model.ResponseMessage
 import com.example.smartmatch.logic.network.model.SceneCreationResponse
 
@@ -72,6 +74,15 @@ interface ConstructionListener {
      * @param name View的名称
      */
     fun addNewView(name:String){}
+    /**
+     * FindC的东西
+     */
+    fun findCData(result: LiveData<Result<FindCData>>){}
+    /**
+     * 找T界面获取数据
+     */
+    fun findTResponse(result: LiveData<Result<FindTData>>){}
+
 
 
 }

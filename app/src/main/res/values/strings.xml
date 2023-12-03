@@ -56,6 +56,13 @@
     <string name="check">Verify</string>
     <string name="scene_name">Scene Name</string>
     <string name="finsh">Finished</string>
+    <string name="area_name">Area Name :</string>
+    <string name="all_c_num">All C Number :</string>
+    <string name="all_t_num">All T Number :</string>
+    <string name="light_test">Light Test</string>
+    <string name="light_are_on_full">The lights are on full</string>
+    <string name="light_are_off_full">The lights are off full</string>
+    <string name="light_are_all_flashing">The lights are all flashing</string>
     <!--    手动找T-->
     <string name="handfindt">Manually find T</string>
     <string name="bright">bright</string>

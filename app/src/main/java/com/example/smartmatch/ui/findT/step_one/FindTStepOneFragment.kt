@@ -19,7 +19,7 @@ import com.example.smartmatch.databinding.FragmentFindTStepOneBinding
 import com.example.smartmatch.logic.model.helper.FindT
 //import com.example.smartmatch.ui.checkCT.CheckCTActivity
 import com.example.smartmatch.ui.construction.ConstructionListener
-import com.example.smartmatch.ui.viewModel1.FindTStepOneViewModel
+
 class FindTStepOneFragment (var idd:Int,var name:String): BaseFragment<FragmentFindTStepOneBinding>(),ConstructionListener {
     private lateinit var chooseAdapter: RvIdentifiedTheCListAdapter
     private lateinit var hasAuditAdapter: RvIdentifiedTheCListAdapter

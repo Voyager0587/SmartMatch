@@ -5,7 +5,6 @@ import com.example.smartmatch.logic.model.MMNetResponse
 
 import com.example.smartmatch.logic.model.helper.AreaCreationHelper
 import com.example.smartmatch.logic.model.helper.SceneCloseHelper
-import com.example.smartmatch.logic.network.model.CheckCTData
 import com.example.smartmatch.logic.network.model.CollectionScenariosResponse
 import com.example.smartmatch.logic.network.model.ResponseMessage
 import com.example.smartmatch.logic.network.model.ScenarioResponse
@@ -101,7 +100,6 @@ interface ConstructionService {
      * @param checkCTData 检查CT数据对象
      * @return MMNetResponse对象
      */
-    @POST("/mmnet/scenario/{id}")
-    suspend fun setnewscenario(@Body checkCTData: CheckCTData): MMNetResponse
+
 
 }

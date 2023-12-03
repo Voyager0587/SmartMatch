@@ -1,5 +1,7 @@
 package com.example.smartmatch.logic.network.model
 
+import com.google.gson.annotations.SerializedName
+
 /**
  * @className: ResponseMessage
  * @author: Voyager
@@ -13,4 +15,11 @@ data class ResponseMessage(
     val msg: String,
     val name: String,
     val token:String
+)
+/**
+ * 定义C返回T的数据类型
+ */
+data class UpCTAllResponse(
+    @SerializedName("name")
+    val name: String
 )
