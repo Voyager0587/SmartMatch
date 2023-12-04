@@ -51,6 +51,7 @@ dependencies {
     implementation rootProject.ext.depsLibs["coroutines-android"]
     implementation rootProject.ext.depsLibs["coroutines-core"]
 
+
     //Lottie Animation
     implementation 'com.airbnb.android:lottie:3.4.0'
     testImplementation 'junit:junit:4.13.2'

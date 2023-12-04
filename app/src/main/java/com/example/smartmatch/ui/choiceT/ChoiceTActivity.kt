@@ -15,7 +15,9 @@ import com.example.smartmatch.ui.MainViewModel
 import com.example.smartmatch.ui.choiceT.ui.ChoiceTRvAdapter
 
 class ChoiceTActivity :BaseActivity<ActivityChoiceTBinding>(){
-
+    val list: ArrayList<checkTAll> = ArrayList()
+    var i:Int=-1
+    var data1:ArrayList<Int> = ArrayList()
     private val mViewModel: MainViewModel by lazy {
         ViewModelProvider(
             this,
@@ -26,13 +28,18 @@ class ChoiceTActivity :BaseActivity<ActivityChoiceTBinding>(){
 
     override fun ActivityChoiceTBinding.initBindingView() {
         binding.choicetviewModel=mViewModel
-        var data1=-1
-        binding.handIv?.setOnClickListener{
-//            val intent= Intent()
-//            intent.setClass(this@ChoiceTActivity,HandFindTActivity::class.java)
-//            startActivity(intent)
-            data()
 
+        binding.handIv?.setOnClickListener{
+            val intent= Intent()
+            intent.setClass(this@ChoiceTActivity,HandFindTActivity::class.java)
+            startActivity(intent)
+
+            i++
+            // list.add(checkTAll(i))
+            adapter.submitList(list)
+            binding.ryChoiceT.layoutManager=LinearLayoutManager(this@ChoiceTActivity)
+            binding.ryChoiceT.adapter=adapter
+            binding.fintTv.visibility=View.GONE
 
 
         }
@@ -40,21 +47,16 @@ class ChoiceTActivity :BaseActivity<ActivityChoiceTBinding>(){
             val intent=Intent()
             //intent.setClass(this,LoadingActivity::class.java)
         }
-        if(data().size!=null){
-            binding.fintTv.visibility=View.GONE
-        }
+
 
         val intent:Intent=getIntent()
-         data1=intent.getIntExtra("LIST_T",data1)
-        Log.e("idd",data1.toString())
-        adapter.submitList(data())
-        binding.ryChoiceT.layoutManager=LinearLayoutManager(this@ChoiceTActivity)
-        binding.ryChoiceT.adapter=adapter
+
+        Log.e("idd",list.size.toString())
+
     }
     fun data(): List<checkTAll> {
-        val list: ArrayList<checkTAll> = ArrayList()
         for (i in 1..5) {
-            list.add(checkTAll(i))
+            // list.add(checkTAll(i))
             Log.e("iddddddd",list.size.toString())
         }
         return list

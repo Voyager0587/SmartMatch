@@ -25,6 +25,7 @@ import com.example.smartmatch.ui.findC.FindCActivity
 
 class HandFindTFragment : BaseFragment<FragmentHandFindTBinding>(), ConstructionListener {
     private lateinit var adapter: RvIdentifiedTheCListAdapter
+    val list: ArrayList<checkTAll> = ArrayList()
     //val cdc = activity?.findViewById<TextView>(R.id.currently_determined_C_btn)
     var T_NUM:Int=-1
     var trueT:Int=-1
@@ -39,6 +40,7 @@ class HandFindTFragment : BaseFragment<FragmentHandFindTBinding>(), Construction
     override fun FragmentHandFindTBinding.initBindingView() {
         binding.viewModel= viewModel
         T_NUM = arguments?.get("t_num") as Int
+        //LitePel
         initeView()
     }
     fun initeView() {
@@ -58,9 +60,13 @@ class HandFindTFragment : BaseFragment<FragmentHandFindTBinding>(), Construction
 //                    trueC[i].t=  newV.START_CID
 //                }
 //            }
+            for (i in 1..5) {
+                list.add(checkTAll(i))
+                Log.e("iddddddd",list.size.toString())
+            }
 
             val intent= Intent(requireActivity(), ChoiceTActivity::class.java)
-            intent.putExtra("LIST_T",data().size)//发送area的id
+            intent.putExtra("LIST_T",list)//发送area的id
             requireActivity().startActivity(intent)
 
         }
@@ -69,11 +75,8 @@ class HandFindTFragment : BaseFragment<FragmentHandFindTBinding>(), Construction
 
     }
     fun data(): List<checkTAll> {
-        val list: ArrayList<checkTAll> = ArrayList()
-        for (i in 1..5) {
-            list.add(checkTAll(i))
-            Log.e("iddddddd",list.size.toString())
-        }
+
+
         return list
     }
 
