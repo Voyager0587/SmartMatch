@@ -1,9 +1,12 @@
 package com.example.smartmatch.ui
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.smartmatch.chart.checkTAll
 import com.example.smartmatch.logic.model.helper.CollectionScenarioHelper
+import com.example.smartmatch.logic.network.model.FindCData
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
@@ -28,6 +31,7 @@ class MainViewModel : ViewModel() {
     fun getCollectionScenarioHelper(): MutableLiveData<CollectionScenarioHelper> {
         return compositeScene
     }
+    var tidData: List<checkTAll>?=null
 
     /**
      * 跳转到区域定义界面

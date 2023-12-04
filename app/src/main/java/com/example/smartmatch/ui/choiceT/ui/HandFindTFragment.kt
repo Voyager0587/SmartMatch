@@ -1,5 +1,6 @@
 package com.example.smartmatch.ui.choiceT.ui
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import androidx.lifecycle.ViewModelProvider
 import android.util.Log
@@ -14,16 +15,17 @@ import com.example.smartmatch.R
 import com.example.smartmatch.base.activity.BaseFragment
 import com.example.smartmatch.base.util.CTNumberUtils
 import com.example.smartmatch.chart.FindCTBtnParams
+import com.example.smartmatch.chart.checkTAll
 import com.example.smartmatch.databinding.FragmentHandFindTBinding
-import com.example.smartmatch.logic.model.helper.C
 import com.example.smartmatch.logic.model.helper.choiceT
+import com.example.smartmatch.ui.choiceT.ChoiceTActivity
 import com.example.smartmatch.ui.construction.ConstructionListener
-
+import com.example.smartmatch.ui.findC.FindCActivity
 
 
 class HandFindTFragment : BaseFragment<FragmentHandFindTBinding>(), ConstructionListener {
     private lateinit var adapter: RvIdentifiedTheCListAdapter
-    val cdc = activity?.findViewById<TextView>(R.id.currently_determined_C_btn)
+    //val cdc = activity?.findViewById<TextView>(R.id.currently_determined_C_btn)
     var T_NUM:Int=-1
     var trueT:Int=-1
     lateinit var trueC:List<choiceT>
@@ -35,31 +37,46 @@ class HandFindTFragment : BaseFragment<FragmentHandFindTBinding>(), Construction
     }
 
     override fun FragmentHandFindTBinding.initBindingView() {
-        binding.viewModel = viewModel
+        binding.viewModel= viewModel
         T_NUM = arguments?.get("t_num") as Int
         initeView()
     }
     fun initeView() {
         binding.checkCTAllBt.setOnClickListener{
-            var value = viewModel.currentlyDeterminedCBtn.value
-            if (value != null) {
-                val listValue = viewModel.identifiedTheCList
-                //必须进行深拷贝！！！
-                var newV = FindCTBtnParams<View>()
-                newV.START_CID = value.START_CID
-                listValue.add(newV)
-                adapter.notifyItemChanged(listValue.size)
-                Log.e("CID",value.START_CID.toString())
-                Toast.makeText(context, "CID: ${value.START_CID}", Toast.LENGTH_SHORT).show()
-                trueT++
-                for (i in trueC.indices) {
-                    trueC[i].t=  newV.START_CID
-                }
-            }
+//            var value = viewModel.currentlyDeterminedCBtn.value
+//            if (value != null) {
+//                val listValue = viewModel.identifiedTheCList
+//                //必须进行深拷贝！！！
+//                var newV = FindCTBtnParams<View>()
+//                newV.START_CID = value.START_CID
+//                listValue.add(newV)
+//                adapter.notifyItemChanged(listValue.size)
+//                Log.e("CID",value.START_CID.toString())
+//                Toast.makeText(context, "CID: ${value.START_CID}", Toast.LENGTH_SHORT).show()
+//                trueT++
+//                for (i in trueC.indices) {
+//                    trueC[i].t=  newV.START_CID
+//                }
+//            }
+
+            val intent= Intent(requireActivity(), ChoiceTActivity::class.java)
+            intent.putExtra("LIST_T",data().size)//发送area的id
+            requireActivity().startActivity(intent)
+
         }
 
 
+
     }
+    fun data(): List<checkTAll> {
+        val list: ArrayList<checkTAll> = ArrayList()
+        for (i in 1..5) {
+            list.add(checkTAll(i))
+            Log.e("iddddddd",list.size.toString())
+        }
+        return list
+    }
+
 
     override fun initDataBeforeView() {
         viewModel.btnsParams1.value = ArrayList()
@@ -188,13 +205,14 @@ class HandFindTFragment : BaseFragment<FragmentHandFindTBinding>(), Construction
 
 
     override fun initDataAfterView(num: Int) {
-        if (    T_NUM!= null) {
-            viewModel.CNumber.value = T_NUM
-            Log.e("xxxxxxxxx", T_NUM.toString())
-
-        } else {
-            viewModel.CNumber.value = 64
-        }
+        viewModel.CNumber.value = 64
+//        if (    T_NUM!= null) {
+//            viewModel.CNumber.value = T_NUM
+//            Log.e("xxxxxxxxx", T_NUM.toString())
+//
+//        } else {
+//            viewModel.CNumber.value = 64
+//        }
 
 
     }
@@ -292,7 +310,7 @@ class HandFindTFragment : BaseFragment<FragmentHandFindTBinding>(), Construction
                 viewFindCTBtnParams.START_CID = cid3[0][i]
                 viewFindCTBtnParams.END_CID = cid3[1][i]
                 tv.text = "C" + viewFindCTBtnParams.START_CID
-                cdc?.text = "C" + viewFindCTBtnParams.START_CID
+                //cdc?.text = "C" + viewFindCTBtnParams.START_CID
                 btn.text = (i + 1).toString()
                 viewFindCTBtnParams.l = 3
                 viewModel.btnsParams3.value!!.add(viewFindCTBtnParams as FindCTBtnParams<View>)
