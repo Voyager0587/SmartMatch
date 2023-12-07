@@ -5,60 +5,87 @@ import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import androidx.core.view.size
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.smartmatch.R
 import com.example.smartmatch.base.activity.BaseActivity
 import com.example.smartmatch.chart.checkTAll
 import com.example.smartmatch.databinding.ActivityChoiceTBinding
 import com.example.smartmatch.ui.MainViewModel
 import com.example.smartmatch.ui.choiceT.ui.ChoiceTRvAdapter
+import com.example.smartmatch.ui.choiceT.ui.HandFindTModel
 
 class ChoiceTActivity :BaseActivity<ActivityChoiceTBinding>(){
-    val list: ArrayList<checkTAll> = ArrayList()
     var i:Int=-1
-    var data1:ArrayList<Int> = ArrayList()
-    private val mViewModel: MainViewModel by lazy {
+    private lateinit var choiceTFragment: ChoiceTFragment
+    private lateinit var activityChoiceTBinding: ActivityChoiceTBinding
+    private val mViewModel: HandFindTModel by lazy {
         ViewModelProvider(
             this,
             ViewModelProvider.NewInstanceFactory()
-        )[MainViewModel::class.java]
+        )[HandFindTModel::class.java]
     }
-    val adapter=ChoiceTRvAdapter()
 
     override fun ActivityChoiceTBinding.initBindingView() {
-        binding.choicetviewModel=mViewModel
 
-        binding.handIv?.setOnClickListener{
-            val intent= Intent()
-            intent.setClass(this@ChoiceTActivity,HandFindTActivity::class.java)
-            startActivity(intent)
+        binding.choiceFindTMoadel=mViewModel
 
-            i++
-            // list.add(checkTAll(i))
-            adapter.submitList(list)
-            binding.ryChoiceT.layoutManager=LinearLayoutManager(this@ChoiceTActivity)
-            binding.ryChoiceT.adapter=adapter
-            binding.fintTv.visibility=View.GONE
-
-
+        initActivity()
+        initView()
+        val intent: Intent =getIntent()
         }
-        binding.smartIv?.setOnClickListener{
-            val intent=Intent()
-            //intent.setClass(this,LoadingActivity::class.java)
-        }
-
-
-        val intent:Intent=getIntent()
-
-        Log.e("idd",list.size.toString())
+        fun initActivity() {
+        activityChoiceTBinding= DataBindingUtil.setContentView(this, R.layout.activity_choice_t)
+        binding.choiceFindTMoadel=
+            ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(HandFindTModel::class.java)
+        activityChoiceTBinding.lifecycleOwner=this
 
     }
-    fun data(): List<checkTAll> {
-        for (i in 1..5) {
-            // list.add(checkTAll(i))
-            Log.e("iddddddd",list.size.toString())
-        }
-        return list
+
+    fun initView() {
+        choiceTFragment= ChoiceTFragment()
+        replaceFragment(choiceTFragment)
     }
-}
+
+    fun replaceFragment(fragment: Fragment) {
+        val fragmentManager: FragmentManager = supportFragmentManager
+        val transaction: FragmentTransaction = fragmentManager.beginTransaction()
+        transaction.replace(R.id.choiceTFrameLayout, fragment)
+        transaction.addToBackStack(null) // 碎片模拟返回栈
+        transaction.commitAllowingStateLoss()
+
+    }
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    fun data(): List<checkTAll> {
+//        for (i in 1..5) {
+//            // list.add(checkTAll(i))
+//            Log.e("iddddddd",list.size.toString())
+//        }
+//        return list
+//    }

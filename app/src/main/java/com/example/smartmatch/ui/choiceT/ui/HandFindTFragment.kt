@@ -1,6 +1,6 @@
 package com.example.smartmatch.ui.choiceT.ui
 import android.annotation.SuppressLint
-import android.content.Intent
+import android.content.Context
 import android.graphics.Color
 import androidx.lifecycle.ViewModelProvider
 import android.util.Log
@@ -8,7 +8,6 @@ import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.eazylight.ui.find_C.step_one.adapter.RvIdentifiedTheCListAdapter
 import com.example.smartmatch.R
@@ -18,17 +17,17 @@ import com.example.smartmatch.chart.FindCTBtnParams
 import com.example.smartmatch.chart.checkTAll
 import com.example.smartmatch.databinding.FragmentHandFindTBinding
 import com.example.smartmatch.logic.model.helper.choiceT
-import com.example.smartmatch.ui.choiceT.ChoiceTActivity
+import com.example.smartmatch.ui.choiceT.ChoiceTFragment
 import com.example.smartmatch.ui.construction.ConstructionListener
-import com.example.smartmatch.ui.findC.FindCActivity
 
 
 class HandFindTFragment : BaseFragment<FragmentHandFindTBinding>(), ConstructionListener {
+    private var listener: ChoiceTFragment.OnFragmentInteractionListener? = null
     private lateinit var adapter: RvIdentifiedTheCListAdapter
-    val list: ArrayList<checkTAll> = ArrayList()
     //val cdc = activity?.findViewById<TextView>(R.id.currently_determined_C_btn)
     var T_NUM:Int=-1
     var trueT:Int=-1
+    var i:Int=-1
     lateinit var trueC:List<choiceT>
     private val viewModel: HandFindTModel by lazy {
         ViewModelProvider(
@@ -36,7 +35,17 @@ class HandFindTFragment : BaseFragment<FragmentHandFindTBinding>(), Construction
             ViewModelProvider.NewInstanceFactory()
         )[HandFindTModel::class.java]
     }
-
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        listener = if (context is ChoiceTFragment.OnFragmentInteractionListener) {
+            context
+        } else {
+            throw RuntimeException(
+                context.toString()
+                        + " must implement OnFragmentInteractionListener"
+            )
+        }
+    }
     override fun FragmentHandFindTBinding.initBindingView() {
         binding.viewModel= viewModel
         T_NUM = arguments?.get("t_num") as Int
@@ -60,24 +69,17 @@ class HandFindTFragment : BaseFragment<FragmentHandFindTBinding>(), Construction
 //                    trueC[i].t=  newV.START_CID
 //                }
 //            }
-            for (i in 1..5) {
-                list.add(checkTAll(i))
-                Log.e("iddddddd",list.size.toString())
-            }
 
-            val intent= Intent(requireActivity(), ChoiceTActivity::class.java)
-            intent.putExtra("LIST_T",list)//发送area的id
-            requireActivity().startActivity(intent)
+            for (i in 1..5) {
+                viewModel.list.add(checkTAll(i))
+            }
+            Log.e("idxxx", viewModel.list.size.toString())
+            listener?.vm1()
 
         }
 
+        viewModel.updateList(viewModel.list)
 
-
-    }
-    fun data(): List<checkTAll> {
-
-
-        return list
     }
 
 
