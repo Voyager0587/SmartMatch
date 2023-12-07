@@ -4,9 +4,10 @@ package com.example.smartmatch.logic
 import androidx.lifecycle.liveData
 
 import com.example.smartmatch.logic.model.helper.AreaCreationHelper
+import com.example.smartmatch.logic.model.helper.FindTHelper
 import com.example.smartmatch.logic.model.helper.SceneCloseHelper
+import com.example.smartmatch.logic.model.helper.UpCTAllHelper
 import com.example.smartmatch.logic.network.NetworkCenter
-import com.example.smartmatch.logic.network.model.CheckCTData
 import com.example.smartmatch.logic.network.model.ScenarioResponse
 import kotlinx.coroutines.Dispatchers
 import kotlin.coroutines.CoroutineContext
@@ -76,8 +77,20 @@ object Repository {
         }
     }
 
-    fun findC(id: String) = fire(Dispatchers.IO) {
-        val response = NetworkCenter.findCid(id)
+    fun findCData(id:Int) = fire(Dispatchers.IO) {
+        val response=NetworkCenter.findCdata(id)
+        run {
+            Result.success(response)
+        }
+    }
+    fun findTData(findTHelper: FindTHelper)=fire(Dispatchers.IO){
+        val response=NetworkCenter.findTData(findTHelper)
+        run{
+            Result.success(response)
+        }
+    }
+    fun upCTData(upCTAllHelper: UpCTAllHelper)= fire(Dispatchers.IO){
+        val response=NetworkCenter.upCTData(upCTAllHelper)
         run {
             Result.success(response)
         }
@@ -86,12 +99,6 @@ object Repository {
 
 
 
-    fun setnewscenario(checkCTData: CheckCTData) = fire(Dispatchers.IO) {
-        val response = NetworkCenter.setnewscenario(checkCTData)
-        run {
-            Result.success(response)
-        }
-    }
 
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData<Result<T>>(context) {

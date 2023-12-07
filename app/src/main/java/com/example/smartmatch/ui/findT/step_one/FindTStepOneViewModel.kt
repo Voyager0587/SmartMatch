@@ -1,4 +1,4 @@
-package com.example.smartmatch.ui.viewModel1
+package com.example.smartmatch.ui.findT.step_one
 
 import android.view.View
 import androidx.lifecycle.MutableLiveData

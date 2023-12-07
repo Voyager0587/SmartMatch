@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="com.example.smartmatch.ui.viewModel1.FindCStepOneViewModel" />
+            type="com.example.smartmatch.ui.findC.step_one.FindCStepOneViewModel" />
         <variable
             name="click"
             type="com.example.smartmatch.ui.findC.step_one.FindCStepOneFragment.Click" />

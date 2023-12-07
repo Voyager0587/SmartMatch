@@ -7,7 +7,7 @@
 
         <variable
             name="vmT"
-            type="com.example.smartmatch.ui.viewModel1.FindTStepOneViewModel" />
+            type="com.example.smartmatch.ui.findT.step_one.FindTStepOneViewModel" />
 
         <variable
             name="clickT"

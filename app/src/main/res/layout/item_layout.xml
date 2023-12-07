@@ -6,6 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:id="@+id/rl_item"
+        android:layout_marginTop="9dp"
         android:background="@drawable/round_20"
         android:layout_marginHorizontal="15dp">
 

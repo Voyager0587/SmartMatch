@@ -5,17 +5,16 @@
 
     <data>
         <variable
-            name="findtviewModel"
-            type="com.example.smartmatch.ui.findT.FindTViewModel" />
+            name="handFindTMoadel"
+            type="com.example.smartmatch.ui.choiceT.ui.HandFindTModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.findT.FindTActivity">
+        android:layout_height="match_parent">
         <FrameLayout
-            android:id="@+id/findTFrameLayout"
+            android:id="@+id/handfindFrameLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,10 +3,14 @@ package com.example.smartmatch.logic.network
 import android.util.Log
 import com.example.smartmatch.logic.model.User
 import com.example.smartmatch.logic.model.helper.AreaCreationHelper
+import com.example.smartmatch.logic.model.helper.FindTHelper
 import com.example.smartmatch.logic.model.helper.SceneCloseHelper
+import com.example.smartmatch.logic.model.helper.UpCTAllHelper
 import com.example.smartmatch.logic.network.api.ConstructionService
+import com.example.smartmatch.logic.network.api.FindCService
+import com.example.smartmatch.logic.network.api.FindTService
 import com.example.smartmatch.logic.network.api.PersonService
-import com.example.smartmatch.logic.network.model.CheckCTData
+import com.example.smartmatch.logic.network.api.UpCTAll
 import com.example.smartmatch.logic.network.model.ScenarioResponse
 
 import retrofit2.Call
@@ -28,12 +32,13 @@ object NetworkCenter {
     // private val authServer = ServiceCreator.create<AuthService>()
     private val constructionServer = ServiceCreator.create<ConstructionService>()
     private val personServer = ServiceCreator.create<PersonService>()
+    private val findCData=ServiceCreator.create<FindCService>()
+    private val findTService=ServiceCreator.create<FindTService>()
+    private val upCTService=ServiceCreator.create<UpCTAll>()
 
     /**
      * Construction
      */
-
-
     /**
      * 建筑物
      */
@@ -77,12 +82,6 @@ object NetworkCenter {
         constructionServer.createNewArea(id, areaCreationHelper).await()
 
     /**
-     * 设置新的场景
-     */
-    suspend fun setnewscenario(checkCTData: CheckCTData) =
-        constructionServer.setnewscenario(checkCTData)
-
-    /**
      * 登录
      */
     suspend fun login(username: String, password: String) =
@@ -91,12 +90,15 @@ object NetworkCenter {
     /**
      * 找C
      */
-    suspend fun findCid(id: String) = constructionServer.findC(id).await()
-
+    suspend fun findCdata(id: Int)= findCData.getCData(id).await()
     /**
      * 找T
      */
-
+    suspend fun findTData(findTData: FindTHelper)= findTService.postTData(findTData).await()
+    /**
+     * 创建Area的时候提交数据
+     */
+    suspend fun upCTData(upCTAllHelper: UpCTAllHelper)= upCTService.postupctData(upCTAllHelper).await()
 
     private suspend fun <T> Call<T>.await(): T {
         // 创建一个挂起函数，用于等待Call对象的响应并返回结果

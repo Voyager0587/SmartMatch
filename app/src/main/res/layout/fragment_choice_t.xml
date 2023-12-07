@@ -5,15 +5,15 @@
 
     <data>
         <variable
-            name="choicetviewModel"
-            type="com.example.smartmatch.ui.MainViewModel" />
+            name="fragmentchocieviewModel"
+            type="com.example.smartmatch.ui.choiceT.ui.HandFindTModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.choiceT.ChoiceTActivity">
+        tools:context=".ui.choiceT.ChoiceTFragment">
         <FrameLayout
             android:id="@+id/choiceTFrameLayout"
             android:layout_width="match_parent"
@@ -30,29 +30,46 @@
                     android:textColor="@color/black"
                     android:layout_gravity="center_horizontal"
                     android:textSize="20dp"/>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/ry_choiceT"
+                <TextView
+                    android:id="@+id/fint_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Please find T"
+                    android:textColor="@color/black"
                     android:layout_gravity="center_horizontal"
-                    android:layout_centerHorizontal="true" />
+                    android:textSize="40dp"/>
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="320dp"
+                    android:layout_marginTop="10dp">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/ry_choiceT"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"/>
+                </ScrollView>
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="80dp"
-                    android:layout_marginLeft="600dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="250dp"
                     android:orientation="horizontal">
                     <LinearLayout
+                        android:id="@+id/hand_iv"
                         android:layout_width="50dp"
                         android:layout_height="80dp"
                         android:orientation="vertical">
                         <ImageView
+
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:background="@drawable/add"/>
                         <TextView
+                            android:id="@+id/smart_iv"
                             android:layout_width="50dp"
-                            android:layout_height="20dp"
+                            android:layout_height="wrap_content"
                             android:text="@string/hand_add"
                             android:textSize="11dp"
                             android:textColor="#302E2E"/>
@@ -68,7 +85,7 @@
                             android:background="@drawable/add"/>
                         <TextView
                             android:layout_width="50dp"
-                            android:layout_height="20dp"
+                            android:layout_height="wrap_content"
                             android:text="@string/smart_add"
                             android:layout_marginLeft="3dp"
                             android:textSize="11dp"
@@ -143,7 +160,7 @@
                         android:layout_width="80dp"
                         android:layout_height="50dp"
                         android:text="@string/next_step"
-                        android:layout_marginLeft="450dp"/>
+                        android:layout_marginLeft="150dp"/>
                 </LinearLayout>
             </LinearLayout>
 
