@@ -30,7 +30,7 @@ class ClusterSceneCreationFragment : BaseFragment<FragmentCollectionSceneCreatio
     override fun FragmentCollectionSceneCreationBinding.initBindingView() {
         binding.viewModel = mViewModel
         mViewModel.constructionListener = this@ClusterSceneCreationFragment
-
+        initListener()
 
     }
 
@@ -44,6 +44,15 @@ class ClusterSceneCreationFragment : BaseFragment<FragmentCollectionSceneCreatio
 
             }
 
+        }
+    }
+
+    override fun initListener() {
+        super.initListener()
+        binding.imageBtnAddBasisScene.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction().hide(this)
+                .add(ChooseTargetFragment(), "chooseTargetFragment")
+                .addToBackStack("clusterSceneCreationFragment").commit()
         }
     }
 }

@@ -152,7 +152,7 @@
                         android:autofillHints=""
                         android:background="@color/blue_light"
                         android:drawablePadding="10sp"
-                        android:hint="@string/choose_area"
+                        android:hint="@string/choose_scenario"
                         android:inputType="text"
                         android:textColor="@color/black"
                         android:textSize="26sp" />

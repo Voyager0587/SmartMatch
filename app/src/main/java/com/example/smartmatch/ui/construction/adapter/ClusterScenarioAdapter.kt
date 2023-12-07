@@ -34,6 +34,9 @@ class ClusterScenarioAdapter :
                 textArea.text="集合场景"
                 textAreaDisplay.text=bean.collectionScenesName
             }
+            SceneCategory.SceneCategoryType.CLUSTER_SCENARIO->{
+
+            }
             // !!!  树状显示那里还是用RecyclerView来显示吧，后面总会这样用的
 
         }

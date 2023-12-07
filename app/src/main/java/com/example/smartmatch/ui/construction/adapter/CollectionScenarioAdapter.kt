@@ -16,6 +16,7 @@ class CollectionScenarioAdapter :
     BaseAdapter<ScenarioHelper, ItemChooseSingleBinding>() {
     var netId=-1
     private set
+    var scenarioHelper:ScenarioHelper? = null
     override fun ItemChooseSingleBinding.onBindViewHolder(bean: ScenarioHelper, position: Int) {
         btnItem.net_id=bean.id
         btnItem.text(bean.name)
@@ -23,6 +24,7 @@ class CollectionScenarioAdapter :
         btnItem.setOnClickListener(object : ItemButton.OnClickListener {
             override fun onTitleClick() {
                 netId=btnItem.net_id
+                scenarioHelper=getItem(position)
             }
 
         })

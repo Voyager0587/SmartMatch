@@ -170,7 +170,4 @@ class AreaDefineFragment : BaseFragment<FragmentAreaDefineBinding>(), Constructi
         TODO("Not yet implemented")
     }
 
-
-
-
 }

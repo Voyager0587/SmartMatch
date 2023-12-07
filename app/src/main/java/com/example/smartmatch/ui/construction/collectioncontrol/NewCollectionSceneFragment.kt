@@ -27,6 +27,7 @@ class NewCollectionSceneFragment(private val mmnetId: Int) :
             ViewModelProvider.NewInstanceFactory()
         )[CollectionControlViewModel::class.java]
     }
+    private val dataList = ArrayList<ScenarioHelper>()
     private lateinit var mAdapter: CollectionScenarioAdapter
     override fun FragmentNewCollectionSceneBinding.initBindingView() {
         binding.viewModel = mViewModel
@@ -43,7 +44,6 @@ class NewCollectionSceneFragment(private val mmnetId: Int) :
             run {
                 val data = re.getOrNull()
                 data?.let {
-                    val dataList = ArrayList<ScenarioHelper>()
                     for (bean in data.data)
                         dataList.add(ScenarioHelper(bean.name, bean.id))
                     mAdapter = CollectionScenarioAdapter()
@@ -60,11 +60,12 @@ class NewCollectionSceneFragment(private val mmnetId: Int) :
 
     override fun initListener() {
         super.initListener()
+
         binding.imageBtnAddCollectionScene.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction().apply {
                 add(
                     R.id.container_main,
-                    AddCollectionSceneFragment(this@NewCollectionSceneFragment)
+                    AddCollectionSceneFragment(this@NewCollectionSceneFragment,mmnetId)
                 )
                 hide(this@NewCollectionSceneFragment)    //TODO 改成mCurrentFragment
                 setReorderingAllowed(true)
@@ -72,5 +73,27 @@ class NewCollectionSceneFragment(private val mmnetId: Int) :
                 commit()
             }
         }
+        binding.imageBtnAddClusterScene.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction().apply {
+                add(
+                    R.id.container_main,
+                    ChooseScenarioFragment(this@NewCollectionSceneFragment)
+                )
+                hide(this@NewCollectionSceneFragment)    //TODO 改成mCurrentFragment
+                setReorderingAllowed(true)
+                addToBackStack("new")
+                commit()
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if(!dataList.contains(mViewModel.scenarioHelper))
+            mViewModel.scenarioHelper?.let {
+                dataList.add(it)
+                mViewModel.scenarioHelper=null
+            }
+
     }
 }

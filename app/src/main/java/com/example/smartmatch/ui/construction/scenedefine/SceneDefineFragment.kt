@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 import android.widget.CompoundButton
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import com.example.smartmatch.base.activity.BaseFragment
@@ -28,7 +27,7 @@ import com.kongzue.dialogx.dialogs.InputDialog
 class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), ConstructionListener {
 
     private var lastIndex = 0
-    private var area_id=0
+    private var areaId = 0
     private val mViewModel: SceneDefineViewModel by lazy {
         ViewModelProvider(
             requireActivity(),
@@ -74,45 +73,57 @@ class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), Construc
                 for (j in mmnet_data[i].areas.areas_data.indices) {
                     val areaName = mmnet_data[i].areas.areas_data[j].area.name
                     val area = createItemButton(context, areaName) {
+                        binding.searchArea.setText(areaName)
                         lastIndex = 0
-                        binding.searchControl.setText(name)
                         binding.containerScene.removeAllViews()
-                        area_id=mmnet_data[i].areas.areas_data[j].area.id
+                        areaId = mmnet_data[i].areas.areas_data[j].area.id
                         for (k in mmnet_data[i].areas.areas_data[j].area.scenarios_data.indices) {
                             val sceneName =
                                 mmnet_data[i].areas.areas_data[j].area.scenarios_data[k].name
                             val scene = createItemButton(context, sceneName) {
-                                Toast.makeText(
-                                    context,
-                                    "Clicked on: $sceneName",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                binding.searchScene.setText(sceneName)
+                                "Clicked on: $sceneName".toast()
                             }
                             binding.containerScene.addView(scene)
                             lastIndex++
                         }
 
                         val newScene = createItemButton(context, "Create a new scene") {
-                            InputDialog("Create a new scene", "Please enter a scene name", "Confirm", "Cancel", "")
+                            InputDialog(
+                                "Create a new scene",
+                                "Please enter a scene name",
+                                "Confirm",
+                                "Cancel",
+                                ""
+                            )
                                 .setCancelable(true)
                                 .setOkButton { baseDialog, v, inputStr ->
                                     requireActivity().toast("Input content：$inputStr")
-                                    addNewView(inputStr)
-                                    mViewModel.getTByAreaId(area_id)
-                                    var intent=Intent(requireContext(),FindTActivity::class.java)
-                                    intent.putExtra("area_id",area_id)
+                                    //addNewView(inputStr)
+                                    mViewModel.getTByAreaId(areaId)
+                                    var intent = Intent(requireContext(), FindTActivity::class.java)
+                                    intent.putExtra("area_id", areaId)
                                     requireContext().startActivity(intent)
                                     false
                                 }
                                 .show()
                         }
                         binding.containerScene.addView(newScene)
-                        val newScene2 = createItemButton(context, "Add a new scene based on an existing scene") {
-                            InputDialog("Add a new scene based on an existing scene", "Please enter a scene name", "Confirm", "Cancel", "")
+                        val newScene2 = createItemButton(
+                            context,
+                            "Add a new scene based on an existing scene"
+                        ) {
+                            InputDialog(
+                                "Add a new scene based on an existing scene",
+                                "Please enter a scene name",
+                                "Confirm",
+                                "Cancel",
+                                ""
+                            )
                                 .setCancelable(true)
                                 .setOkButton { baseDialog, v, inputStr ->
                                     requireActivity().toast("Input content：$inputStr")
-                                    addNewView(inputStr)
+                                    //addNewView(inputStr)
 
                                     false
                                 }
@@ -136,7 +147,7 @@ class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), Construc
         val button = ItemButton(context, null)
         button.text(text)
         button.setOnClickListener { onClick() }
-        button.setOnClickListener(object :ItemButton.OnClickListener{
+        button.setOnClickListener(object : ItemButton.OnClickListener {
             override fun onTitleClick() {
                 onClick()
 
@@ -177,7 +188,6 @@ class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), Construc
     override fun processFindT(result: LiveData<Result<FindT>>) {
 
     }
-
 
 
 }

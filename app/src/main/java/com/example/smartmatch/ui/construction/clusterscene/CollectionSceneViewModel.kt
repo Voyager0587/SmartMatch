@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.smartmatch.logic.Repository
 import com.example.smartmatch.logic.model.MMNetResponse
+import com.example.smartmatch.logic.model.ScenariosData
 import com.example.smartmatch.ui.construction.ConstructionListener
 
 /**
@@ -16,7 +17,7 @@ import com.example.smartmatch.ui.construction.ConstructionListener
 class CollectionSceneViewModel :ViewModel() {
     private val repository = Repository
     internal var constructionListener: ConstructionListener?=null
-
+    var scenario: ScenariosData?=null
     var mmnetData: LiveData<Result<MMNetResponse>>? = null
 
     fun getMMNetData(){

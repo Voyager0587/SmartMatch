@@ -42,7 +42,12 @@ class SceneCategory{
         /**
          * 集合场景
          */
-        GATHERING_SCENES
+        GATHERING_SCENES,
+
+        /**
+         * 集群场景
+         */
+        CLUSTER_SCENARIO
     }
 }
 

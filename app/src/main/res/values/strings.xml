@@ -65,4 +65,5 @@
     <string name="login_title">Login</string>
     <string name="switch_">Switch</string>
     <string name="brightness_adjust">Brightness adjustment</string>
+    <string name="choose_scenario">Choose Scenario</string>
 </resources>

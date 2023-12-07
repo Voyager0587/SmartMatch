@@ -21,6 +21,7 @@ import com.example.smartmatch.ui.person.PersonFragment
 import com.example.smartmatch.ui.person.login.LoginFragment
 import com.example.smartmatch.ui.MainViewModel
 import com.example.smartmatch.ui.construction.collectioncontrol.CollectionControlFragment
+import com.example.smartmatch.ui.construction.collectioncontrol.NewCollectionSceneFragment
 
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -52,6 +53,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     3 -> jumpToFragment(LightControlFragment(), "lightControlFragment")
                     4 -> jumpToFragment(LoginFragment(), "loginFragment")
                     5 -> jumpToFragment(CollectionControlFragment(), "collectionControlFragment")
+                    6 -> jumpToFragment(NewCollectionSceneFragment(1), "collectionControlFragment")
                     else -> toast("jumpToError")
 
                 }

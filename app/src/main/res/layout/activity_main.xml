@@ -8,35 +8,38 @@
             name="viewModel"
             type="com.example.smartmatch.ui.MainViewModel" />
     </data>
-<FrameLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/container_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:context=".MainActivity">
+
         <LinearLayout
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#E1EAFF"
-            android:orientation="horizontal"
             android:layout_above="@id/bottom_NavigationView"
-         />
+            android:background="#E1EAFF"
+            android:orientation="horizontal" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_NavigationView"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:background="@color/blue_light"
             android:layout_alignParentBottom="true"
-            app:menu="@menu/bottom_menu"
-            android:orientation="horizontal" />
+            android:background="@color/blue_light"
+            android:orientation="horizontal"
+            app:menu="@menu/bottom_menu" />
 
     </RelativeLayout>
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

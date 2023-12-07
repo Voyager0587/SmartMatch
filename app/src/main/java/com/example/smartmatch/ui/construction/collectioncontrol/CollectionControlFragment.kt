@@ -61,8 +61,6 @@ class CollectionControlFragment : BaseFragment<FragmentCollectionControlBinding>
         binding.btnNext.setOnClickListener {
             var id= mAdapter.netId
             if (mAdapter.netId != -1) {
-
-                val fragment = NewCollectionSceneFragment(mAdapter.netId)
                 requireActivity().supportFragmentManager.beginTransaction().apply {
                     add(R.id.container_main, NewCollectionSceneFragment(mAdapter.netId))
                     hide(this@CollectionControlFragment)
@@ -72,6 +70,8 @@ class CollectionControlFragment : BaseFragment<FragmentCollectionControlBinding>
                 }
             }
         }
+
+
 
 //        binding.etInput.setOnTouchListener { v, event ->
 //
