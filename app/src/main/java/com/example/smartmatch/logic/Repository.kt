@@ -95,6 +95,13 @@ object Repository {
             Result.success(response)
         }
     }
+    fun choicetdata(id:Int)= fire(Dispatchers.IO){
+        val response=NetworkCenter.choiceTData(id)
+        run{
+            Result.success(response)
+        }
+
+    }
 
 
 

@@ -12,6 +12,7 @@ import com.example.smartmatch.ui.construction.ConstructionListener
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
+import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.view.View
@@ -26,16 +27,19 @@ import com.example.smartmatch.logic.model.helper.FindT
 import com.example.smartmatch.logic.model.helper.FindTHelper
 import com.example.smartmatch.logic.network.model.FindCData
 import com.example.smartmatch.logic.network.model.FindTData
-import com.example.smartmatch.ui.checkAll.CheckAllActivity
+import com.example.smartmatch.logic.network.model.choicetdata
+
 
 import com.example.smartmatch.ui.choiceT.ChoiceTActivity
-import com.example.smartmatch.ui.choiceT.HandFindTActivity
+import com.example.smartmatch.ui.choiceT.ChoiceTFragment
+
+import com.example.smartmatch.ui.choiceT.ui.HandFindTFragment
 
 
 import kotlin.collections.ArrayList
 
 class FindCStepOneFragment :  BaseFragment<FragmentFindCStepOneBinding>(), ConstructionListener {
-
+    private var listener: ChoiceTFragment.OnFragmentInteractionListener? = null
     private lateinit var adapter: RvIdentifiedTheCListAdapter
     var c_num:Int=0
     var true_num:Int=0;
@@ -62,13 +66,27 @@ class FindCStepOneFragment :  BaseFragment<FragmentFindCStepOneBinding>(), Const
         var idd=arguments?.get("xx")
         viewModel.getCData(idd as Int)
         binding.button4.setOnClickListener{
-            val intent= Intent();
-            intent.setClass(requireActivity(),ChoiceTActivity::class.java)
-            startActivity(intent)
-            val intent1=Intent(requireActivity(), CheckAllActivity::class.java)
-            intent1.putExtra(INT_CNUM,true_num)
-            viewModel.getTData(FindTHelper(trueC))
-
+//            val intent= Intent();
+//            intent.setClass(requireActivity(), HandFindTActivity::class.java)
+//            startActivity(intent)
+//            val intent1=Intent(requireActivity(), HandFindTActivity::class.java)
+//           intent1.putExtra(INT_CNUM,true_num)
+//            val existingFragment = requireActivity().supportFragmentManager.findFragmentByTag(HandFindTFragment::class.java.simpleName)
+//            val bundle = Bundle()
+//            if (existingFragment != null && existingFragment is ChoiceTFragment) {
+//                // 如果 ChoiceTFragment 已存在，则更新参数
+//                existingFragment.arguments = bundle
+//            } else {
+//                // 如果 ChoiceTFragment 不存在，则创建一个新的实例并传递参数
+//                val recive = ChoiceTFragment()
+//                recive.arguments = bundle
+//                val transaction = requireActivity().supportFragmentManager.beginTransaction()
+//                transaction.replace(R.id.findCFrameLayout, recive)
+//                transaction.addToBackStack(null)
+//                transaction.commit()
+//            }
+            listener?.vm()
+           // viewModel.getTData(FindTHelper(trueC))
         }
     }
 
@@ -79,14 +97,16 @@ class FindCStepOneFragment :  BaseFragment<FragmentFindCStepOneBinding>(), Const
                 val responseMesssage=it.getOrNull()
                 if(responseMesssage?.code==1){
                     toast(responseMesssage.data.num.toString())
-                    val intent1=Intent(requireActivity(), HandFindTActivity::class.java)
-                    intent1.putExtra(INT_TNUM,responseMesssage.data.num)
-                    toast(responseMesssage.data.num.toString())
+//                    val intent1=Intent(requireActivity(), HandFindTActivity::class.java)
+//                    intent1.putExtra(INT_TNUM,responseMesssage.data.num)
+//                    toast(responseMesssage.data.num.toString())
                 }
             }
 
         }
     }
+
+
 
     inner class Click {
         fun confirm(view: View) {
@@ -229,11 +249,6 @@ class FindCStepOneFragment :  BaseFragment<FragmentFindCStepOneBinding>(), Const
     }
     override fun findCData(result: LiveData<Result<FindCData>>) {
         super.findCData(result)
-//        var idd=arguments?.get("xx")
-//        viewModel.getCData(idd as Int)
-//        Log.e("xxx",idd.toString())
-//        Toast.makeText(context, "Clicked on: $idd", Toast.LENGTH_SHORT).show()
-//        viewModel.getCData(c_num)
         var a=result.value
         var b=a?.getOrNull()
         result.observe(this){re->
@@ -243,14 +258,12 @@ class FindCStepOneFragment :  BaseFragment<FragmentFindCStepOneBinding>(), Const
                 c_num=data
                 Toast.makeText(context, "mmnetid: $c_num", Toast.LENGTH_SHORT).show()
                 Log.e("xxxid",c_num.toString())
-                initDataAfterView(c_num)
+                initDataAfterView(21)
             }
         }
     }
     override fun initDataAfterView(num:Int) {
 
-//        viewModel.constructionListener=this@FindCStepOneFragment
-//        viewModel.cdata?.let { findCData(it) }
         if(num!=null){
             viewModel.CNumber.value =num
             Log.e("xxxxxxxxx",num.toString())

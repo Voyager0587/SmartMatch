@@ -18,7 +18,7 @@
         android:layout_height="match_parent"
         tools:context=".ui.checkCT.ChoiceTActivity">
         <FrameLayout
-            android:id="@+id/findCFrameLayout"
+            android:id="@+id/checkctfragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
             <LinearLayout

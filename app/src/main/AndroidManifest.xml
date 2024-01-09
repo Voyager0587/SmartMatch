@@ -23,7 +23,6 @@
             android:name=".MainActivity"
             android:exported="true">
 
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -49,8 +48,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
 
+
+        </activity>
+<activity android:name=".ui.checkAll.CheckAllActivity"
+    android:exported="true">
+
+</activity>
 
 
 

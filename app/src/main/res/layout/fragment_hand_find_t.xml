@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
-            name="viewModel"
-            type="com.example.smartmatch.ui.choiceT.ui.HandFindTModel" />
+            name="vm"
+            type="com.example.smartmatch.ui.findC.step_one.FindCStepOneViewModel" />
+        <variable
+            name="click"
+            type="com.example.smartmatch.ui.choiceT.ui.HandFindTFragment.Click" />
     </data>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.choiceT.HandFindTActivity">
+        tools:context=".ui.find_C.step_one.FindCStepOneFragment">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -63,22 +67,32 @@
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@+id/ll_2" />
 
+
             <Button
-                android:id="@+id/checkCTAll_bt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/button4"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/login_btn"
-                android:text="@string/choice_t"
+                android:text="@string/check"
                 android:textColor="@color/white"
-                tools:layout_editor_absoluteX="306dp"
-                tools:layout_editor_absoluteY="596dp"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/button3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
 
-
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/login_btn"
+                android:text="@string/next_step"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/button4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/button4"
+                app:layout_constraintTop_toTopOf="@+id/button4" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
-
-
-
-
 </layout>

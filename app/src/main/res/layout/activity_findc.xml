@@ -6,7 +6,7 @@
     <data>
         <variable
             name="findcviewModel"
-            type="com.example.smartmatch.ui.findC.FindCViewModel" />
+            type="com.example.smartmatch.ui.findC.step_one.FindCStepOneViewModel" />
 
     </data>
 

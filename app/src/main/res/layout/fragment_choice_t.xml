@@ -6,7 +6,7 @@
     <data>
         <variable
             name="fragmentchocieviewModel"
-            type="com.example.smartmatch.ui.choiceT.ui.HandFindTModel" />
+            type="com.example.smartmatch.ui.findC.step_one.FindCStepOneViewModel" />
 
     </data>
 
@@ -30,6 +30,7 @@
                     android:textColor="@color/black"
                     android:layout_gravity="center_horizontal"
                     android:textSize="20dp"/>
+
                 <TextView
                     android:id="@+id/fint_tv"
                     android:layout_width="wrap_content"
@@ -153,14 +154,11 @@
                     android:orientation="horizontal"
                     android:layout_gravity="center_horizontal">
                     <Button
+                        android:id="@+id/checkAll_next_bt"
                         android:layout_width="80dp"
                         android:layout_height="50dp"
                         android:text="@string/next_one"/>
-                    <Button
-                        android:layout_width="80dp"
-                        android:layout_height="50dp"
-                        android:text="@string/next_step"
-                        android:layout_marginLeft="150dp"/>
+
                 </LinearLayout>
             </LinearLayout>
 

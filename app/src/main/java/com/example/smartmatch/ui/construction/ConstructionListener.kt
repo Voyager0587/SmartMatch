@@ -9,6 +9,7 @@ import com.example.smartmatch.logic.network.model.FindCData
 import com.example.smartmatch.logic.network.model.FindTData
 import com.example.smartmatch.logic.network.model.ResponseMessage
 import com.example.smartmatch.logic.network.model.SceneCreationResponse
+import com.example.smartmatch.logic.network.model.choicetdata
 
 /**
  * @className: ConstructionListener
@@ -82,6 +83,11 @@ interface ConstructionListener {
      * 找T界面获取数据
      */
     fun findTResponse(result: LiveData<Result<FindTData>>){}
+
+    /**
+     * 选择T的界面
+     */
+    fun choicetdata(result: LiveData<Result<choicetdata>>){}
 
 
 
