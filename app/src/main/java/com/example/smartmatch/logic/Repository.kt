@@ -5,6 +5,7 @@ import androidx.lifecycle.liveData
 
 import com.example.smartmatch.logic.model.helper.AreaCreationHelper
 import com.example.smartmatch.logic.model.helper.FindTHelper
+import com.example.smartmatch.logic.model.helper.PostLight1
 import com.example.smartmatch.logic.model.helper.SceneCloseHelper
 import com.example.smartmatch.logic.model.helper.UpCTAllHelper
 import com.example.smartmatch.logic.network.NetworkCenter
@@ -34,7 +35,12 @@ object Repository {
             Result.success(response)
         }
     }
-
+    fun postlightdata(postLight: PostLight1)= fire(Dispatchers.IO){
+        val response=NetworkCenter.postlightData(postLight)
+        run {
+            Result.success(response)
+        }
+    }
     fun getTByAreaId(id: Int) = fire(Dispatchers.IO) {
         val response = NetworkCenter.getTByAreaId(id)
         run {

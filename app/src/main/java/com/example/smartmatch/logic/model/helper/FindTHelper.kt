@@ -13,6 +13,12 @@ data class C(
 data class choiceT(
     var t:Int
 )
-data class cT(
-    var id:Int
+data class PostLight1(
+    @SerializedName("light")
+    val light: List<Light1>
+)
+
+data class Light1(
+    @SerializedName("id")
+    val id: Int
 )

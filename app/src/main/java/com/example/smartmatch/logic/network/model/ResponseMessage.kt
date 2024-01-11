@@ -23,3 +23,11 @@ data class UpCTAllResponse(
     @SerializedName("name")
     val name: String
 )
+data class PostLightRespose(
+    @SerializedName("code")
+    val code: Int,
+    @SerializedName("data")
+    val `data`: Any,
+    @SerializedName("msg")
+    val msg: String
+)

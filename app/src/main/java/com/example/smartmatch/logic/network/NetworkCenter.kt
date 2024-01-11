@@ -1,7 +1,6 @@
 package com.example.smartmatch.logic.network
 
 import android.util.Log
-import com.example.smartmatch.logic.model.ChildScenarioX
 import com.example.smartmatch.logic.model.User
 import com.example.smartmatch.logic.model.helper.AreaCreationHelper
 import com.example.smartmatch.logic.model.helper.FindTHelper
@@ -12,9 +11,10 @@ import com.example.smartmatch.logic.network.api.ConstructionService
 import com.example.smartmatch.logic.network.api.FindCService
 import com.example.smartmatch.logic.network.api.FindTService
 import com.example.smartmatch.logic.network.api.PersonService
+import com.example.smartmatch.logic.network.api.PostLight
+import com.example.smartmatch.logic.model.helper.PostLight1
 import com.example.smartmatch.logic.network.api.UpCTAll
 import com.example.smartmatch.logic.network.model.ScenarioResponse
-import com.example.smartmatch.logic.network.model.choicetdata
 
 import retrofit2.Call
 import retrofit2.Callback
@@ -39,6 +39,7 @@ object NetworkCenter {
     private val findTService=ServiceCreator.create<FindTService>()
     private val upCTService=ServiceCreator.create<UpCTAll>()
     private val choicetdata=ServiceCreator.create<ChoiceTService>()
+    private val postLightRespose=ServiceCreator.create<PostLight>()
 
     /**
      * Construction
@@ -51,6 +52,10 @@ object NetworkCenter {
      * 获取MMNet全部数据
      */
     suspend fun getMMNetData() = constructionServer.getMMNetAllData().await()
+    /*
+    检查是否选中预览
+     */
+    suspend fun postlightData(postLight: PostLight1)= postLightRespose.PostLightData(postLight)
 
     /**
      * 根据地区ID获取T数据

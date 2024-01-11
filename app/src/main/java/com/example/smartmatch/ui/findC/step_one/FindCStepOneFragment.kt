@@ -253,12 +253,12 @@ class FindCStepOneFragment :  BaseFragment<FragmentFindCStepOneBinding>(), Const
         var b=a?.getOrNull()
         result.observe(this){re->
             val response=re.getOrNull()
-            if(response!=null){
+            if(response?.code==1){
                 val data=response.data.c_num
                 c_num=data
                 Toast.makeText(context, "mmnetid: $c_num", Toast.LENGTH_SHORT).show()
                 Log.e("xxxid",c_num.toString())
-                initDataAfterView(21)
+                initDataAfterView(c_num)
             }
         }
     }
@@ -521,7 +521,5 @@ class FindCStepOneFragment :  BaseFragment<FragmentFindCStepOneBinding>(), Const
     }
 
 
-    override fun processFindT(result: LiveData<Result<FindT>>) {
-        TODO("Not yet implemented")
-    }
+
 }

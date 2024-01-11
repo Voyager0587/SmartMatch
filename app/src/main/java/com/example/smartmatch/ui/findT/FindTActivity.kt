@@ -14,6 +14,7 @@ import com.example.smartmatch.base.kxt.toast
 import com.example.smartmatch.databinding.ActivityFindtBinding
 //import com.example.smartmatch.ui.checkCT.CheckCTActivity
 import com.example.smartmatch.ui.findT.step_one.FindTStepOneFragment
+import com.example.smartmatch.ui.findT.step_one.FindTStepOneViewModel
 
 
 class FindTActivity : BaseActivity<ActivityFindtBinding>() {
@@ -22,11 +23,11 @@ class FindTActivity : BaseActivity<ActivityFindtBinding>() {
     private lateinit var activityFindTBinding: ActivityFindtBinding
     val AREA_ID="area_id"
     var area_id:Int=-1
-    private val mfindTViewModel: FindTViewModel by lazy {
+    private val mfindTViewModel: FindTStepOneViewModel by lazy {
         ViewModelProvider(
             this,
             ViewModelProvider.NewInstanceFactory()
-        )[FindTViewModel::class.java]
+        )[FindTStepOneViewModel::class.java]
     }
     override fun ActivityFindtBinding.initBindingView() {
         binding.findtviewModel = mfindTViewModel

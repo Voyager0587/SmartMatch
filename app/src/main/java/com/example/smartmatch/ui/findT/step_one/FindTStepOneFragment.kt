@@ -19,9 +19,7 @@ import com.example.smartmatch.base.activity.BaseFragment
 import com.example.smartmatch.base.util.CTNumberUtils
 import com.example.smartmatch.chart.FindCTBtnParams
 import com.example.smartmatch.databinding.FragmentFindTStepOneBinding
-import com.example.smartmatch.logic.model.helper.FindT
 import com.example.smartmatch.logic.network.model.choicetdata
-//import com.example.smartmatch.ui.checkCT.CheckCTActivity
 import com.example.smartmatch.ui.construction.ConstructionListener
 
 class FindTStepOneFragment (): BaseFragment<FragmentFindTStepOneBinding>(),ConstructionListener {
@@ -39,30 +37,8 @@ class FindTStepOneFragment (): BaseFragment<FragmentFindTStepOneBinding>(),Const
         binding.vmT=viewModel
         binding.clickT=Click()
         var idd=arguments?.get("areaid")
-
+        viewModel.constructionListener=this@FindTStepOneFragment
         viewModel.getchoicetdata(idd as Int)
-        binding.swFindt.setOnCheckedChangeListener(object : RadioGroup.OnCheckedChangeListener,
-            CompoundButton.OnCheckedChangeListener {
-            override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
-
-            }
-
-            override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
-//                if(isChecked){
-//                    idi=1
-//                }
-//                if(!isChecked){
-//                    idi=0
-//                }
-            }
-
-        })
-        binding.ok.setOnClickListener{
-//            if(idi==1){
-//                viewModel.sendMessage()
-//            }
-        }
-
     }
     inner class Click {
         fun chose(view: View) {
@@ -78,11 +54,6 @@ class FindTStepOneFragment (): BaseFragment<FragmentFindTStepOneBinding>(),Const
                 //listid.add(viewFindCTBtnParams.view?.tag as Int)
                 listValue.add(newV)
                 chooseAdapter.notifyItemInserted(listValue.size)
-
-
-
-
-
             }
         }
 
@@ -104,6 +75,9 @@ class FindTStepOneFragment (): BaseFragment<FragmentFindTStepOneBinding>(),Const
             hasAuditAdapter.notifyDataSetChanged()
             viewModel.chooseTheCList.clear()
             chooseAdapter.notifyDataSetChanged()
+        }
+        fun checkcl(view:View){//是否有预览的Click的内容
+           // viewModel.postlight(viewModel.chooseTheCList)
         }
     }
 
@@ -234,27 +208,28 @@ class FindTStepOneFragment (): BaseFragment<FragmentFindTStepOneBinding>(),Const
             }
         }
     }
-
-    override fun choicetdata(result: LiveData<Result<choicetdata>>) {
-        super.choicetdata(result)
-        result.observe(this){re->
-            val response=re.getOrNull()
-            if(response!=null){
-                val data=response.data.lightNum
-                t_num=data
-                Toast.makeText(context, "mmnetid: $t_num", Toast.LENGTH_SHORT).show()
-                Log.e("xxxid",t_num.toString())
-                initDataAfterView(t_num)
-            }
-        }
-    }
+//注释了的是以下接收num可以显示布局的函数，但是不知道为什么开始闪退了哈哈
+//    override fun choicetdata(result: LiveData<Result<choicetdata>>) {
+//        super.choicetdata(result)
+//        var a=result.value
+//        var b=a?.getOrNull()
+//        result.observe(this){re->
+//            val response=re.getOrNull()
+//            if(response?.code==1){
+//                val data=response.data.lightNum
+//                t_num=data
+//                Toast.makeText(context, "mmnetid: $t_num", Toast.LENGTH_SHORT).show()
+//                Log.e("xxxid",t_num.toString())
+//                initDataAfterView(t_num)
+//            }
+//        }
+//    }
 
     override fun initDataAfterView() {
         super.initDataAfterView()
         viewModel.CNumber.value=127
     }
       override fun initDataAfterView(num:Int) {
-          super.initDataAfterView(num)
         if(num!=null){
             viewModel.CNumber.value =num
             Log.e("xxxxxxxxx",num.toString())
@@ -328,9 +303,9 @@ class FindTStepOneFragment (): BaseFragment<FragmentFindTStepOneBinding>(),Const
                     for (i in 0 until binding.ll3.childCount) {
                         val btn = ((binding.ll3.getChildAt(i) as LinearLayout).getChildAt(0) as LinearLayout).getChildAt(1) as TextView
                         val tv = (binding.ll3.getChildAt(i) as LinearLayout).getChildAt(1) as TextView
-
+                        val viewFindCTBtnParams = FindCTBtnParams<TextView>()
                         val location = IntArray(2)
-                        //viewFindCTBtnParams.view?.tag=viewModel.getFIndT(idd).value?.getOrNull()?.data?.lightData
+
                         btn.getLocationOnScreen(location)
                         viewFindCTBtnParams.view = btn
                         viewFindCTBtnParams.tv = tv
@@ -485,7 +460,7 @@ class FindTStepOneFragment (): BaseFragment<FragmentFindTStepOneBinding>(),Const
 
                             }
                         }
-                        }
+                    }
 
                     break
                 }
@@ -510,8 +485,7 @@ class FindTStepOneFragment (): BaseFragment<FragmentFindTStepOneBinding>(),Const
                 rawY = Y + width
             }
             val btns = viewModel.btnsParams3.value!!
-            //viewModel.save(LightOffBody(btns.map { Light(it.id)  }))
-           // viewModel.saveLightList(TPrecentageBody(btns.map { Light1(it.id,t_percentage)}))
+
             for (viewParams in btns) {
                 if (rawX >= viewParams.rawX && rawX <= viewParams.rawX + viewParams.width) {
                     for (vp in btns) {
@@ -520,7 +494,6 @@ class FindTStepOneFragment (): BaseFragment<FragmentFindTStepOneBinding>(),Const
                     viewParams.view?.setBackgroundResource(R.drawable.ct_ll_btn_selected_36dp)
                     if (viewParams.START_CID == viewParams.END_CID) {
                         viewModel.currentlyDeterminedCBtn.value = viewParams
-
 
                     }
 
