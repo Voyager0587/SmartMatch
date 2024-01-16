@@ -21,52 +21,55 @@ import com.example.smartmatch.ui.choiceT.ui.ChoiceTRvAdapter
 import com.example.smartmatch.ui.choiceT.ui.HandFindTModel
 
 class ChoiceTActivity :BaseActivity<ActivityChoiceTBinding>(){
-    var i:Int=-1
-    private lateinit var choiceTFragment: ChoiceTFragment
-    private lateinit var activityChoiceTBinding: ActivityChoiceTBinding
-    private val mViewModel: HandFindTModel by lazy {
-        ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory()
-        )[HandFindTModel::class.java]
-    }
-
+    //    var i:Int=-1
+//    private lateinit var choiceTFragment: ChoiceTFragment
+//    private lateinit var activityChoiceTBinding: ActivityChoiceTBinding
+//    private val mViewModel: HandFindTModel by lazy {
+//        ViewModelProvider(
+//            this,
+//            ViewModelProvider.NewInstanceFactory()
+//        )[HandFindTModel::class.java]
+//    }
+//
+//    override fun ActivityChoiceTBinding.initBindingView() {
+//
+//        binding.choiceFindTMoadel=mViewModel
+//
+//        initActivity()
+//        initView()
+//        val intent: Intent =getIntent()
+//        }
+//        fun initActivity() {
+//        activityChoiceTBinding= DataBindingUtil.setContentView(this, R.layout.activity_choice_t)
+//        binding.choiceFindTMoadel=
+//            ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(HandFindTModel::class.java)
+//        activityChoiceTBinding.lifecycleOwner=this
+//
+//    }
+//
+//    fun initView() {
+//        choiceTFragment= ChoiceTFragment()
+//        replaceFragment(choiceTFragment)
+//    }
+//
+//    fun replaceFragment(fragment: Fragment) {
+//        val fragmentManager: FragmentManager = supportFragmentManager
+//        val transaction: FragmentTransaction = fragmentManager.beginTransaction()
+//        transaction.replace(R.id.choiceTFrameLayout, fragment)
+//        transaction.addToBackStack(null) // 碎片模拟返回栈
+//        transaction.commitAllowingStateLoss()
+//
+//    }
+//
+//
+//
+//
     override fun ActivityChoiceTBinding.initBindingView() {
-
-        binding.choiceFindTMoadel=mViewModel
-
-        initActivity()
-        initView()
-        val intent: Intent =getIntent()
-        }
-        fun initActivity() {
-        activityChoiceTBinding= DataBindingUtil.setContentView(this, R.layout.activity_choice_t)
-        binding.choiceFindTMoadel=
-            ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(HandFindTModel::class.java)
-        activityChoiceTBinding.lifecycleOwner=this
-
-    }
-
-    fun initView() {
-        choiceTFragment= ChoiceTFragment()
-        replaceFragment(choiceTFragment)
-    }
-
-    fun replaceFragment(fragment: Fragment) {
-        val fragmentManager: FragmentManager = supportFragmentManager
-        val transaction: FragmentTransaction = fragmentManager.beginTransaction()
-        transaction.replace(R.id.choiceTFrameLayout, fragment)
-        transaction.addToBackStack(null) // 碎片模拟返回栈
-        transaction.commitAllowingStateLoss()
-
+        TODO("Not yet implemented")
     }
 
 
-
-
-
-
-    }
+}
 
 
 

@@ -200,9 +200,7 @@ class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), Construc
         }
     }
 
-    override fun processFindT(result: LiveData<Result<FindT>>) {
 
-    }
 
 
 }

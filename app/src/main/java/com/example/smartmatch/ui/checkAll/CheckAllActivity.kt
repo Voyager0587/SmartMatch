@@ -15,10 +15,12 @@ import com.example.smartmatch.databinding.ActivityCheckAllBinding
 import com.example.smartmatch.databinding.ActivityFindcBinding
 import com.example.smartmatch.ui.checkAll.ui.CheckAllViewModel
 import com.example.smartmatch.ui.checkAll.ui.main.CheckAllFragment
+import com.example.smartmatch.ui.choiceT.ChoiceTFragment
 
-class CheckAllActivity : BaseActivity<ActivityCheckAllBinding>() {
+class CheckAllActivity : BaseActivity<ActivityCheckAllBinding>() ,ChoiceTFragment.OnFragmentInteractionListener{
     var INT_CNUM:String="INT_CNUM"
     var c_all_num=-1;
+    var t_nums=0
     val NET_AREA_NAME="name"
     var areaName:String=" "
     private lateinit var checkAllFragment: CheckAllFragment
@@ -36,14 +38,16 @@ class CheckAllActivity : BaseActivity<ActivityCheckAllBinding>() {
         initView()
         val intent: Intent =getIntent()
         c_all_num=intent.getIntExtra(INT_CNUM,c_all_num)
-        areaName= intent.getStringExtra(NET_AREA_NAME)!!
+        areaName= intent.getStringExtra("areaname")!!
+        t_nums=intent.getIntExtra("t_nums",t_nums)
         val bundle= Bundle()
         bundle.putInt("xx",c_all_num)
         bundle.putString("areaname",areaName)
+       // bundle.putInt("t_nums",t_nums)
         checkAllFragment.arguments=bundle
     }
     fun initActivity() {
-        activityCheckAllBinding= DataBindingUtil.setContentView(this,R.layout.activity_findc)
+        activityCheckAllBinding= DataBindingUtil.setContentView(this,R.layout.activity_check_all)
         binding.findcviewModel=
             ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(CheckAllViewModel::class.java)
         activityCheckAllBinding.lifecycleOwner=this
@@ -64,8 +68,13 @@ class CheckAllActivity : BaseActivity<ActivityCheckAllBinding>() {
 
     }
 
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
-        super.onWindowFocusChanged(hasFocus)
-        //checkAllFragment.initViewParams()
+    override fun vm() {
+        TODO("Not yet implemented")
     }
+
+    override fun vm1() {
+        TODO("Not yet implemented")
+    }
+
+
 }

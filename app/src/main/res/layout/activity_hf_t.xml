@@ -6,7 +6,7 @@
     <data>
         <variable
             name="handFindTMoadel"
-            type="com.example.smartmatch.ui.choiceT.ui.HandFindTModel" />
+            type="com.example.smartmatch.ui.findC.step_one.FindCStepOneViewModel" />
 
     </data>
 
@@ -15,6 +15,7 @@
         android:layout_height="match_parent">
         <FrameLayout
             android:id="@+id/handfindFrameLayout"
+            android:name="androidx.fragment.app.FragmentContainerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

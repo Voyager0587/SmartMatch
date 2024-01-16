@@ -43,10 +43,11 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment(), BaseBinding<VB> 
     ): View? {
 
         binding = getViewBinding(inflater, container)
+        initDataAfterView()
         initDataBeforeView()
         observerDataStateUpdateAction()
         initView()
-        initDataAfterView()
+
         return binding.root
     }
     /**

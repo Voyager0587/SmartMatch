@@ -26,3 +26,4 @@ data class LightDataT(
     @SerializedName("original_id")
     val originalId: Int
 )
+
