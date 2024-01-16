@@ -23,6 +23,7 @@ class MultiButton(context: Context, attrs: AttributeSet?) : LinearLayout(context
     var layout: RelativeLayout
     var scene_id:Int=-1
     var net_id:Int=-1
+    var item_id:Int=-1
     lateinit var info: String
         private set
     var judge = false
@@ -47,6 +48,8 @@ class MultiButton(context: Context, attrs: AttributeSet?) : LinearLayout(context
     fun text(info: String,_percent: Double,_scene_id:Int) {
         text(info)
         percent.text = _percent.toString()
+        if (_percent<0)
+            percent.text=""
         scene_id=_scene_id
     }
     fun percent(_percent: Double){

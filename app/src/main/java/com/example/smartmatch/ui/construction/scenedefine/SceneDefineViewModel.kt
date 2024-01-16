@@ -19,12 +19,19 @@ class SceneDefineViewModel : ViewModel() {
     internal var constructionListener: ConstructionListener? = null
 
     var mmnetData: LiveData<Result<MMNetResponse>>? = null
+    var sceneCreationResponse: LiveData<SceneCreationResponse>? =null
     var tData: LiveData<Result<SceneCreationResponse>>? = null
     fun getMMNetData() {
         mmnetData = repository.getMMNetData()
         constructionListener?.processMMNetData(mmnetData!!)
     }
+    fun getScenarioDetail(id: Int) {
 
+        var sceneCreationResponse = repository.getScenarioDetails(id)
+        var response=sceneCreationResponse.value
+        var data=sceneCreationResponse.value?.getOrNull()
+        constructionListener?.progressReturnData(sceneCreationResponse)
+    }
     fun getTByAreaId(areaId: Int){
         val temp =  repository.getTByAreaId(1)
         val temp2=repository.getLightByAreaId(areaId)

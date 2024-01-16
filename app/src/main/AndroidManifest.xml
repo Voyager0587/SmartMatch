@@ -7,10 +7,10 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
     <application
-        android:allowBackup="true"
         android:name=".SmartApplication"
-        android:usesCleartextTraffic="true"
+        android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/app_icon"
@@ -18,44 +18,36 @@
         android:roundIcon="@drawable/app_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartMatch"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.construction.scenedefine.scenedetails.SceneDetailActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity android:name=".ui.findC.FindCActivity"
-            android:exported="true">
-
-
-        </activity>
-        <activity android:name=".ui.findT.FindTActivity"
-            android:exported="true">
-
-
-        </activity>
-        <activity android:name=".ui.choiceT.ChoiceTActivity"
-            android:exported="true">
-
-        </activity>
-        <activity android:name=".ui.choiceT.HandFindTActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
         </activity>
-
-
-
-
+        <activity
+            android:name=".ui.findC.FindCActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".ui.findT.FindTActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".ui.choiceT.ChoiceTActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".ui.choiceT.HandFindTActivity"
+            android:exported="true"></activity>
     </application>
 
-
-
-    </manifest>
+</manifest>

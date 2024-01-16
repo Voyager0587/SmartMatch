@@ -119,7 +119,7 @@ class LightControlScenarioFragment(
         viewLifecycleOwner.safeLaunch {
             val mmnetData = mViewModel.mmnetData?.value?.getOrNull()
             list = mmnetData?.let { searchData(it) }!!
-            adapter = LightControlScenarioAdapter(this@LightControlScenarioFragment)
+            adapter = LightControlScenarioAdapter()
             binding.recyclerScenario.layoutManager = LinearLayoutManager(requireContext())
             binding.recyclerScenario.adapter = adapter
             adapter.setData(list)

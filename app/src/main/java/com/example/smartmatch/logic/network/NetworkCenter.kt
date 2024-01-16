@@ -4,6 +4,8 @@ import android.util.Log
 import com.example.smartmatch.logic.model.User
 import com.example.smartmatch.logic.model.helper.AreaCreationHelper
 import com.example.smartmatch.logic.model.helper.FindTHelper
+import com.example.smartmatch.logic.model.helper.LightBean
+import com.example.smartmatch.logic.model.helper.ScenarioLight
 import com.example.smartmatch.logic.model.helper.SceneCloseHelper
 import com.example.smartmatch.logic.model.helper.UpCTAllHelper
 import com.example.smartmatch.logic.network.api.ConstructionService
@@ -32,9 +34,9 @@ object NetworkCenter {
     // private val authServer = ServiceCreator.create<AuthService>()
     private val constructionServer = ServiceCreator.create<ConstructionService>()
     private val personServer = ServiceCreator.create<PersonService>()
-    private val findCData=ServiceCreator.create<FindCService>()
-    private val findTService=ServiceCreator.create<FindTService>()
-    private val upCTService=ServiceCreator.create<UpCTAll>()
+    private val findCData = ServiceCreator.create<FindCService>()
+    private val findTService = ServiceCreator.create<FindTService>()
+    private val upCTService = ServiceCreator.create<UpCTAll>()
 
     /**
      * Construction
@@ -75,6 +77,33 @@ object NetworkCenter {
     suspend fun instructScenario(scenario: ScenarioResponse) =
         constructionServer.instructScenario(scenario).await()
 
+
+//    suspend fun getScenarioDetails(id: Int) = constructionServer.getScenarioDetials(id).await()
+    suspend fun letAllLightsOff(id: String) = constructionServer.letAllLightsOff(id).await()
+
+    suspend fun deleteLight(id: String, light: LightBean) = constructionServer.deleteLight(id, light).await()
+
+    suspend fun submitLight(id: String, light: LightBean) = constructionServer.submitLight(id, light).await()
+
+    suspend fun saveLight(id: String) = constructionServer.saveLight(id).await()
+
+    suspend fun getLights(id: String) = constructionServer.getLights(id).await()
+
+    suspend fun flicker(flicker: LightBean) = constructionServer.flicker(flicker).await()
+
+    suspend fun addLight(id: String) = constructionServer.addLight(id).await()
+
+    suspend fun saveScenario(id: String, scenario: ScenarioLight) = constructionServer.saveScenario(id, scenario).await()
+
+    suspend fun switchScenario(id: String, scenario: ScenarioLight) = constructionServer.switchScenario(id, scenario).await()
+
+    suspend fun deleteScenario(id: String, scenario: ScenarioLight) = constructionServer.deleteScenario(id, scenario).await()
+
+    suspend fun getAddScenario(id: String) = constructionServer.getAddScenario(id).await()
+    suspend fun getSubScenarioDetails(id: String)= constructionServer.getSubScenarioDetails(id).await()
+    suspend fun getScenarioDetails(id: String)= constructionServer.getScenarioDetials(id).await()
+    suspend fun addScenario(id: String, scenario: ScenarioLight) = constructionServer.addScenario(id, scenario).await()
+
     /**
      * 创建Area
      */
@@ -90,15 +119,18 @@ object NetworkCenter {
     /**
      * 找C
      */
-    suspend fun findCdata(id: Int)= findCData.getCData(id).await()
+    suspend fun findCdata(id: Int) = findCData.getCData(id).await()
+
     /**
      * 找T
      */
-    suspend fun findTData(findTData: FindTHelper)= findTService.postTData(findTData).await()
+    suspend fun findTData(findTData: FindTHelper) = findTService.postTData(findTData).await()
+
     /**
      * 创建Area的时候提交数据
      */
-    suspend fun upCTData(upCTAllHelper: UpCTAllHelper)= upCTService.postupctData(upCTAllHelper).await()
+    suspend fun upCTData(upCTAllHelper: UpCTAllHelper) =
+        upCTService.postupctData(upCTAllHelper).await()
 
     private suspend fun <T> Call<T>.await(): T {
         // 创建一个挂起函数，用于等待Call对象的响应并返回结果

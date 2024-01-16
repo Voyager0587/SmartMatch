@@ -25,7 +25,6 @@ data class MmnetData(
     val C: C,
     val admin_id: String,
     val areas: Areas,
-    val control: Control,
     val mmnet_id: Int,
     val mmnet_name: String
 )
@@ -38,11 +37,6 @@ data class C(
 data class Areas(
     val area_num: Int,
     val areas_data: List<AreasData>
-)
-
-data class Control(
-    val control_data: List<ControlData>,
-    val control_num: Int
 )
 
 data class CData(
@@ -97,12 +91,5 @@ data class LightData(
 data class ChildScenarioX(
     val definitional_percentage: Double,
     val id: Int,
-    val name: String
-)
-
-data class ControlData(
-    val description: String,
-    val id: Int,
-    val mm_net_name: String,
     val name: String
 )

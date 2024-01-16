@@ -4,11 +4,17 @@ package com.example.smartmatch.logic.network.api
 import com.example.smartmatch.logic.model.MMNetResponse
 
 import com.example.smartmatch.logic.model.helper.AreaCreationHelper
+import com.example.smartmatch.logic.model.helper.LightBean
+import com.example.smartmatch.logic.model.helper.ScenarioLight
 import com.example.smartmatch.logic.model.helper.SceneCloseHelper
+import com.example.smartmatch.logic.network.model.CanAddScenesResponse
 import com.example.smartmatch.logic.network.model.CollectionScenariosResponse
+import com.example.smartmatch.logic.network.model.LightDataResponse
 import com.example.smartmatch.logic.network.model.ResponseMessage
+import com.example.smartmatch.logic.network.model.ScenarioDetailResponse
 import com.example.smartmatch.logic.network.model.ScenarioResponse
 import com.example.smartmatch.logic.network.model.SceneCreationResponse
+import com.example.smartmatch.logic.network.model.SubSceneResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.Field
@@ -101,5 +107,89 @@ interface ConstructionService {
      * @return MMNetResponse对象
      */
 
+    /**
+     * 获取场景详细信息
+     * @param id 场景ID
+     */
+    @GET("/modify/scenario/details/{id}")
+    fun getScenarioDetials(@Path("id") id: String): Call<ScenarioDetailResponse>
 
+    /**
+     * AllOff
+     * 关闭所有灯的接口
+     */
+    @GET("/instructions/all_off/{id}")
+    fun letAllLightsOff(@Path("id") id: String): Call<MMNetResponse>
+
+    /**
+     * 删除灯的接口
+     */
+    @POST("/modify/scenario/light/delete/{id}")
+    fun deleteLight(@Path("id") id: String,@Body light: LightBean): Call<MMNetResponse>
+
+    /**
+     * 提交修改后场景中灯的定义百分比并启动
+     */
+    @POST("/modify/scenario/light/{id}")
+    fun submitLight(@Path("id") id: String,@Body light: LightBean ): Call<MMNetResponse>
+
+    /**
+     * 保存灯修改后的数据（只进行数据的保存，不启动）
+     */
+    @POST("/modify/scenario/light/save/{id}")
+    fun saveLight(@Path("id") id: String): Call<MMNetResponse>
+
+
+    /**
+     *为scenario绑定灯的界面返回有哪些灯可选
+     */
+    @GET("/mmnet/scenario/light/{id}")
+    fun getLights(@Path("id") id: String): Call<LightDataResponse>
+
+    /**
+     * 让特定的灯闪
+     */
+    @POST("/mmnet/light/flicker")
+    fun flicker(@Body flicker: LightBean): Call<MMNetResponse>
+
+    /**
+     * 添加灯
+     */
+    @POST("/modify/scenario/light/add/{id}")
+    fun addLight(@Path("id") id: String): Call<MMNetResponse>
+
+    /**
+     * 保存修改后场景的信息
+     */
+    @POST("/modify/scenario/child/save/{id}")
+    fun saveScenario(@Path("id") id: String, @Body scenario: ScenarioLight): Call<MMNetResponse>
+
+    /**
+     * 调试场景的亮暗
+     */
+    @POST("/modify/scenario/child/{id}")
+    fun switchScenario(@Path("id") id: String, @Body scenario: ScenarioLight): Call<MMNetResponse>
+
+    /**
+     * 删除场景
+     */
+    @POST("/modify/scenario/child/delete/{id}")
+    fun deleteScenario(@Path("id") id: String, @Body scenario: ScenarioLight): Call<MMNetResponse>
+
+    /**
+     * 返回可添加的场景
+     */
+    @GET("/modify/scenario/child/add/{id}")
+    fun getAddScenario(@Path("id") id: String): Call<CanAddScenesResponse>
+
+    /**
+     * 返回场景的子场景
+     */
+    @GET("/modify/scenario/child/details/{id}")
+    fun getSubScenarioDetails(@Path("id") id: String): Call<SubSceneResponse>
+    /**
+     * 添加场景
+     */
+    @POST("/modify/scenario/child/add/{id}")
+    fun addScenario(@Path("id") id: String, @Body scenario: ScenarioLight): Call<MMNetResponse>
 }

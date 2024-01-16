@@ -9,6 +9,7 @@
     <dimen name="app_margin_end_distance_mid">70dp</dimen>
     <dimen name="app_margin_end_distance_big">100dp</dimen>
     <dimen name="app_margin_top_distance">30dp</dimen>
+    <dimen name="app_margin_top_distance_big">60dp</dimen>
     <dimen name="app_margin_bottom_distance">20dp</dimen>
     <dimen name="app_margin_bottom_distance_big">60dp</dimen>
     <dimen name="app_margin_bottom_distance_small">10dp</dimen>

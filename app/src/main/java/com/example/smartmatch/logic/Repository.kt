@@ -5,6 +5,8 @@ import androidx.lifecycle.liveData
 
 import com.example.smartmatch.logic.model.helper.AreaCreationHelper
 import com.example.smartmatch.logic.model.helper.FindTHelper
+import com.example.smartmatch.logic.model.helper.LightBean
+import com.example.smartmatch.logic.model.helper.ScenarioLight
 import com.example.smartmatch.logic.model.helper.SceneCloseHelper
 import com.example.smartmatch.logic.model.helper.UpCTAllHelper
 import com.example.smartmatch.logic.network.NetworkCenter
@@ -58,6 +60,109 @@ object Repository {
 
     fun instructScenario(scenario: ScenarioResponse) = fire(Dispatchers.IO) {
         val response = NetworkCenter.instructScenario(scenario)
+        run {
+            Result.success(response)
+        }
+    }
+
+    fun getScenarioDetails(id: Int) = fire(Dispatchers.IO) {
+        val response = NetworkCenter.getScenarioDetails(id.toString())
+        run {
+            Result.success(response)
+        }
+    }
+    fun letAllLightsOff(id: String) = fire(Dispatchers.IO) {
+        val response = NetworkCenter.letAllLightsOff(id)
+        run {
+            Result.success(response)
+        }
+    }
+
+    fun deleteLight(id: String, light: LightBean) = fire(Dispatchers.IO) {
+        val response = NetworkCenter.deleteLight(id, light)
+        run {
+            Result.success(response)
+        }
+    }
+
+    fun submitLight(id: String, light: LightBean) = fire(Dispatchers.IO) {
+        val response = NetworkCenter.submitLight(id, light)
+        run {
+            Result.success(response)
+        }
+    }
+
+    fun saveLight(id: String) = fire(Dispatchers.IO) {
+        val response = NetworkCenter.saveLight(id)
+        run {
+            Result.success(response)
+        }
+    }
+
+    fun getLights(id: String) = fire(Dispatchers.IO) {
+        val response = NetworkCenter.getLights(id)
+        run {
+            Result.success(response)
+        }
+    }
+
+    fun flicker(flicker: LightBean) = fire(Dispatchers.IO) {
+        val response = NetworkCenter.flicker(flicker)
+        run {
+            Result.success(response)
+        }
+    }
+
+    fun addLight(id: String) = fire(Dispatchers.IO) {
+        val response = NetworkCenter.addLight(id)
+        run {
+            Result.success(response)
+        }
+    }
+
+    fun saveScenario(id: String, scenario: ScenarioLight) = fire(Dispatchers.IO) {
+        val response = NetworkCenter.saveScenario(id, scenario)
+        run {
+            Result.success(response)
+        }
+    }
+
+    fun switchScenario(id: String, scenario: ScenarioLight) = fire(Dispatchers.IO) {
+        val response = NetworkCenter.switchScenario(id, scenario)
+        run {
+            Result.success(response)
+        }
+    }
+
+    fun deleteScenario(id: String, scenario: ScenarioLight) = fire(Dispatchers.IO) {
+        val response = NetworkCenter.deleteScenario(id, scenario)
+        run {
+            Result.success(response)
+        }
+    }
+
+    fun getAddScenario(id: String) = fire(Dispatchers.IO) {
+        val response = NetworkCenter.getAddScenario(id)
+        run {
+            Result.success(response)
+        }
+    }
+
+    fun getSubScenarioDetails(id: String)= fire(Dispatchers.IO) {
+        val response = NetworkCenter.getSubScenarioDetails(id)
+        run {
+            Result.success(response)
+        }
+    }
+
+    fun getScenarioDetails(id: String)= fire(Dispatchers.IO) {
+        val response = NetworkCenter.getScenarioDetails(id)
+        run {
+            Result.success(response)
+        }
+    }
+    fun addScenario(id: String, scenario: ScenarioLight) = fire(Dispatchers.IO) {
+        val response = NetworkCenter.addScenario(id, scenario)
         run {
             Result.success(response)
         }

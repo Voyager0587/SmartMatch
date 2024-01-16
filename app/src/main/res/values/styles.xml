@@ -20,5 +20,17 @@
 
 
     </style>
+    <style name="text_input_edit_layout_normal" >
+        <item name="boxBackgroundColor">#F8F8F8</item>
+        <item name="boxBackgroundMode">outline</item>
+        <item name="boxCornerRadiusBottomEnd">10dp</item>
+        <item name="boxCornerRadiusBottomStart">10dp</item>
+        <item name="boxCornerRadiusTopEnd">10dp</item>
+        <item name="boxCornerRadiusTopStart">10dp</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="errorEnabled">true</item>
+        <item name="counterTextColor">@color/black</item>
+
+    </style>
 
 </resources>

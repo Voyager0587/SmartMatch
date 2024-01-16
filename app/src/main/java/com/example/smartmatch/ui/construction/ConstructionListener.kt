@@ -1,13 +1,16 @@
 package com.example.smartmatch.ui.construction
 
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import com.example.smartmatch.logic.model.MMNetResponse
 import com.example.smartmatch.logic.model.MmnetData
 import com.example.smartmatch.logic.model.helper.FindT
+import com.example.smartmatch.logic.network.model.CanAddScenesResponse
 import com.example.smartmatch.logic.network.model.CollectionScenariosResponse
 import com.example.smartmatch.logic.network.model.FindCData
 import com.example.smartmatch.logic.network.model.FindTData
 import com.example.smartmatch.logic.network.model.ResponseMessage
+import com.example.smartmatch.logic.network.model.ScenarioDetailResponse
 import com.example.smartmatch.logic.network.model.SceneCreationResponse
 
 /**
@@ -83,6 +86,9 @@ interface ConstructionListener {
      */
     fun findTResponse(result: LiveData<Result<FindTData>>){}
 
+    fun progressReturnData(result: LiveData<Result<ScenarioDetailResponse>>){}
 
+    fun switchFragment(fragment: Fragment, tag: String){}
 
+    fun processAddSceneResponse(result: LiveData<Result<CanAddScenesResponse>>){}
 }

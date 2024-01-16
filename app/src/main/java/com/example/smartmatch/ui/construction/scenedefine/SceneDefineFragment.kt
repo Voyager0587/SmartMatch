@@ -14,9 +14,11 @@ import com.example.smartmatch.logic.model.MmnetData
 import com.example.smartmatch.logic.model.helper.FindT
 import com.example.smartmatch.logic.network.model.SceneCreationResponse
 import com.example.smartmatch.ui.construction.ConstructionListener
+import com.example.smartmatch.ui.construction.scenedefine.scenedetails.SceneDetailActivity
 import com.example.smartmatch.ui.findT.FindTActivity
 import com.example.smartmatch.ui.view.ItemButton
 import com.kongzue.dialogx.dialogs.InputDialog
+import com.kongzue.dialogx.dialogs.MessageDialog
 
 /**
  * @className SceneDefineFragment
@@ -25,6 +27,7 @@ import com.kongzue.dialogx.dialogs.InputDialog
  * @date 2023/9/30 14:03
  */
 class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), ConstructionListener {
+
 
     private var lastIndex = 0
     private var areaId = 0
@@ -39,6 +42,8 @@ class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), Construc
         binding.viewModel = mViewModel
         mViewModel.constructionListener = this@SceneDefineFragment
         mViewModel.getMMNetData()
+
+//        mViewModel.getScenarioDetail(19)
         initListener()
     }
 
@@ -78,13 +83,23 @@ class SceneDefineFragment : BaseFragment<FragmentSceneDefineBinding>(), Construc
                         binding.containerScene.removeAllViews()
                         areaId = mmnet_data[i].areas.areas_data[j].area.id
                         for (k in mmnet_data[i].areas.areas_data[j].area.scenarios_data.indices) {
-                            val sceneName =
-                                mmnet_data[i].areas.areas_data[j].area.scenarios_data[k].name
-                            val scene = createItemButton(context, sceneName) {
+                            val scenario = mmnet_data[i].areas.areas_data[j].area.scenarios_data[k]
+                            val sceneName = scenario.name
+                            val sceneView = createItemButton(context, sceneName) {
                                 binding.searchScene.setText(sceneName)
                                 "Clicked on: $sceneName".toast()
+                                MessageDialog.show("提醒", "是否进入场景详情界面", "确定", "取消")
+                                    .setOkButton { baseDialog, v ->
+                                        requireActivity().startActivity(
+                                            Intent(
+                                                context,
+                                                SceneDetailActivity::class.java
+                                            ).putExtra("scenarioId",scenario.id)
+                                        )
+                                        false
+                                    };
                             }
-                            binding.containerScene.addView(scene)
+                            binding.containerScene.addView(sceneView)
                             lastIndex++
                         }
 

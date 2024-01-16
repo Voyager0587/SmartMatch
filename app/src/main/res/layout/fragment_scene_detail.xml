@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.smartmatch.ui.construction.scenedefine.scenedetails.SceneDetailsViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/blue_light">
+
+        <TextView
+            android:id="@+id/scene_detail_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="@dimen/app_margin_top_distance"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTintMode="add"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Scene Detail"
+            android:textSize="@dimen/app_text_size_max"
+            android:visibility="visible" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/scene_light"
+            style="@style/btn_normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/scene_detail_title"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="@dimen/app_margin_start_distance"
+            android:layout_marginTop="@dimen/app_next_btn_margin_distance"
+            android:layout_marginEnd="@dimen/app_next_btn_margin_distance"
+            android:layout_marginBottom="@dimen/app_next_btn_margin_distance"
+            android:text="Light"
+            app:cornerRadius="10dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/sub_scene"
+            style="@style/btn_normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/scene_light"
+            android:layout_centerHorizontal="true"
+            app:cornerRadius="10dp"
+            android:layout_marginStart="@dimen/app_next_btn_margin_distance"
+            android:layout_marginTop="@dimen/app_next_btn_margin_distance"
+            android:layout_marginEnd="@dimen/app_next_btn_margin_distance"
+            android:layout_marginBottom="@dimen/app_next_btn_margin_distance"
+            android:text="Subscenes" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/scene_description_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/btn_back"
+            android:layout_below="@id/sub_scene"
+            android:layout_margin="@dimen/app_margin_top_distance"
+            android:hint="Scenario Introduction"
+            app:boxBackgroundColor="@color/blue_light"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeColor="@color/blue_dark"
+            app:boxStrokeWidth="2dp"
+            app:counterEnabled="true"
+            app:counterTextColor="@color/black"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/scene_description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTintMode="add"
+                android:gravity="top|start"
+                android:inputType="textMultiLine"
+                android:padding="10dp"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/app_text_size_normal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_back"
+            style="@style/btn_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:text="Back" />
+    </RelativeLayout>
+</layout>

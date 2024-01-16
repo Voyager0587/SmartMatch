@@ -5,7 +5,6 @@ import android.annotation.SuppressLint
 import com.example.smartmatch.base.activity.BaseAdapter
 import com.example.smartmatch.databinding.ItemLightControlScenarioBinding
 import com.example.smartmatch.logic.model.ScenariosData
-import com.example.smartmatch.ui.construction.lightcontrol.LightControlScenarioFragment
 import com.example.smartmatch.ui.view.MultiButton
 
 /**
@@ -15,7 +14,7 @@ import com.example.smartmatch.ui.view.MultiButton
  * @date:  2023/10/3 19:45
  * @version 1.0
  **/
-class LightControlScenarioAdapter(private val fragment: LightControlScenarioFragment) :
+class LightControlScenarioAdapter() :
     BaseAdapter<ScenariosData, ItemLightControlScenarioBinding>() {
 
     //储存点击选中的Scenario
