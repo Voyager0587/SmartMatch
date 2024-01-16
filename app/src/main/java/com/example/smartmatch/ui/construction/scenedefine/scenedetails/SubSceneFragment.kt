@@ -39,8 +39,12 @@ class SubSceneFragment : BaseFragment<FragmentSubSceneBinding>() {
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
                 //如果所有scene中有选中的scene的id，就修改percentage
                 for (i in 0 until adapter.existList.size)
-                    if(scenarioList.find { it.id==adapter.existList[i].id }!=null)
+                    if(scenarioList.find { it.id==adapter.existList[i].id }!=null){
                         adapter.existList[i].percentage=percentage
+                        scenarioList.find { it.id==adapter.existList[i].id  }!!.percentage=percentage
+                    }
+
+
             }
         })
         btnTest.setOnClickListener {
